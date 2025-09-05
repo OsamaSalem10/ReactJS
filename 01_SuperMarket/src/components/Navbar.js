@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link ,useLocation } from "react-router-dom";
 
 export const Navbar = () => {
+       const location = useLocation();
+  if (location.pathname === "/register" || location.pathname === "/login"  ) { return }
   return (
     <>
       <header>
@@ -139,12 +141,12 @@ export const Navbar = () => {
             tabIndex="-1"
           >
             <div className="offcanvas-header pb-1">
-              <a to="./index.html">
+              <Link to="./index.html">
                 <img
                   alt="eCommerce HTML Template"
                   src="../assets/images/logo/freshcart-logo.svg"
                 />
-              </a>
+              </Link>
               <button
                 aria-label="Close"
                 className="btn-close"
@@ -156,7 +158,7 @@ export const Navbar = () => {
               <div>
                 <ul className="navbar-nav align-items-center">
                   <li className="dropdown me-6 d-none d-lg-block">
-                    <a
+                    <Link
                       aria-expanded="false"
                       className="text-inherit"
                       data-bs-toggle="dropdown"
@@ -176,10 +178,10 @@ export const Navbar = () => {
                         ></path>
                       </svg>
                       All Categories
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dropdown-menu-lg">
                       <li className="dropdown-menu-list">
-                        <a
+                        <Link
                           className="dropdown-item d-flex justify-content-between mb-1 py-1"
                           to="javascript:void(0)"
                         >
@@ -201,132 +203,132 @@ export const Navbar = () => {
                           <div>
                             <i className="feather-icon icon-chevron-right" />
                           </div>
-                        </a>
+                        </Link>
                         <div className="dropdown-menu-list-submenu">
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Fresh Vegetables
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Herbs & Seasonings
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Fresh Fruits
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Organic Fruits & Vegetables
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cuts & Sprouts
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Exotic Fruits & Veggies
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Flower Bouquets, Bunches
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Specialty
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Banana & Papaya
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Kiwi, Citrus Fruit
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Apples & Pomegranate
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Seasonal Fruits
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Mangoes
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Fruit Baskets
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                         </div>
                       </li>
                       <li className="dropdown-menu-list">
-                        <a
+                        <Link
                           className="dropdown-item d-flex justify-content-between mb-1 py-1"
                           to="javascript:void(0)"
                         >
@@ -348,140 +350,140 @@ export const Navbar = () => {
                           <div>
                             <i className="feather-icon icon-chevron-right" />
                           </div>
-                        </a>
+                        </Link>
                         <div className="dropdown-menu-list-submenu">
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Chips & Crisps
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Nachos
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Popcorn
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Bhujia & Mixtures
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Namkeen Snacks
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Healthy Snacks
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cakes & Rolls
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Energy Bars
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Papad & Fryums
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Glucose & Milk Biscuits
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Glucose & Milk Biscuits
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Energy Bars
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Healthy Snacks
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Namkeen Snacks
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cakes & Rolls
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                         </div>
                       </li>
                       <li className="dropdown-menu-list">
-                        <a
+                        <Link
                           className="dropdown-item d-flex justify-content-between mb-1 py-1"
                           to="javascript:void(0)"
                         >
@@ -503,148 +505,148 @@ export const Navbar = () => {
                           <div>
                             <i className="feather-icon icon-chevron-right" />
                           </div>
-                        </a>
+                        </Link>
                         <div className="dropdown-menu-list-submenu">
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cookies
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Glucose & Marie
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Sweet & Salty
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Healthy & Digestive
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cream Biscuits
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Rusks & Wafers
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cakes & Rolls
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Buns & Bakery
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Glucose & Marie
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Buns & Bakery
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cookies
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Sweet & Salty
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Healthy & Digestive
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cream Biscuits
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Rusks & Wafers
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cakes & Rolls
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                         </div>
                       </li>
                       <li className="dropdown-menu-list">
-                        <a
+                        <Link
                           className="dropdown-item d-flex justify-content-between mb-1 py-1"
                           to="javascript:void(0)"
                         >
@@ -666,132 +668,132 @@ export const Navbar = () => {
                           <div>
                             <i className="feather-icon icon-chevron-right" />
                           </div>
-                        </a>
+                        </Link>
                         <div className="dropdown-menu-list-submenu">
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Soft Drinks
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Fruit Juices
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Coldpress
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Energy Drinks
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Water & Ice Cubes
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Soda & Mixers
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Concentrates & Syrups
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Detox & Energy Drinks
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Juice Collection
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Concentrates & Syrups
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Soda & Mixers
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Seasonal Fruits
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Mangoes
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Fruit Baskets
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                         </div>
                       </li>
                       <li className="dropdown-menu-list">
-                        <a
+                        <Link
                           className="dropdown-item d-flex justify-content-between mb-1 py-1"
                           to="javascript:void(0)"
                         >
@@ -813,116 +815,116 @@ export const Navbar = () => {
                           <div>
                             <i className="feather-icon icon-chevron-right" />
                           </div>
-                        </a>
+                        </Link>
                         <div className="dropdown-menu-list-submenu">
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Milk
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Milk Drinks
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Curd & Yogurt
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Eggs
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Bread
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Buns & Bakery
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Butter & More
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cheese
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Paneer & Tofu
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cream & Whitener
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Condensed Milk
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Vegan Drinks
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                         </div>
                       </li>
                       <li className="dropdown-menu-list">
-                        <a
+                        <Link
                           className="dropdown-item d-flex justify-content-between mb-1 py-1"
                           to="javascript:void(0)"
                         >
@@ -944,56 +946,56 @@ export const Navbar = () => {
                           <div>
                             <i className="feather-icon icon-chevron-right" />
                           </div>
-                        </a>
+                        </Link>
                         <div className="dropdown-menu-list-submenu">
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Chicken
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Sausage, Salami & Ham
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Exotic Meat
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Eggs
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Frozen Non-Veg Snacks
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                         </div>
                       </li>
                       <li className="dropdown-menu-list">
-                        <a
+                        <Link
                           className="dropdown-item d-flex justify-content-between mb-1 py-1"
                           to="javascript:void(0)"
                         >
@@ -1015,101 +1017,101 @@ export const Navbar = () => {
                           <div>
                             <i className="feather-icon icon-chevron-right" />
                           </div>
-                        </a>
+                        </Link>
                         <div className="dropdown-menu-list-submenu">
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Diapers, Wipes & More
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Baby Food
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Bath & Hair Care
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Oral & Nasal Care
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Baby Skin Care Online
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Cleaning Needs Online
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Feeding Accessories Online
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Baby Pharma
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                           <div>
                             <ul className="list-unstyled">
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Mother Care
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Baby Gift Set
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
+                                <Link
                                   className="dropdown-item"
                                   to="javascript:void(0)"
                                 >
                                   Kids Toys & More
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -1117,151 +1119,29 @@ export const Navbar = () => {
                       </li>
                     </ul>
                   </li>
-                  <li className="nav-item dropdown">
-                    <a
-                      aria-expanded="false"
-                      className="nav-link dropdown-toggle"
-                      data-bs-toggle="dropdown"
-                      to="#"
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link "
+                      to="/"
                       role="button"
                     >
                       Home
-                    </a>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <a className="dropdown-item" to="../index.html">
-                          Home 1
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/index-2.html"
-                        >
-                          Home 2
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/index-3.html"
-                        >
-                          Home 3
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/index-4.html"
-                        >
-                          Home 4
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/index-5.html"
-                        >
-                          Home 5
-                        </a>
-                      </li>
-                    </ul>
+                    </Link>
+                   
                   </li>
-                  <li className="nav-item dropdown">
-                    <a
+                  <li className="nav-item">
+                    <Link
                       aria-expanded="false"
-                      className="nav-link dropdown-toggle"
-                      data-bs-toggle="dropdown"
-                      to="#"
+                      className="nav-link"
+                      to="/shop"
                       role="button"
                     >
                       Shop
-                    </a>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/shop-grid.html"
-                        >
-                          Shop Grid - Filter
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/shop-grid-3-column.html"
-                        >
-                          Shop Grid - 3 column
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/shop-list.html"
-                        >
-                          Shop List - Filter
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/shop-filter.html"
-                        >
-                          Shop - Filter
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/shop-fullwidth.html"
-                        >
-                          Shop Wide
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/shop-single.html"
-                        >
-                          Shop Single
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/shop-single-2.html"
-                        >
-                          Shop Single v2
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/shop-wishlist.html"
-                        >
-                          Shop Wishlist
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/shop-cart.html"
-                        >
-                          Shop Cart
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          to="../pages/shop-checkout.html"
-                        >
-                          Shop Checkout
-                        </a>
-                      </li>
-                    </ul>
+                    </Link>
+                   
                   </li>
                   <li className="nav-item dropdown">
-                    <a
+                    <Link
                       aria-expanded="false"
                       className="nav-link dropdown-toggle"
                       data-bs-toggle="dropdown"
@@ -1269,36 +1149,36 @@ export const Navbar = () => {
                       role="button"
                     >
                       Stores
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu">
                       <li>
-                        <a
+                        <Link
                           className="dropdown-item"
                           to="../pages/store-list.html"
                         >
                           Store List
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className="dropdown-item"
                           to="../pages/store-grid.html"
                         >
                           Store Grid
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className="dropdown-item"
                           to="../pages/store-single.html"
                         >
                           Store Single
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </li>
                   <li className="nav-item dropdown dropdown-fullwidth">
-                    <a
+                    <Link
                       aria-expanded="false"
                       className="nav-link dropdown-toggle"
                       data-bs-toggle="dropdown"
@@ -1306,167 +1186,167 @@ export const Navbar = () => {
                       role="button"
                     >
                       Mega menu
-                    </a>
+                    </Link>
                     <div className="dropdown-menu pb-0">
                       <div className="row p-2 p-lg-4">
                         <div className="col-lg-3 col-12 mb-4 mb-lg-0">
                           <h6 className="text-primary ps-3">
                             Dairy, Bread & Eggs
                           </h6>
-                          <a
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Butter
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Milk Drinks
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Curd & Yogurt
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Eggs
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Buns & Bakery
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Cheese
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Condensed Milk
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Dairy Products
-                          </a>
+                          </Link>
                         </div>
                         <div className="col-lg-3 col-12 mb-4 mb-lg-0">
                           <h6 className="text-primary ps-3">
                             Breakfast & Instant Food
                           </h6>
-                          <a
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Breakfast Cereal
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Noodles, Pasta & Soup
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Frozen Veg Snacks
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Frozen Non-Veg Snacks
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Vermicelli
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Instant Mixes
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Batter
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Fruit and Juices
-                          </a>
+                          </Link>
                         </div>
                         <div className="col-lg-3 col-12 mb-4 mb-lg-0">
                           <h6 className="text-primary ps-3">
                             Cold Drinks & Juices
                           </h6>
-                          <a
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Soft Drinks
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Fruit Juices
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Coldpress
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Water & Ice Cubes
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Soda & Mixers
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Health Drinks
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Herbal Drinks
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="dropdown-item"
                             to="../pages/shop-grid.html"
                           >
                             Milk Drinks
-                          </a>
+                          </Link>
                         </div>
                         <div className="col-lg-3 col-12 mb-4 mb-lg-0">
                           <div className="card border-0">
@@ -1481,12 +1361,12 @@ export const Navbar = () => {
                                 <br />
                                 offer today.
                               </h5>
-                              <a
+                              <Link
                                 className="btn btn-primary btn-sm mt-3"
                                 to="#"
                               >
                                 Shop Now
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </div>
@@ -1494,7 +1374,7 @@ export const Navbar = () => {
                     </div>
                   </li>
                   <li className="nav-item dropdown">
-                    <a
+                    <Link
                       aria-expanded="false"
                       className="nav-link dropdown-toggle"
                       data-bs-toggle="dropdown"
@@ -1502,54 +1382,54 @@ export const Navbar = () => {
                       role="button"
                     >
                       Pages
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu">
                       <li>
-                        <a className="dropdown-item" to="../pages/blog.html">
+                        <Link className="dropdown-item" to="../pages/blog.html">
                           Blog
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className="dropdown-item"
                           to="../pages/blog-single.html"
                         >
                           Blog Single
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className="dropdown-item"
                           to="../pages/blog-category.html"
                         >
                           Blog Category
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" to="../pages/about.html">
+                        <Link className="dropdown-item" to="../pages/about.html">
                           About us
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className="dropdown-item"
                           to="../pages/404error.html"
                         >
                           404 Error
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className="dropdown-item"
                           to="../pages/contact.html"
                         >
                           Contact
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </li>
                   <li className="nav-item dropdown">
-                    <a
+                    <Link
                       aria-expanded="false"
                       className="nav-link dropdown-toggle"
                       data-bs-toggle="dropdown"
@@ -1557,91 +1437,91 @@ export const Navbar = () => {
                       role="button"
                     >
                       Account
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu">
                       <li>
-                        <a
+                        <Link
                           className="dropdown-item"
-                          to="../pages/signin.html"
+                          to="/login"
                         >
                           Sign in
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className="dropdown-item"
-                          to="../pages/signup.html"
+                          to="/registerl"
                         >
                           Signup
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
                           className="dropdown-item"
                           to="../pages/forgot-password.html"
                         >
                           Forgot Password
-                        </a>
+                        </Link>
                       </li>
                       <li className="dropdown-submenu dropend">
-                        <a
+                        <Link
                           className="dropdown-item dropdown-list-group-item dropdown-toggle"
                           to="#"
                         >
                           My Account
-                        </a>
+                        </Link>
                         <ul className="dropdown-menu">
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item"
                               to="../pages/account-orders.html"
                             >
                               Orders
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item"
                               to="../pages/account-settings.html"
                             >
                               Settings
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item"
                               to="../pages/account-address.html"
                             >
                               Address
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item"
                               to="../pages/account-payment-method.html"
                             >
                               Payment Method
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item"
                               to="../pages/account-notification.html"
                             >
                               Notification
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                       </li>
                     </ul>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" to="../dashboard/index.html">
+                    <Link className="nav-link" to="../dashboard/index.html">
                       Dashboard
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item dropdown dropdown-flyout">
-                    <a
+                    <Link
                       aria-expanded="false"
                       aria-haspopup="true"
                       className="nav-link"
@@ -1651,12 +1531,12 @@ export const Navbar = () => {
                       role="button"
                     >
                       Docs
-                    </a>
+                    </Link>
                     <div
                       aria-labelledby="navbarDropdownDocs"
                       className="dropdown-menu dropdown-menu-lg"
                     >
-                      <a
+                      <Link
                         className="dropdown-item align-items-start"
                         to="../docs/index.html"
                       >
@@ -1679,8 +1559,8 @@ export const Navbar = () => {
                             Browse the all documentation
                           </p>
                         </div>
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="dropdown-item align-items-start"
                         to="../docs/changelog.html"
                       >
@@ -1703,7 +1583,7 @@ export const Navbar = () => {
                           </h6>
                           <p className="mb-0 small">See what's new</p>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   </li>
                 </ul>
@@ -1712,6 +1592,149 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
+      {/* Mobile */}
+      <div className="bg-white position-fixed bottom-0 w-100 z-1 shadow-lg d-block d-lg-none text-center">
+  <div className="d-flex align-items-center">
+    <div className="w-25 icon-hover py-4">
+      <button
+        aria-controls="navbar-default"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed d-lg-none"
+        data-bs-target="#navbar-default"
+        data-bs-toggle="offcanvas"
+        type="button">
+        <svg
+          className="bi bi-text-indent-left text-primary"
+          fill="currentColor"
+          height="22"
+          viewBox="0 0 16 16"
+          width="22"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+        </svg>
+      </button>
+    </div>
+    <div className="dropdown w-25 ms-2 py-4 icon-hover">
+      <a
+        aria-expanded="false"
+        className="text-inherit"
+        data-bs-toggle="dropdown"
+        href="#">
+        <div className="text-center">
+          <div className="position-relative d-inline-block">
+            <svg
+              className="bi bi-bell"
+              fill="currentColor"
+              height="22"
+              viewBox="0 0 16 16"
+              width="22"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+            </svg>
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              1<span className="visually-hidden">unread messages</span>
+            </span>
+          </div>
+        </div>
+      </a>
+      <div className="dropdown-menu dropdown-menu-lg p-0">
+        <div>
+          <h6 className="px-4 border-bottom py-3 mb-0">Notification</h6>
+          <p className="mb-0 px-4 py-3">
+            <a href="../pages/signin.html">Sign in</a>
+            or
+            <a href="../pages/signup.html">Register</a>
+            in or so you don t have to enter your details every time
+          </p>
+        </div>
+      </div>
+    </div>
+    <div className="w-25 ms-2 py-4 icon-hover">
+      <a
+        className="text-inherit"
+        data-bs-target="#userModal"
+        data-bs-toggle="modal"
+        href="javascript:void(0)">
+        <div className="text-center">
+          <div>
+            <svg
+              className="bi bi-person-circle"
+              fill="currentColor"
+              height="22"
+              viewBox="0 0 16 16"
+              width="22"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                fillRule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div className="w-25 ms-2 py-4 icon-hover">
+      <a className="text-inherit" href="../pages/account-orders.html">
+        <div className="text-center">
+          <div>
+            <svg
+              className="bi bi-archive"
+              fill="currentColor"
+              height="22"
+              viewBox="0 0 16 16"
+              width="22"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div className="w-25 ms-2 py-4 icon-hover">
+      <a
+        aria-controls="offcanvasRight"
+        className="text-inherit"
+        data-bs-target="#offcanvasRight"
+        data-bs-toggle="offcanvas"
+        href="#offcanvasExample"
+        role="button">
+        <div className="text-center">
+          <div>
+            <svg
+              className="bi bi-cart2"
+              fill="currentColor"
+              height="22"
+              viewBox="0 0 16 16"
+              width="22"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div className="w-25 ms-2 py-4 icon-hover">
+      <a
+        aria-controls="offcanvasCategory"
+        className="text-inherit"
+        data-bs-toggle="offcanvas"
+        href="#offcanvasCategory"
+        role="button">
+        <svg
+          className="bi bi-funnel"
+          fill="currentColor"
+          height="24"
+          viewBox="0 0 16 16"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
     </>
   );
 };
