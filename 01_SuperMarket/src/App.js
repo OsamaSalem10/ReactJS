@@ -6,6 +6,7 @@ import { Footer } from "./components/Footer";
 import { Shop } from "./components/Shop";
 import { Register } from "./components/Register";
 import { Login } from "./components/Login";
+import { Wishlist } from "./components/Wishlist";
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
       <Footer/>
     </div>
