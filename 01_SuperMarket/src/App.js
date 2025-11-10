@@ -8,6 +8,7 @@ import { Register } from "./components/Register";
 import { Login } from "./components/Login";
 import { Wishlist } from "./components/Wishlist";
 function App() {
+  
   return (
     <div className="App">
       <Navbar />
