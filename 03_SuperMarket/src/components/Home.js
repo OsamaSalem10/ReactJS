@@ -2,6 +2,116 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { Link } from "react-router-dom";
 export const Home = () => {
+  const categories = [
+    {
+      id: 1,
+      name: "Bakery & bread",
+      products: 230,
+      img: "assets/img/shop/grocery/categories/01.png",
+    },
+    {
+      id: 2,
+      name: "Vegetables",
+      products: 180,
+      img: "assets/img/shop/grocery/categories/02.png",
+    },
+    {
+      id: 3,
+      name: "Fresh fruits",
+      products: 205,
+      img: "assets/img/shop/grocery/categories/03.png",
+    },
+    {
+      id: 4,
+      name: "Meet Italian dinner",
+      products: 309,
+      img: "assets/img/shop/grocery/categories/04.png",
+    },
+    {
+      id: 5,
+      name: "Beverages",
+      products: 372,
+      img: "assets/img/shop/grocery/categories/05.png",
+    },
+    {
+      id: 6,
+      name: "Meat products",
+      products: 124,
+      img: "assets/img/shop/grocery/categories/06.png",
+    },
+    {
+      id: 7,
+      name: "Sauces and ketchup",
+      products: 219,
+      img: "assets/img/shop/grocery/categories/07.png",
+    },
+    {
+      id: 8,
+      name: "Dairy and eggs",
+      products: 146,
+      img: "assets/img/shop/grocery/categories/08.png",
+    },
+  ];
+  const products = [
+    {
+      id: 1,
+      title: "Muesli Fitness Energy, gluten free",
+      img: "assets/img/shop/grocery/01.png",
+      price: 2.15,
+      size: "500g",
+    },
+    {
+      id: 2,
+      title: "Fresh orange Klementina, Spain",
+      img: "assets/img/shop/grocery/02.png",
+      price: 3.12,
+      oldPrice: 4.05,
+      discount: "-30%",
+      size: "1kg",
+    },
+    {
+      id: 3,
+      title: "Pepsi soda classic, can",
+      img: "assets/img/shop/grocery/03.png",
+      price: 0.8,
+      size: "330ml",
+    },
+    {
+      id: 4,
+      title: "Mozzarella mini cheese Granaloro",
+      img: "assets/img/shop/grocery/04.png",
+      price: 2.99,
+      size: "250g",
+    },
+    {
+      id: 5,
+      title: "Coconut, Indonesia",
+      img: "assets/img/shop/grocery/05.png",
+      price: 1.24,
+      size: "1 coconut",
+    },
+    {
+      id: 6,
+      title: "Pesto sauce Barilla with parmesan and basil",
+      img: "assets/img/shop/grocery/06.png",
+      price: 3.95,
+      size: "200g",
+    },
+    {
+      id: 7,
+      title: "Fresh mango, Spain",
+      img: "assets/img/shop/grocery/07.png",
+      price: 1.99,
+      size: "1 mango",
+    },
+    {
+      id: 8,
+      title: "Fresh green asparagus, bunch",
+      img: "assets/img/shop/grocery/08.png",
+      price: 2.4,
+      size: "300g",
+    },
+  ];
   return (
     <main className="content-wrapper">
       {/* <!-- Hero slider --> */}
@@ -224,9 +334,238 @@ export const Home = () => {
           <div className="swiper-pagination position-static mt-3 mt-sm-4" />
         </div>
       </section>
-       {/* <!-- Lifestyle categories that turns into carousel on screen < 992px (lg breackpoint) --> */}
-     
+      {/* <!-- Categories + Popular products --> */}
+      <section className="container pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5">
+        <div className="row">
+          {/* Categories list */}
+          <div className="col-lg-3 pb-2 pb-sm-3 pb-md-4 mb-5 mb-lg-0">
+            <h2 className="h3 border-bottom pb-3 pb-md-4 mb-4">Categories</h2>
+            <div className="row nav g-3 g-sm-4">
+              {categories.map((cat) => (
+                <div
+                  key={cat.id}
+                  className="col-sm-6 col-md-4 col-lg-12 d-flex"
+                >
+                  <div className="position-relative d-flex min-w-0 align-items-center">
+                    <div
+                      className="d-flex flex-shrink-0 align-items-center justify-content-center bg-body-tertiary rounded-circle"
+                      style={{ width: 56, height: 56 }}
+                    >
+                      <img src={cat.img} width="40" alt={cat.name} />
+                    </div>
+                    <div className="min-w-0 ps-3">
+                      <a
+                        className="nav-link animate-underline stretched-link fs-base fw-semibold p-0 mb-1"
+                        href="shop-catalog-grocery.html"
+                      >
+                        <span className="animate-target text-truncate">
+                          {cat.name}
+                        </span>
+                      </a>
+                      <div className="fs-xs fw-normal text-body-secondary">
+                        {cat.products} products
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Products grid */}
+          <div className="col-lg-9">
+            <div className="d-flex align-items-center justify-content-between border-bottom pb-3 pb-md-4 mb-3 mb-lg-4">
+              <h2 className="h3 mb-0">Popular products</h2>
+              <div className="nav ms-3">
+                <a
+                  className="nav-link animate-underline px-0 py-2"
+                  href="shop-catalog-grocery.html"
+                >
+                  <span className="animate-target">View all</span>
+                  <i className="bi-chevron-right fs-base ms-1"></i>
+                </a>
+              </div>
+            </div>
+
+            <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-3 row-cols-xl-4 g-4">
+              {products.map((p) => (
+                <div key={p.id} className="col">
+                  <div className="card product-card h-100 bg-transparent border-0 shadow-none">
+                    <div className="position-relative z-2">
+                      {p.discount && (
+                        <span className="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-1 mt-sm-2 ms-1 ms-sm-2">
+                          {p.discount}
+                        </span>
+                      )}
+                      <button
+                        type="button"
+                        className="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                        aria-label="Add to Wishlist"
+                      >
+                        <i className="bi-heart animate-target"></i>
+                      </button>
+                      <a
+                        className="d-block p-2 p-lg-3"
+                        href="shop-product-grocery.html"
+                      >
+                        <div
+                          className="ratio"
+                          style={{
+                            "--cz-aspect-ratio": "calc(160 / 191 * 100%)",
+                          }}
+                        >
+                          <img src={p.img} alt={p.title} />
+                        </div>
+                      </a>
+                      <div className="position-absolute w-100 start-0 bottom-0">
+                        <div className="d-flex justify-content-end px-2 px-lg-3 pb-2 pb-lg-3">
+                          <div className="count-input count-input-collapsible collapsed justify-content-between w-100 bg-transparent border-0 rounded-2">
+                            <button
+                              type="button"
+                              className="btn btn-icon btn-sm btn-primary"
+                              aria-label="Decrement quantity"
+                            >
+                              <i className="bi-dash fs-sm"></i>
+                            </button>
+                            <input
+                              type="number"
+                              className="form-control form-control-sm bg-primary text-white w-100"
+                              defaultValue="0"
+                              min="0"
+                              readOnly
+                            />
+                            <button
+                              type="button"
+                              className="product-card-button btn btn-icon btn-sm btn-secondary ms-auto"
+                              aria-label="Increment quantity"
+                            >
+                              <i className="bi-plus fs-sm"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="card-body pt-0 px-1 px-md-2 px-lg-3 pb-2">
+                      <div className="h6 mb-2">
+                        ${p.price.toFixed(2)}{" "}
+                        {p.oldPrice && (
+                          <del className="fs-sm fw-normal text-body-tertiary ms-1">
+                            ${p.oldPrice.toFixed(2)}
+                          </del>
+                        )}
+                      </div>
+                      <h3 className="fs-sm lh-base mb-0">
+                        <a
+                          className="hover-effect-underline fw-normal"
+                          href="shop-product-grocery.html"
+                        >
+                          {p.title}
+                        </a>
+                      </h3>
+                    </div>
+                    <div className="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">
+                      {p.size}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/*  <!-- Banner + Special products --> */}
+       <section className="container pt-xl-2 pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5">
+      <div className="row">
+        {/* Banner */}
+        <div className="col-sm-5 col-md-4 col-lg-3 mb-5 mb-sm-0">
+          <div className="pe-lg-2 pe-xl-4">
+            <div
+              className="rounded-4 overflow-hidden"
+              style={{ backgroundColor: "#a6cddc" }}
+              data-bs-theme="light"
+            >
+              <div className="pt-3 px-3 mt-3 mx-3">
+                <h4 className="mb-2 mb-xl-3">
+                  Make breakfast healthy and easy
+                </h4>
+                <div className="nav">
+                  <a className="nav-link animate-underline stretched-link px-0" href="#!">
+                    <span className="animate-target">Shop now</span>
+                    <i className="bi-chevron-right fs-base mt-1 ms-1"></i>
+                  </a>
+                </div>
+              </div>
+              <div className="ratio mt-n2" style={{ "--cz-aspect-ratio": "calc(240 / 282 * 100%)" }}>
+                <img src="assets/img/shop/grocery/banner.jpg" alt="Banner" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Products Carousel */}
+        <div className="col-sm-7 col-md-8 col-lg-9">
+          <div className="d-flex align-items-center justify-content-between border-bottom pb-3 pb-md-4 mb-3 mb-lg-4">
+            <h2 className="h3 mb-0">Special products</h2>
+            <div className="nav ms-3">
+              <a
+                className="nav-link animate-underline px-0 py-2"
+                href="shop-catalog-grocery.html"
+              >
+                <span className="animate-target text-nowrap">View all</span>
+                <i className="bi-chevron-right fs-base ms-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <Swiper
+            modules={[Pagination]}
+            spaceBetween={24}
+            slidesPerView={2}
+            pagination={{ clickable: true }}
+            breakpoints={{
+              840: { slidesPerView: 3 },
+              992: { slidesPerView: 4 },
+            }}
+            className="pb-4"
+          >
+            {products.map((product) => (
+              <SwiperSlide key={product.id} className="h-auto">
+                <div className="card product-card h-100 bg-transparent border-0 shadow-none">
+                  <div className="position-relative z-2">
+                    <button
+                      type="button"
+                      className="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                      aria-label="Add to Wishlist"
+                    >
+                      <i className="bi-heart animate-target"></i>
+                    </button>
+                    <a className="d-block p-2 p-lg-3" href="shop-product-grocery.html">
+                      <div className="ratio" style={{ "--cz-aspect-ratio": "calc(160 / 191 * 100%)" }}>
+                        <img src={product.img} alt={product.title} />
+                      </div>
+                    </a>
+                  </div>
+
+                  <div className="card-body pt-0 px-1 px-md-2 px-lg-3 pb-2">
+                    <div className="h6 mb-2">{product.price}</div>
+                    <h3 className="fs-sm lh-base mb-0">
+                      <a className="hover-effect-underline fw-normal" href="shop-product-grocery.html">
+                        {product.title}
+                      </a>
+                    </h3>
+                  </div>
+                  <div className="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">
+                    {product.size}
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
+    </section>
       {/* <!-- Recipes --> */}
       <section className="container pb-5 mb-2 mb-sm-3 mb-lg-4">
         <h2 className="h3 mb-4">Recipes</h2>
