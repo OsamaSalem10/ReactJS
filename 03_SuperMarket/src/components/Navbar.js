@@ -601,7 +601,7 @@ export const Navbar = () => {
             </button>
             <Link
               className="btn btn-icon fs-lg btn-outline-secondary border-0 rounded-circle animate-shake d-none d-md-inline-flex"
-              to="account-signin.html"
+              to="/signin"
             >
               <i className="bi-person-fill animate-target" />
               <span className="visually-hidden">Account</span>

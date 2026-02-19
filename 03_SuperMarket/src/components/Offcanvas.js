@@ -811,14 +811,14 @@ export const Offcanvas = () => {
             </Link>
           </div>
           <div className="h6 fw-medium py-1 mb-0">
-            <a
+            <Link
               className="d-block animate-underline py-1"
-              href="docs/typography.html"
+              to="/dashboard"
             >
               <span className="d-inline-block animate-target py-1">
-                Components
+                Dashboard
               </span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="offcanvas-header flex-column align-items-start d-md-none">
