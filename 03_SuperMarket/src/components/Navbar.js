@@ -4,526 +4,136 @@ export const Navbar = () => {
   const [theme, toggleTheme] = useDarkMode();
   return (
     <>
+   
+
       <header
-        className="navbar navbar-expand navbar-sticky sticky-top d-block bg-body z-fixed py-1 py-lg-0 py-xl-1 px-0"
+        className="navbar navbar-expand-lg bg-body navbar-sticky sticky-top z-fixed px-0"
         data-sticky-element=""
       >
-        <div className="container justify-content-start py-2 py-lg-3">
+        <div className="container flex-nowrap">
           <button
             aria-controls="navbarNav"
             aria-label="Toggle navigation"
-            className="navbar-toggler d-block flex-shrink-0 me-3 me-sm-4"
+            className="navbar-toggler me-4 me-lg-0"
             data-bs-target="#navbarNav"
             data-bs-toggle="offcanvas"
             type="button"
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <Link
-            className="navbar-brand fs-2 p-0 pe-lg-2 pe-xxl-0 me-0 me-sm-3 me-md-4 me-xxl-5"
-            to="index.html"
-          >
+          <Link className="navbar-brand py-1 py-md-2 py-xl-1" to="./">
+            <span className="d-none d-sm-flex flex-shrink-0 text-primary me-2">
+              <svg height="36" width="36" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M36 18.01c0 8.097-5.355 14.949-12.705 17.2a18.12 18.12 0 0 1-5.315.79C9.622 36 2.608 30.313.573 22.611.257 21.407.059 20.162 0 18.879v-1.758c.02-.395.059-.79.099-1.185.099-.908.277-1.817.514-2.686C2.687 5.628 9.682 0 18 0c5.572 0 10.551 2.528 13.871 6.517 1.502 1.797 2.648 3.91 3.359 6.201.494 1.659.771 3.436.771 5.292z"
+                  fill="currentColor"
+                />
+                <g fill="#fff">
+                  <path d="M17.466 21.624c-.514 0-.988-.316-1.146-.829-.198-.632.138-1.303.771-1.501l7.666-2.469-1.205-8.254-13.317 4.621a1.19 1.19 0 0 1-1.521-.75 1.19 1.19 0 0 1 .751-1.521l13.89-4.818c.553-.197 1.166-.138 1.64.158a1.82 1.82 0 0 1 .85 1.284l1.344 9.183c.138.987-.494 1.994-1.482 2.33l-7.864 2.528-.375.04zm7.31.138c-.178-.632-.85-1.007-1.482-.81l-5.177 1.58c-2.331.79-3.28.02-3.418-.099l-6.56-8.412a4.25 4.25 0 0 0-4.406-1.758l-3.122.987c-.237.889-.415 1.777-.514 2.686l4.228-1.363a1.84 1.84 0 0 1 1.857.81l6.659 8.551c.751.948 2.015 1.323 3.359 1.323.909 0 1.857-.178 2.687-.474l5.078-1.54c.632-.178 1.008-.829.81-1.481z" />
+                  <use to="#czlogo" />
+                  <use to="#czlogo" x="8.516" y="-2.172" />
+                </g>
+                <defs>
+                  <path
+                    d="M18.689 28.654a1.94 1.94 0 0 1-1.936 1.935 1.94 1.94 0 0 1-1.936-1.935 1.94 1.94 0 0 1 1.936-1.935 1.94 1.94 0 0 1 1.936 1.935z"
+                    id="czlogo"
+                  />
+                </defs>
+              </svg>
+            </span>
             Cartzilla
           </Link>
-          <div
-            className="dropdown d-none d-lg-block w-100 me-4"
-            style={{
-              maxWidth: "200px",
-            }}
+          <nav
+            aria-labelledby="navbarNavLabel"
+            className="offcanvas offcanvas-start"
+            id="navbarNav"
+            tabIndex="-1"
           >
-            <button
-              aria-expanded="false"
-              aria-haspopup="true"
-              className="btn btn-lg btn-secondary w-100 border-0 rounded-pill"
-              data-bs-toggle="dropdown"
-              type="button"
-            >
-              <i className="bi-grid fs-lg me-2 ms-n1" />
-              Categories
-              <i className="bi-chevron-down fs-lg me-2 ms-auto me-n1" />
-            </button>
-            <div
-              className="dropdown-menu rounded-4 p-4"
-              style={{
-                "--cz-dropdown-spacer": ".75rem",
-                marginLeft: "-75px",
-              }}
-            >
-              <div className="d-flex gap-4">
-                <div
-                  style={{
-                    minWidth: "170px",
-                  }}
-                >
-                  <div className="h6">Bakery & bread</div>
-                  <ul className="nav flex-column gap-2 mt-n2">
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Shop all
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Bread
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Pastries
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Bakery cookies
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Cupcakes
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Buns & rolls
-                      </Link>
-                    </li>
-                  </ul>
-                  <div className="h6 pt-4">Meat products</div>
-                  <ul className="nav flex-column gap-2 mt-n2">
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Shop all
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Fresh meat
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Processed meat
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Seafood
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Poultry products
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Prepared meat
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div
-                  style={{
-                    minWidth: "170px",
-                  }}
-                >
-                  <div className="h6">Vegetables</div>
-                  <ul className="nav flex-column gap-2 mt-n2">
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Shop all
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Leafy greens
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Root vegetables
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Allium vegetables
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Peppers and tomatoes
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Cruciferous
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Seasonal squashes
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Beans, peas & lentils
-                      </Link>
-                    </li>
-                  </ul>
-                  <div className="h6 pt-4">Sauces and ketchup</div>
-                  <ul className="nav flex-column gap-2 mt-n2">
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Shop all
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Tomato-based sauces
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Salad dressing
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Hot sauces
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div
-                  style={{
-                    minWidth: "170px",
-                  }}
-                >
-                  <div className="h6">Fresh fruits</div>
-                  <ul className="nav flex-column gap-2 mt-n2">
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Shop all
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Citrus fruits
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Berries
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Tropical fruits
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Stone fruits
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Exotic fruits
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Melons
-                      </Link>
-                    </li>
-                  </ul>
-                  <div className="h6 pt-4">Italian dinner</div>
-                  <ul className="nav flex-column gap-2 mt-n2">
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Shop all
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Pasta & sauces
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Italian cheese
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Italian meats
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Desserts & beverages
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div
-                  style={{
-                    minWidth: "170px",
-                  }}
-                >
-                  <div className="h6">Beverages</div>
-                  <ul className="nav flex-column gap-2 mt-n2">
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Shop all
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Soft drinks
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Juices
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Sports & energy drinks
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Tea and coffee
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Alcoholic beverages
-                      </Link>
-                    </li>
-                  </ul>
-                  <div className="h6 pt-4">Dairy & eggs</div>
-                  <ul className="nav flex-column gap-2 mt-n2">
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Shop all
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Chees
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Milk & yogurt
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Sour cream
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Eggs
-                      </Link>
-                    </li>
-                    <li className="d-flex w-100 pt-1">
-                      <Link
-                        className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                        to="shop-catalog-grocery.html"
-                      >
-                        Butter & margarine
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <div className="offcanvas-header py-3">
+              <h5 className="offcanvas-title" id="navbarNavLabel">
+                Browse Cartzilla
+              </h5>
+              <button
+                aria-label="Close"
+                className="btn-close"
+                data-bs-dismiss="offcanvas"
+                type="button"
+              />
             </div>
-          </div>
-          <div className="position-relative w-100 d-none d-md-block me-3 me-xl-4">
-            <input
-              aria-label="Search"
-              className="form-control form-control-lg rounded-pill"
-              placeholder="Search for products"
-              type="search"
-            />
-            <button
-              aria-label="Search button"
-              className="btn btn-icon btn-ghost fs-lg btn-secondary text-bo border-0 position-absolute top-0 end-0 rounded-circle mt-1 me-1"
-              type="button"
-            >
-              <i className="bi-search" />
-            </button>
-          </div>
-          <div className="nav me-4 me-xxl-5 d-none d-xl-block">
-            <Link
-              aria-controls="deliveryOptions"
-              className="nav-link flex-column align-items-start animate-underline p-0"
-              data-bs-toggle="offcanvas"
-              to="#deliveryOptions"
-            >
-              <div className="h6 fs-sm mb-0">Delivery</div>
-              <div className="d-flex align-items-center fs-sm fw-normal text-body">
-                <span className="animate-target text-nowrap">
-                  Set your address
-                </span>
-                <i className="bi-chevron-down fs-base ms-1" />
-              </div>
-            </Link>
-          </div>
-          <div className="d-flex align-items-center gap-md-1 gap-lg-2 ms-auto">
+            <div className="offcanvas-body pt-3 pb-4 py-lg-0 mx-lg-auto">
+              <ul className="navbar-nav position-relative">
+                <li className="nav-item dropdown py-lg-2 me-lg-n1 me-xl-0">
+                  <Link
+                    className="nav-link active"
+                    data-bs-trigger="hover"
+                    to="/"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item dropdown py-lg-2 me-lg-n1 me-xl-0">
+                  <Link
+                    className="nav-link"
+                    data-bs-trigger="hover"
+                    to="/about"
+                  >
+                    About us
+                  </Link>
+                </li>
+                <li className="nav-item dropdown py-lg-2 me-lg-n1 me-xl-0">
+                  <Link
+                    className="nav-link"
+                    data-bs-trigger="hover"
+                    to="/contact"
+                  >
+                    Contact us
+                  </Link>
+                </li>
+                <li className="nav-item dropdown py-lg-2 me-lg-n1 me-xl-0">
+                  <Link
+                    className="nav-link"
+                    data-bs-trigger="hover"
+                    to="/shop"
+                  >
+                    Shop
+                  </Link>
+                </li>
+                <li className="nav-item dropdown py-lg-2 me-lg-n1 me-xl-0">
+                  <Link
+                    className="nav-link"
+                    data-bs-trigger="hover"
+                    to="/dashboard"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="offcanvas-header nav border-top px-0 py-3 mt-3 d-md-none">
+              <Link
+                className="nav-link hover-effect-scale justify-content-center w-100 gap-2 py-0"
+                to="account-marketplace-dashboard.html"
+              >
+                <div className="btn btn-icon position-relative border rounded-circle overflow-hidden">
+                  <img
+                    alt="Avatar"
+                    className="hover-effect-target position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
+                    src="assets/img/account/avatar-sm.png"
+                  />
+                </div>
+                Createx Studio
+              </Link>
+            </div>
+          </nav>
+          <div className="d-flex align-items-center">
             <div className="dropdown">
               <button
                 aria-expanded="false"
                 aria-label="Toggle theme (light)"
-                className="theme-switcher btn btn-icon btn-outline-secondary fs-lg border-0 rounded-circle animate-scale"
+                className="theme-switcher btn btn-icon btn-lg btn-outline-secondary fs-lg border-0 rounded-circle animate-scale"
                 data-bs-toggle="dropdown"
                 type="button"
+            
               >
                 <span className="theme-icon-active d-flex animate-target">
                   <i className="bi-sun" />
@@ -550,7 +160,7 @@ export const Navbar = () => {
                   </button>
                 </li>
                 <li>
-                  <button
+                   <button
                     className="dropdown-item"
                     onChange={theme === "dark" ? "light" : "dark"}
                     onClick={toggleTheme}
@@ -571,77 +181,143 @@ export const Navbar = () => {
                     type="button"
                   >
                     <span className="theme-icon d-flex fs-base me-2">
-                      <i className="bi bi-cloud-moon" />
+                      <i className="bi-auto" />
                     </span>
                     <span className="theme-label">Auto</span>
-                    <i className="item-active-indicator bi bi-cloud-moon ms-auto" />
+                    <i className="item-active-indicator bi-check ms-auto" />
                   </button>
                 </li>
               </ul>
             </div>
             <button
-              aria-controls="searchBar"
+              aria-controls="searchBox"
               aria-label="Toggle search bar"
-              className="btn btn-icon fs-xl btn-outline-secondary border-0 rounded-circle animate-shake d-md-none"
-              data-bs-target="#searchBar"
-              data-bs-toggle="collapse"
+              className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake"
+              data-bs-target="#searchBox"
+              data-bs-toggle="offcanvas"
               type="button"
             >
               <i className="bi-search animate-target" />
             </button>
-            <button
-              aria-controls="deliveryOptions"
-              aria-label="Toggle delivery options offcanvas"
-              className="btn btn-icon fs-lg btn-outline-secondary border-0 rounded-circle animate-scale d-xl-none"
-              data-bs-target="#deliveryOptions"
-              data-bs-toggle="offcanvas"
-              type="button"
-            >
-              <i className="bi bi-geo-alt-fill" />
-            </button>
-            <Link
-              className="btn btn-icon fs-lg btn-outline-secondary border-0 rounded-circle animate-shake d-none d-md-inline-flex"
-              to="/signin"
-            >
-              <i className="bi-person-fill animate-target" />
-              <span className="visually-hidden">Account</span>
-            </Link>
+            <div className="dropdown d-none d-md-block mx-1">
+              <Link
+                aria-expanded="false"
+                aria-label="My account"
+                className="btn btn-icon hover-effect-scale position-relative border rounded-circle overflow-hidden"
+                data-bs-toggle="dropdown"
+                to="#"
+              >
+                <img
+                  alt="Avatar"
+                  className="hover-effect-target position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
+                  src="assets/img/account/avatar-sm.png"
+                />
+              </Link>
+              <ul
+                className="dropdown-menu dropdown-menu-end"
+                style={{
+                  "--cz-dropdown-spacer": ".625rem",
+                }}
+              >
+                <li>
+                  <span className="h6 dropdown-header">Createx Studio</span>
+                </li>
+                <li>
+                  <Link
+                    className="dropdown-item"
+                    to="account-marketplace-dashboard.html"
+                  >
+                    <i className="bi-grid fs-base opacity-75 me-2" />
+                    Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="dropdown-item"
+                    to="account-marketplace-products.html"
+                  >
+                    <i className="bi-layers fs-base opacity-75 me-2" />
+                    Products (4)
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="dropdown-item"
+                    to="account-marketplace-sales.html"
+                  >
+                    <i className="bi-pie-chart fs-base opacity-75 me-2" />
+                    Sales
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="dropdown-item"
+                    to="account-marketplace-payouts.html"
+                  >
+                    <i className="bi-currency-dollar fs-base opacity-75 me-2" />
+                    Payouts
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="dropdown-item"
+                    to="account-marketplace-purchases.html"
+                  >
+                    <i className="bi-bag fs-base opacity-75 me-2" />
+                    Purchases (6)
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="dropdown-item"
+                    to="account-marketplace-favorites.html"
+                  >
+                    <i className="bi-heart fs-base opacity-75 me-2" />
+                    Favorites
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="dropdown-item"
+                    to="account-marketplace-settings.html"
+                  >
+                    <i className="bi bi-gear fs-base opacity-75 me-2" />
+                    Settings
+                  </Link>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="account-signin.html">
+                    <i className="bi bi-box-arrow-right fs-base opacity-75 me-2" />
+                    Sign out
+                  </Link>
+                </li>
+              </ul>
+            </div>
             <button
               aria-controls="shoppingCart"
               aria-label="Shopping cart"
-              className="btn btn-icon fs-xl btn-outline-secondary position-relative border-0 rounded-circle animate-scale"
+              className="btn btn-icon btn-lg fs-xl btn-outline-secondary position-relative border-0 rounded-circle animate-scale"
               data-bs-target="#shoppingCart"
               data-bs-toggle="offcanvas"
               type="button"
             >
               <span
-                className="position-absolute top-0 start-100 badge fs-xs text-bg-primary rounded-pill ms-n3 z-2"
+                className="position-absolute top-0 start-100 badge fs-xs text-bg-primary rounded-pill mt-1 ms-n4 z-2"
                 style={{
                   "--cz-badge-padding-x": ".42em",
                   "--cz-badge-padding-y": ".25em",
                 }}
               >
-                8
+                3
               </span>
-              <i className="bi-cart animate-target" />
+              <i className="bi-bag animate-target me-1" />
             </button>
           </div>
         </div>
-        <div className="collapse d-md-none" id="searchBar">
-          <div className="container pt-2 pb-3">
-            <div className="position-relative">
-              <i className="bi-search position-absolute top-50 translate-middle-y d-flex fs-lg ms-3" />
-              <input
-                className="form-control form-icon-start rounded-pill"
-                data-autofocus="collapse"
-                placeholder="Search for products"
-                type="search"
-              />
-            </div>
-          </div>
-        </div>
       </header>
-
       <section className="border-top">
         <div className="container py-lg-1">
           <div className="overflow-auto" data-simplebar="">

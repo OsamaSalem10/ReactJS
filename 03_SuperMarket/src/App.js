@@ -8,13 +8,18 @@ import { Dashboard } from "./components/Admin/Dashboard";
 import { Contact } from "./components/Contact";
 import { Signin } from "./components/Signin";
 import { Signup } from "./components/Signup";
-import React from 'react';
-
+import { Products } from "./components/Admin/Products";
+import { Sales } from "./components/Admin/Sales";
+import { Payouts } from "./components/Admin/Payouts";
+import { Purchases } from "./components/Admin/Purchases";
+import { Settings } from "./components/Admin/Settings";
+import { Favorites } from "./components/Admin/Favorites";
+import { Shop } from "./components/Shop";
+import { DetailsProdect } from "./components/DetailsProdect";
 
 
 function App() {
   
-console.log(React.version);
   return (
     <div className="app">
       <Navbar />
@@ -26,9 +31,16 @@ console.log(React.version);
         <Route path="/contact" element={<Contact />} />
         <Route path="/Signin" element={<Signin />} />
         <Route path="/Signup" element={<Signup />} />
-        <Route path="/about" element={<Contact />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/DetailsProdect" element={<DetailsProdect />} />
         {/* Admin */}
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboardProducts" element={<Products />} />
+        <Route path="/dashboardSales" element={<Sales />} />
+        <Route path="/dashboardPayouts" element={<Payouts />} />
+        <Route path="/dashboardPurchases" element={<Purchases />} />
+        <Route path="/dashboardFavorites" element={<Favorites />} />
+        <Route path="/dashboardSettings" element={<Settings />} />
       </Routes>
       <Footer />
     </div>

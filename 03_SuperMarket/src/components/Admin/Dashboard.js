@@ -1,134 +1,12 @@
 import { Link } from "react-router-dom";
-
+import { Header } from "./Header";
 export const Dashboard = () => {
   return (
     <main className="content-wrapper">
       <div className="container pt-4 pt-lg-5 pb-5">
         <div className="row pt-sm-2 pt-md-3 pt-lg-0 pb-2 pb-sm-3 pb-md-4 pb-lg-5">
-          <aside className="col-lg-3">
-            <div
-              className="d-none d-lg-block"
-              style={{
-                marginTop: "-105px",
-              }}
-            />
-            <div
-              className="offcanvas-lg offcanvas-start sticky-lg-top pe-lg-0 pe-xl-4"
-              id="accountSidebar"
-            >
-              <div
-                className="d-none d-lg-block"
-                style={{
-                  paddingTop: "105px",
-                }}
-              />
-              <div className="offcanvas-header align-items-start d-lg-block py-3 p-lg-0">
-                <div className="d-flex align-items-start flex-lg-column gap-lg-3">
-                  <div
-                    className="ratio ratio-1x1 border rounded-circle overflow-hidden d-none d-lg-block"
-                    style={{
-                      width: "86px",
-                    }}
-                  >
-                    <img alt="" src="assets/img/account/avatar.png" />
-                  </div>
-                  <div
-                    className="ratio ratio-1x1 border rounded-circle overflow-hidden flex-shrink-0 d-lg-none"
-                    style={{
-                      width: "48px",
-                    }}
-                  >
-                    <img alt="" src="assets/img/account/avatar.png" />
-                  </div>
-                  <div className="w-100 ps-2 ms-1 ms-lg-0 ps-lg-0">
-                    <h4 className="h6 mb-1 mb-lg-2">Createx Studio</h4>
-                    <p className="fs-sm mb-0">
-                      Digital products & bespoke development
-                    </p>
-                  </div>
-                </div>
-                <button
-                  aria-label="Close"
-                  className="btn-close d-lg-none mt-n2"
-                  data-bs-dismiss="offcanvas"
-                  data-bs-target="#accountSidebar"
-                  type="button"
-                />
-              </div>
-              <div className="offcanvas-body d-block pt-2 pt-lg-4 pb-lg-0">
-                <nav className="list-group list-group-borderless">
-                  <Link
-                    className="list-group-item list-group-item-action d-flex align-items-center rounded-pill pe-none active"
-                    to="account-marketplace-dashboard.html"
-                  >
-                    <i className="bi-grid fs-base opacity-75 me-2" />
-                    Dashboard
-                  </Link>
-                  <Link
-                    className="list-group-item list-group-item-action d-flex align-items-center rounded-pill"
-                    to="account-marketplace-products.html"
-                  >
-                    <i className="bi-layers fs-base opacity-75 me-2" />
-                    Products (4)
-                  </Link>
-                  <Link     
-                    className="list-group-item list-group-item-action d-flex align-items-center rounded-pill"
-                    to="account-marketplace-sales.html"
-                  >
-                    <i className="bi-pie-chart fs-base opacity-75 me-2" />
-                    Sales
-                  </Link>
-                  <Link
-                    className="list-group-item list-group-item-action d-flex align-items-center rounded-pill"
-                    to="account-marketplace-payouts.html"
-                  >
-                    <i className="bi-currency-dollar fs-base opacity-75 me-2" />
-                    Payouts
-                  </Link>
-                </nav>
-                <h6 className="pt-4 ps-2 ms-1">User account</h6>
-                <nav className="list-group list-group-borderless">
-                  <Link 
-                    className="list-group-item list-group-item-action d-flex align-items-center rounded-pill"
-                    to="account-marketplace-purchases.html"
-                  >
-                    <i className="bi-bag fs-base opacity-75 me-2" />
-                    Purchases (6)
-                  </Link>
-                  <Link
-                    className="list-group-item list-group-item-action d-flex align-items-center rounded-pill"
-                    to="account-marketplace-favorites.html"
-                  >
-                    <i className="bi-heart fs-base opacity-75 me-2" />
-                    Favorites
-                  </Link>
-                  <Link
-                    className="list-group-item list-group-item-action d-flex align-items-center rounded-pill"
-                    to="account-marketplace-settings.html"
-                  >
-                    <i className="bi bi-gear fs-base opacity-75 me-2" />
-                    Settings
-                  </Link>  
-                  <Link 
-                    className="list-group-item list-group-item-action d-flex align-items-center rounded-pill"
-                    to="account-signin.html"
-                  >
-                    <i className="bi bi-box-arrow-right fs-base opacity-75 me-2" />
-                    Log out
-                  </Link>
-                </nav>
-              </div>
-              <div className="offcanvas-header d-lg-block p-lg-0">
-                <button
-                  className="btn btn-dark rounded-pill w-100 animate-scale mt-lg-4"
-                  type="button"
-                >
-                  <i className="bi-plus-circle fs-base animate-target me-2 ms-n1" />
-                  Add product
-                </button>
-              </div>
-            </div>
-          </aside>
+          <Header />
+      
           <div className="col-lg-9 pt-2 pt-xl-3">
             <div className="d-flex align-items-center justify-content-between gap-3 pb-3 mb-2 mb-md-3">
               <h1 className="h2 mb-0">Dashboard</h1>
@@ -181,14 +59,7 @@ export const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="pb-3 mb-2 mb-sm-3">
-              <div className="border rounded-4 py-4 px-3 px-sm-4">
-                <h2 className="h5 text-center text-sm-start mb-sm-4">
-                  Earnings history
-                </h2>
-                <canvas data-chart='{                  "type": "line",                  "data": {                    "labels": ["22 Aug", "", "24 Aug", "", "26 Aug", "", "28 Aug", "", "30 Aug", "", "01 Sep", "", "03 Sep", "", "05 Sep"],                    "datasets": [                      {                        "label": "Sales, USD",                        "fill": true,                        "data": [0, 100, 200, 175, 100, 50, 75, 0, 0, 50, 50, 50, 0, 100, 0],                        "backgroundColor": "rgba(51,179,107,.1)",                        "borderWidth": 2,                        "borderColor": "rgba(51,179,107,.6)",                        "pointBackgroundColor": "#33b36b",                        "pointBorderWidth": 3,                        "pointBorderColor": "#33b36b",                        "pointHoverBorderColor": "#33b36b",                        "pointHoverBorderWidth": 6                      }                    ]                  },                  "options": {                    "responsive": true,                    "scales": {                      "y": {                        "beginAtZero": true,                        "border": {                          "color": "rgba(133,140,151,.18)"                        },                        "grid": {                          "color": "rgba(133,140,151,.18)"                        }                      },                      "x": {                        "border": {                          "color": "rgba(133,140,151,.18)"                        },                        "grid": {                          "color": "rgba(133,140,151,.18)"                        }                      }                    }                  }                }' />
-              </div>
-            </div>
+           
             <div className="border rounded-4 py-4 px-3 px-sm-4">
               <div data-filter-list='{"searchClass": "product-search", "listClass": "product-list", "sortClass": "product-sort", "valueNames": ["product", "date", "tendered", "earning"]}'>
                 <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3 mb-2 mb-sm-3 mb-md-4">
