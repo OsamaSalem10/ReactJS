@@ -4,8 +4,6 @@ export const Navbar = () => {
   const [theme, toggleTheme] = useDarkMode();
   return (
     <>
-   
-
       <header
         className="navbar navbar-expand-lg bg-body navbar-sticky sticky-top z-fixed px-0"
         data-sticky-element=""
@@ -90,11 +88,7 @@ export const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item dropdown py-lg-2 me-lg-n1 me-xl-0">
-                  <Link
-                    className="nav-link"
-                    data-bs-trigger="hover"
-                    to="/shop"
-                  >
+                  <Link className="nav-link" data-bs-trigger="hover" to="/shop">
                     Shop
                   </Link>
                 </li>
@@ -133,7 +127,6 @@ export const Navbar = () => {
                 className="theme-switcher btn btn-icon btn-lg btn-outline-secondary fs-lg border-0 rounded-circle animate-scale"
                 data-bs-toggle="dropdown"
                 type="button"
-            
               >
                 <span className="theme-icon-active d-flex animate-target">
                   <i className="bi-sun" />
@@ -160,7 +153,7 @@ export const Navbar = () => {
                   </button>
                 </li>
                 <li>
-                   <button
+                  <button
                     className="dropdown-item"
                     onChange={theme === "dark" ? "light" : "dark"}
                     onClick={toggleTheme}
@@ -189,114 +182,7 @@ export const Navbar = () => {
                 </li>
               </ul>
             </div>
-            <button
-              aria-controls="searchBox"
-              aria-label="Toggle search bar"
-              className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake"
-              data-bs-target="#searchBox"
-              data-bs-toggle="offcanvas"
-              type="button"
-            >
-              <i className="bi-search animate-target" />
-            </button>
-            <div className="dropdown d-none d-md-block mx-1">
-              <Link
-                aria-expanded="false"
-                aria-label="My account"
-                className="btn btn-icon hover-effect-scale position-relative border rounded-circle overflow-hidden"
-                data-bs-toggle="dropdown"
-                to="#"
-              >
-                <img
-                  alt="Avatar"
-                  className="hover-effect-target position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
-                  src="assets/img/account/avatar-sm.png"
-                />
-              </Link>
-              <ul
-                className="dropdown-menu dropdown-menu-end"
-                style={{
-                  "--cz-dropdown-spacer": ".625rem",
-                }}
-              >
-                <li>
-                  <span className="h6 dropdown-header">Createx Studio</span>
-                </li>
-                <li>
-                  <Link
-                    className="dropdown-item"
-                    to="account-marketplace-dashboard.html"
-                  >
-                    <i className="bi-grid fs-base opacity-75 me-2" />
-                    Dashboard
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="dropdown-item"
-                    to="account-marketplace-products.html"
-                  >
-                    <i className="bi-layers fs-base opacity-75 me-2" />
-                    Products (4)
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="dropdown-item"
-                    to="account-marketplace-sales.html"
-                  >
-                    <i className="bi-pie-chart fs-base opacity-75 me-2" />
-                    Sales
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="dropdown-item"
-                    to="account-marketplace-payouts.html"
-                  >
-                    <i className="bi-currency-dollar fs-base opacity-75 me-2" />
-                    Payouts
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="dropdown-item"
-                    to="account-marketplace-purchases.html"
-                  >
-                    <i className="bi-bag fs-base opacity-75 me-2" />
-                    Purchases (6)
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="dropdown-item"
-                    to="account-marketplace-favorites.html"
-                  >
-                    <i className="bi-heart fs-base opacity-75 me-2" />
-                    Favorites
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="dropdown-item"
-                    to="account-marketplace-settings.html"
-                  >
-                    <i className="bi bi-gear fs-base opacity-75 me-2" />
-                    Settings
-                  </Link>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="account-signin.html">
-                    <i className="bi bi-box-arrow-right fs-base opacity-75 me-2" />
-                    Sign out
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <button
+           <button
               aria-controls="shoppingCart"
               aria-label="Shopping cart"
               className="btn btn-icon btn-lg fs-xl btn-outline-secondary position-relative border-0 rounded-circle animate-scale"
@@ -315,10 +201,89 @@ export const Navbar = () => {
               </span>
               <i className="bi-bag animate-target me-1" />
             </button>
+            <div className="dropdown pe-1 me-2">
+              <Link
+                aria-expanded="false"
+                aria-label="My account"
+                className="btn btn-icon hover-effect-scale position-relative bg-body-secondary border rounded-circle overflow-hidden"
+                data-bs-toggle="dropdown"
+                to="#"
+                role="button"
+              >
+                <img
+                  alt="Avatar"
+                  className="hover-effect-target position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
+                  src="assets/img/account/avatar-sm.jpg"
+                />
+              </Link>
+              <ul
+                className="dropdown-menu dropdown-menu-end"
+                style={{
+                  "--fn-dropdown-spacer": ".5rem",
+                }}
+              >
+                <li>
+                  <div className="pt-lg-3 ps-3 ps-lg-0">
+                    <h6 className="h6 dropdown-header">
+                      Osama Salem
+                      <p className="fs-sm mb-0 opacity-75 me-2">
+                        osama.moha.salem@gmail.com
+                      </p>
+                    </h6>
+                  </div>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/accountProfile">
+                    <i className="bi-person opacity-75 me-2" />
+                    My profile
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/accountListings">
+                    <i className="bi-layers opacity-75 me-2" />
+                    My listings
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/accountReviews">
+                    <i className="bi-star opacity-75 me-2" />
+                    Reviews
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/accountFavorites">
+                    <i className="bi-heart opacity-75 me-2" />
+                    Favorites
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/accountPayment">
+                    <i className="bi-credit-card opacity-75 me-2" />
+                    Payment details
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/accountSettings">
+                    <i className="bi bi-gear opacity-75 me-2" />
+                    Account settings
+                  </Link>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="account-signin.html">
+                    <i className="bi bi-box-arrow-right opacity-75 me-2" />
+                    Sign out
+                  </Link>
+                </li>
+              </ul>
+            </div>
+         
           </div>
         </div>
       </header>
-      <section className="border-top">
+      {/*  <section className="border-top">
         <div className="container py-lg-1">
           <div className="overflow-auto" data-simplebar="">
             <div className="nav flex-nowrap justify-content-between gap-4 py-2">
@@ -468,7 +433,7 @@ export const Navbar = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

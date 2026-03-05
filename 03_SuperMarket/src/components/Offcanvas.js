@@ -262,7 +262,7 @@ export const Offcanvas = () => {
           <div className="d-flex w-100 gap-3">
             <Link
               className="btn btn-lg btn-secondary w-100 rounded-pill"
-              to="checkout-v2-cart.html"
+              to="/Cart"
             >
               View cart
             </Link>
@@ -776,7 +776,7 @@ export const Offcanvas = () => {
           </button>
         </div>
       </div>
-     
+
       {/* <!-- Add payment method modal --> */}
       <div
         aria-hidden="true"
@@ -972,21 +972,136 @@ export const Offcanvas = () => {
           </div>
         </div>
       </div>
-      <div>
-        {/* <!-- Comments  --> */}
-        <div
-  aria-hidden="true"
-  aria-labelledby="commentFormLabel"
+
+      {/* <!-- Comments  --> */}
+      <div
+        aria-hidden="true"
+        aria-labelledby="commentFormLabel"
+        className="modal fade"
+        data-bs-backdrop="static"
+        id="commentForm"
+        tabIndex="-1"
+      >
+        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <form className="modal-content needs-validation" noValidate>
+            <div className="modal-header border-0">
+              <h5 className="modal-title" id="commentFormLabel">
+                Leave a comment
+              </h5>
+              <button
+                aria-label="Close"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                type="button"
+              />
+            </div>
+            <div className="modal-body pb-3 pt-0">
+              <div className="mb-3">
+                <label className="form-label" htmlFor="review-name">
+                  Your name <span className="text-danger">*</span>
+                </label>
+                <input
+                  className="form-control rounded-pill"
+                  id="review-name"
+                  required
+                  type="text"
+                />
+                <div className="invalid-feedback">Please enter your name!</div>
+                <small className="form-text">
+                  Will be displayed on the comment.
+                </small>
+              </div>
+              <div className="mb-3">
+                <label className="form-label" htmlFor="review-email">
+                  Your email <span className="text-danger">*</span>
+                </label>
+                <input
+                  className="form-control rounded-pill"
+                  id="review-email"
+                  required
+                  type="email"
+                />
+                <div className="invalid-feedback">
+                  Please provide a valid email address!
+                </div>
+                <small className="form-text">
+                  Authentication only - we won't spam you.
+                </small>
+              </div>
+              <div>
+                <label className="form-label" htmlFor="review-text">
+                  Comment <span className="text-danger">*</span>
+                </label>
+                <textarea
+                  className="form-control rounded-6"
+                  id="review-text"
+                  required
+                  rows="5"
+                />
+                <div className="invalid-feedback">
+                  Please write your comment!
+                </div>
+                <small className="form-text">
+                  Your comment must be at least 50 characters.
+                </small>
+              </div>
+            </div>
+            <div className="modal-footer flex-nowrap gap-3 border-0 px-4">
+              <button
+                className="btn btn-secondary w-100 rounded-pill m-0"
+                data-bs-dismiss="modal"
+                type="reset"
+              >
+                Cancel
+              </button>
+              <button
+                className="btn btn-dark w-100 rounded-pill m-0"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      {/*  <!-- Add payment method modal --> */}
+      <div
   className="modal fade"
   data-bs-backdrop="static"
-  id="commentForm"
+  id="addPayment"
+  role="dialog"
   tabIndex="-1">
-  <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <form className="modal-content needs-validation" noValidate>
-      <div className="modal-header border-0">
-        <h5 className="modal-title" id="commentFormLabel">
-          Leave a comment
-        </h5>
+  <div className="modal-dialog modal-dialog-centered" role="document">
+    <div className="modal-content">
+      <div className="modal-header">
+        <ul className="nav nav-pills gap-3" role="tablist">
+          <li className="nav-item" role="presentation">
+            <button
+              aria-controls="add-card"
+              aria-selected="true"
+              className="nav-link active"
+              data-bs-target="#add-card"
+              data-bs-toggle="pill"
+              id="add-card-tab"
+              role="tab"
+              type="button">
+              Add card
+            </button>
+          </li>
+          <li className="nav-item" role="presentation">
+            <button
+              aria-controls="add-paypal"
+              aria-selected="false"
+              className="nav-link"
+              data-bs-target="#add-paypal"
+              data-bs-toggle="pill"
+              id="add-paypal-tab"
+              role="tab"
+              type="button">
+              Add PayPal
+            </button>
+          </li>
+        </ul>
         <button
           aria-label="Close"
           className="btn-close"
@@ -994,67 +1109,133 @@ export const Offcanvas = () => {
           type="button"
         />
       </div>
-      <div className="modal-body pb-3 pt-0">
-        <div className="mb-3">
-          <label className="form-label" htmlFor="review-name">
-            Your name <span className="text-danger">*</span>
-          </label>
-          <input
-            className="form-control rounded-pill"
-            id="review-name"
-            required
-            type="text"
-          />
-          <div className="invalid-feedback">Please enter your name!</div>
-          <small className="form-text">Will be displayed on the comment.</small>
+      <div className="modal-body tab-content">
+        <div
+          aria-labelledby="add-card-tab"
+          className="tab-pane fade show active"
+          id="add-card"
+          role="tabpanel">
+          <form className="needs-validation" noValidate>
+            <div className="mb-4">
+              <label className="form-label" htmlFor="card-number">
+                Card number
+              </label>
+              <div
+                className="position-relative"
+                data-input-format='{"creditCard": true}'>
+                <input
+                  className="form-control form-control-lg form-icon-end bg-image-none"
+                  id="card-number"
+                  placeholder="XXXX XXXX XXXX XXXX"
+                  required
+                  type="text"
+                />
+                <span
+                  className="position-absolute d-flex top-50 end-0 translate-middle-y fs-5 text-body-tertiary me-3"
+                  data-card-icon=""
+                />
+                <div className="invalid-tooltip bg-transparent p-0">
+                  Please provide a valid card number!
+                </div>
+              </div>
+            </div>
+            <div className="position-relative mb-4">
+              <label className="form-label" htmlFor="card-name">
+                Name on card
+              </label>
+              <input
+                className="form-control form-control-lg"
+                id="card-name"
+                required
+                type="text"
+              />
+              <div className="invalid-tooltip bg-transparent p-0">
+                Please enters cardholder's name!
+              </div>
+            </div>
+            <div className="row row-cols-2 g-4 mb-4">
+              <div className="col position-relative">
+                <label className="form-label" htmlFor="card-expiration">
+                  Expiration date
+                </label>
+                <input
+                  className="form-control form-control-lg"
+                  data-input-format='{"date": true, "datePattern": ["m", "y"]}'
+                  id="card-expiration"
+                  placeholder="MM/YY"
+                  required
+                  type="text"
+                />
+                <div className="invalid-tooltip bg-transparent p-0">
+                  Field is required!
+                </div>
+              </div>
+              <div className="col position-relative">
+                <label className="form-label" htmlFor="card-cvc">
+                  CVC
+                </label>
+                <input
+                  className="form-control form-control-lg"
+                  data-input-format='{"numericOnly": true, "blocks": [3]}'
+                  id="card-cvc"
+                  placeholder="XXX"
+                  required
+                  type="text"
+                />
+                <div className="invalid-tooltip bg-transparent p-0">
+                  Field is required!
+                </div>
+              </div>
+            </div>
+            <div className="d-flex gap-3">
+              <button
+                className="btn btn-secondary w-100"
+                data-bs-dismiss="modal"
+                type="reset">
+                Cancel
+              </button>
+              <button className="btn btn-primary w-100" type="submit">
+                Add card
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="mb-3">
-          <label className="form-label" htmlFor="review-email">
-            Your email <span className="text-danger">*</span>
-          </label>
-          <input
-            className="form-control rounded-pill"
-            id="review-email"
-            required
-            type="email"
-          />
-          <div className="invalid-feedback">
-            Please provide a valid email address!
-          </div>
-          <small className="form-text">
-            Authentication only - we won't spam you.
-          </small>
-        </div>
-        <div>
-          <label className="form-label" htmlFor="review-text">
-            Comment <span className="text-danger">*</span>
-          </label>
-          <textarea
-            className="form-control rounded-6"
-            id="review-text"
-            required
-            rows="5"
-          />
-          <div className="invalid-feedback">Please write your comment!</div>
-          <small className="form-text">
-            Your comment must be at least 50 characters.
-          </small>
+        <div
+          aria-labelledby="add-paypal-tab"
+          className="tab-pane fade"
+          id="add-paypal"
+          role="tabpanel">
+          <form className="needs-validation" noValidate>
+            <div className="position-relative mb-4">
+              <label className="form-label" htmlFor="paypal-email">
+                Email associated with PayPal
+              </label>
+              <input
+                className="form-control form-control-lg"
+                id="paypal-email"
+                required
+                type="email"
+              />
+              <div className="invalid-tooltip bg-transparent p-0">
+                Please provide a valid email address!
+              </div>
+            </div>
+            <div className="d-flex gap-3">
+              <button
+                className="btn btn-secondary w-100"
+                data-bs-dismiss="modal"
+                type="reset">
+                Cancel
+              </button>
+              <button className="btn btn-primary w-100" type="submit">
+                Continue
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-      <div className="modal-footer flex-nowrap gap-3 border-0 px-4">
-        <button
-          className="btn btn-secondary w-100 rounded-pill m-0"
-          data-bs-dismiss="modal"
-          type="reset">
-          Cancel
-        </button>
-        <button className="btn btn-dark w-100 rounded-pill m-0" type="submit">
-          Submit
-        </button>
-      </div>
-    </form>
+    </div>
   </div>
-</div>
 </div>
     </div>
   );
