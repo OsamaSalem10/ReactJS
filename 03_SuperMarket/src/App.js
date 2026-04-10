@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes  } from "react-router-dom";
+import { useEffect } from "react";
 import { Home } from "./components/Home";
 import { About } from "./components/About";
 import { Navbar } from "./components/Navbar";
@@ -27,7 +28,17 @@ import { AccountFavorites } from "./components/User/AccountFavorites";
 import { AccountReviews } from "./components/User/AccountReviews";
 import { AccountListings } from "./components/User/AccountListings";
 import { AccountProfile } from "./components/User/AccountProfile";
+import { GetUsers } from "./server/api";
 function App() {
+  useEffect(() => {
+    // Check if user is authenticated
+    GetUsers().then(users => {
+      console.log(users);
+    }).catch(error => {
+      console.error('Error fetching users:', error);
+    });
+  
+  }, []);
   return (
     <div className="app">
       <Navbar />

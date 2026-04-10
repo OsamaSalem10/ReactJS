@@ -35,7 +35,7 @@ export const Shop = () => {
                 
                     <Link
                       className="nav-link align-items-center animate-underline gap-2 p-0"
-                      to="shop-catalog-grocery.html"
+                      to="/DetailsProdect"
                     >
                       <span
                         className="d-flex align-items-center justify-content-center bg-body-tertiary rounded-circle"
@@ -56,7 +56,7 @@ export const Shop = () => {
                     </Link>
                     <Link
                       className="nav-link align-items-center animate-underline gap-2 m-0"
-                      to="shop-catalog-grocery.html"
+                      to="/DetailsProdect "
                     >
                       <span
                         className="d-flex align-items-center justify-content-center bg-body-tertiary rounded-circle"
@@ -164,7 +164,7 @@ export const Shop = () => {
             <div className="animate-underline mb-sm-2">
               <Link
                 className="hover-effect-opacity ratio ratio-1x1 d-block mb-3"
-                to="shop-product-furniture.html"
+                to="/DetailsProdect"
               >
                 <img
                   alt="Product"
@@ -181,7 +181,7 @@ export const Shop = () => {
               <h3 className="mb-2">
                 <Link
                   className="d-block fs-sm fw-medium text-truncate"
-                  to="shop-product-furniture.html"
+                  to="/DetailsProdect"
                 >
                   <span className="animate-target">
                     Soft chair with cushion and wooden legs

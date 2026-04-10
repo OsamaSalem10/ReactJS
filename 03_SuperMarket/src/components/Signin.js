@@ -1,6 +1,22 @@
 import { Link } from "react-router-dom"
-
+import { login } from "../server/api";
+import { useState } from "react";
 export const Signin = () => {       
+ const [email, setEmail] = useState('');
+ const [password, setPassword] = useState('');
+   const handleSubmit = (event) => {
+      event.preventDefault();
+      // Handle form submission logic here
+      login({ email, password }).then(response => {
+        console.log('Login successful:', response);
+        // Redirect or update UI based on successful login
+      }).catch(error => {
+        console.error('Login failed:', error);
+        // Show error message to the user
+      });
+   }  
+
+
     return  <main className="container py-5 my-4" style={{ maxWidth: "683px" }}>
       <div className="row card shadow-lg p-4" style={{ maxWidth: "920px" }}>
         {/* Login form + Footer */}
@@ -24,6 +40,9 @@ export const Signin = () => {
                 type="email"
                 className="form-control "
                 placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+
                 required
               />
               <div className="invalid-tooltip bg-transparent py-0">
@@ -37,6 +56,8 @@ export const Signin = () => {
                   type="password"
                   className="form-control "
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <div className="invalid-tooltip bg-transparent py-0">
@@ -76,7 +97,7 @@ export const Signin = () => {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-lg btn-primary w-100">
+            <button type="submit" className="btn btn-lg btn-primary w-100" onClick={handleSubmit}>
               Sign In
             </button>
           </form>
