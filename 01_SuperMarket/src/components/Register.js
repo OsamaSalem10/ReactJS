@@ -1,24 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 export const Register = () => {
+   const [showPassword, setShowPassword] = useState(false);
   return (
-    <div className="">
-      <div className="border-bottom shadow-sm">
-        <nav className="navbar navbar-light py-2">
-          <div className="container-fluid justify-content-center justify-content-lg-between">
-            <Link className="navbar-brand" to="/">
-              <img
-                alt=""
-                className="d-inline-block align-text-top"
-                src="../assets/images/logo/freshcart-logo.svg"
-              />
-            </Link>
-           
-            <span className="navbar-text">
-              Already have an account? <Link to="/login">Sign in</Link>
-            </span>
-          </div>
-        </nav>
-      </div>
+    
       <main>
       
         <section className="my-lg-15 my-8">
@@ -101,20 +86,30 @@ export const Register = () => {
                           Password
                         </label>
                         <div className="password-field position-relative">
-                          <input
-                            className="form-control fakePassword"
-                            id="formSignupPassword"
-                            placeholder="*****"
-                            required
-                            type="password"
+                        <input
+                          className="form-control"
+                          id="formSigninPassword"
+                          placeholder="*****"
+                          required
+                          type={showPassword ? "text" : "password"}
+                        />
+
+                        <span
+                          className="position-absolute top-50 end-0 translate-middle-y me-3"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          <i
+                            className={`bi ${
+                              showPassword ? "bi-eye" : "bi-eye-slash"
+                            }`}
                           />
-                          <span>
-                            <i className="bi bi-eye-slash passwordToggler" />
-                          </span>
-                          <div className="invalid-feedback">
-                            Please enter password.
-                          </div>
+                        </span>
+
+                        <div className="invalid-feedback">
+                          Please enter password.
                         </div>
+                      </div>
                       </div>
                     </div>
                     <div className="col-12 d-grid">
@@ -124,9 +119,10 @@ export const Register = () => {
                     </div>
                     <p>
                       <small>
-                        By continuing, you agree to our
-                        <a to="#!">Terms of Service</a>&
-                        <a to="#!">Privacy Policy</a>
+                      <small className="me-2"> By continuing, you agree to our </small>
+                        <Link to="#!"className="me-2">Terms of Service </Link> 
+                        &&
+                        <Link to="#!"className="me-2">Privacy Policy</Link>
                       </small>
                     </p>
                   </div>
@@ -136,6 +132,6 @@ export const Register = () => {
           </div>
         </section>
       </main>
-    </div>
+  
   );
 };

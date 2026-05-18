@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom"
 export const Shop = () => {
   return (
     <main>
@@ -8,10 +9,10 @@ export const Shop = () => {
               <nav aria-label="breadcrumb">
                 <ol className="breadcrumb mb-0">
                   <li className="breadcrumb-item">
-                    <a href="#!">Home</a>
+                    <Link to="#!">Home</Link>
                   </li>
                   <li className="breadcrumb-item">
-                    <a href="#!">Shop</a>
+                    <Link to="#!">Shop</Link>
                   </li>
                   <li aria-current="page" className="breadcrumb-item active">
                     Snacks & Munchies
@@ -35,18 +36,18 @@ export const Shop = () => {
                 </div>
                 <div className="d-md-flex justify-content-between align-items-center">
                   <div>
-                    <a className="text-muted me-3" href="shop-list.html">
+                    <Link className="text-muted me-3" to="shop-list.html">
                       <i className="bi bi-list-ul" />
-                    </a>
-                    <a className="me-3 active" href="shop-grid.html">
+                    </Link>
+                    <Link className="me-3 active" to="shop-grid.html">
                       <i className="bi bi-grid" />
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       className="me-3 text-muted"
-                      href="shop-grid-3-column.html"
+                      to="shop-grid-3-column.html"
                     >
                       <i className="bi bi-grid-3x3-gap" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="d-flex mt-2 mt-lg-0">
                     <div className="me-2 flex-grow-1">
@@ -77,19 +78,19 @@ export const Shop = () => {
                         <div className="position-absolute top-0 start-0">
                           <span className="badge bg-danger">Sale</span>
                         </div>
-                        <a href="shop-single.html">
+                        <Link to="/singleshop">
                           <img
                             alt="Grocery Ecommerce Template"
                             className="mb-3 img-fluid"
                             src="../assets/images/products/product-img-1.jpg"
                           />
-                        </a>
+                        </Link>
                         <div className="card-product-action">
-                          <a
+                          <Link
                             className="btn-action"
                             data-bs-target="#quickViewModal"
                             data-bs-toggle="modal"
-                            href="#!"
+                            to="#!"
                           >
                             <i
                               className="bi bi-eye"
@@ -97,42 +98,42 @@ export const Shop = () => {
                               data-bs-toggle="tooltip"
                               title="Quick View"
                             />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="shop-wishlist.html"
+                            to="shop-wishlist.html"
                             title="Wishlist"
                           >
                             <i className="bi bi-heart" />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="#!"
+                            to="#!"
                             title="Compare"
                           >
                             <i className="bi bi-arrow-left-right" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="text-small mb-1">
-                        <a
+                        <Link
                           className="text-decoration-none text-muted"
-                          href="#!"
+                          to="#!"
                         >
                           <small>Snack & Munchies</small>
-                        </a>
+                        </Link>
                       </div>
                       <h2 className="fs-6">
-                        <a
+                        <Link
                           className="text-inherit text-decoration-none"
-                          href="shop-single.html"
+                          to="/singleshop"
                         >
                           Haldiram's Sev Bhujia
-                        </a>
+                        </Link>
                       </h2>
                       <div>
                         <small className="text-warning">
@@ -152,7 +153,7 @@ export const Shop = () => {
                           </span>
                         </div>
                         <div>
-                          <a className="btn btn-primary btn-sm" href="#!">
+                          <Link className="btn btn-primary btn-sm" to="#!">
                             <svg
                               className="feather feather-plus"
                               fill="none"
@@ -169,7 +170,7 @@ export const Shop = () => {
                               <line x1="5" x2="19" y1="12" y2="12" />
                             </svg>
                             Add
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -179,19 +180,19 @@ export const Shop = () => {
                   <div className="card card-product">
                     <div className="card-body">
                       <div className="text-center position-relative">
-                        <a href="shop-single.html">
+                        <Link to="/singleshop">
                           <img
                             alt="Grocery Ecommerce Template"
                             className="mb-3 img-fluid"
                             src="../assets/images/products/product-img-2.jpg"
                           />
-                        </a>
+                        </Link>
                         <div className="card-product-action">
-                          <a
+                          <Link
                             className="btn-action"
                             data-bs-target="#quickViewModal"
                             data-bs-toggle="modal"
-                            href="#!"
+                            to="#!"
                           >
                             <i
                               className="bi bi-eye"
@@ -199,42 +200,42 @@ export const Shop = () => {
                               data-bs-toggle="tooltip"
                               title="Quick View"
                             />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="shop-wishlist.html"
+                            to="shop-wishlist.html"
                             title="Wishlist"
                           >
                             <i className="bi bi-heart" />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="#!"
+                            to="#!"
                             title="Compare"
                           >
                             <i className="bi bi-arrow-left-right" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="text-small mb-1">
-                        <a
+                        <Link
                           className="text-decoration-none text-muted"
-                          href="#!"
+                          to="#!"
                         >
                           <small>Bakery & Biscuits</small>
-                        </a>
+                        </Link>
                       </div>
                       <h2 className="fs-6">
-                        <a
+                        <Link
                           className="text-inherit text-decoration-none"
-                          href="shop-single.html"
+                          to="/singleshop"
                         >
                           NutriChoice Digestive
-                        </a>
+                        </Link>
                       </h2>
                       <div className="text-warning">
                         <small>
@@ -251,7 +252,7 @@ export const Shop = () => {
                           <span className="text-dark">$24</span>
                         </div>
                         <div>
-                          <a className="btn btn-primary btn-sm" href="#!">
+                          <Link className="btn btn-primary btn-sm" to="#!">
                             <svg
                               className="feather feather-plus"
                               fill="none"
@@ -268,7 +269,7 @@ export const Shop = () => {
                               <line x1="5" x2="19" y1="12" y2="12" />
                             </svg>
                             Add
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -278,19 +279,19 @@ export const Shop = () => {
                   <div className="card card-product">
                     <div className="card-body">
                       <div className="text-center position-relative">
-                        <a href="shop-single.html">
+                        <Link to="/singleshop">
                           <img
                             alt="Grocery Ecommerce Template"
                             className="mb-3 img-fluid"
                             src="../assets/images/products/product-img-3.jpg"
                           />
-                        </a>
+                        </Link>
                         <div className="card-product-action">
-                          <a
+                          <Link
                             className="btn-action"
                             data-bs-target="#quickViewModal"
                             data-bs-toggle="modal"
-                            href="#!"
+                            to="#!"
                           >
                             <i
                               className="bi bi-eye"
@@ -298,42 +299,42 @@ export const Shop = () => {
                               data-bs-toggle="tooltip"
                               title="Quick View"
                             />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="shop-wishlist.html"
+                            to="shop-wishlist.html"
                             title="Wishlist"
                           >
                             <i className="bi bi-heart" />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="#!"
+                            to="#!"
                             title="Compare"
                           >
                             <i className="bi bi-arrow-left-right" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="text-small mb-1">
-                        <a
+                        <Link
                           className="text-decoration-none text-muted"
-                          href="#!"
+                          to="#!"
                         >
                           <small>Bakery & Biscuits</small>
-                        </a>
+                        </Link>
                       </div>
                       <h2 className="fs-6">
-                        <a
+                        <Link
                           className="text-inherit text-decoration-none"
-                          href="shop-single.html"
+                          to="/singleshop"
                         >
                           Cadbury 5 Star Chocolate
-                        </a>
+                        </Link>
                       </h2>
                       <div className="text-warning">
                         <small>
@@ -353,7 +354,7 @@ export const Shop = () => {
                           </span>
                         </div>
                         <div>
-                          <a className="btn btn-primary btn-sm" href="#!">
+                          <Link className="btn btn-primary btn-sm" to="#!">
                             <svg
                               className="feather feather-plus"
                               fill="none"
@@ -370,7 +371,7 @@ export const Shop = () => {
                               <line x1="5" x2="19" y1="12" y2="12" />
                             </svg>
                             Add
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -380,19 +381,19 @@ export const Shop = () => {
                   <div className="card card-product">
                     <div className="card-body">
                       <div className="text-center position-relative">
-                        <a href="shop-single.html">
+                        <Link to="/singleshop">
                           <img
                             alt="Grocery Ecommerce Template"
                             className="mb-3 img-fluid"
                             src="../assets/images/products/product-img-4.jpg"
                           />
-                        </a>
+                        </Link>
                         <div className="card-product-action">
-                          <a
+                          <Link
                             className="btn-action"
                             data-bs-target="#quickViewModal"
                             data-bs-toggle="modal"
-                            href="#!"
+                            to="#!"
                           >
                             <i
                               className="bi bi-eye"
@@ -400,42 +401,42 @@ export const Shop = () => {
                               data-bs-toggle="tooltip"
                               title="Quick View"
                             />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="shop-wishlist.html"
+                            to="shop-wishlist.html"
                             title="Wishlist"
                           >
                             <i className="bi bi-heart" />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="#!"
+                            to="#!"
                             title="Compare"
                           >
                             <i className="bi bi-arrow-left-right" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="text-small mb-1">
-                        <a
+                        <Link
                           className="text-decoration-none text-muted"
-                          href="#!"
+                          to="#!"
                         >
                           <small>Snack & Munchies</small>
-                        </a>
+                        </Link>
                       </div>
                       <h2 className="fs-6">
-                        <a
+                        <Link
                           className="text-inherit text-decoration-none"
-                          href="shop-single.html"
+                          to="/singleshop"
                         >
                           Onion Flavour Potato
-                        </a>
+                        </Link>
                       </h2>
                       <div className="text-warning">
                         <small>
@@ -455,7 +456,7 @@ export const Shop = () => {
                           </span>
                         </div>
                         <div>
-                          <a className="btn btn-primary btn-sm" href="#!">
+                          <Link className="btn btn-primary btn-sm" to="#!">
                             <svg
                               className="feather feather-plus"
                               fill="none"
@@ -472,7 +473,7 @@ export const Shop = () => {
                               <line x1="5" x2="19" y1="12" y2="12" />
                             </svg>
                             Add
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -482,19 +483,19 @@ export const Shop = () => {
                   <div className="card card-product">
                     <div className="card-body">
                       <div className="text-center position-relative">
-                        <a href="shop-single.html">
+                        <Link to="/singleshop">
                           <img
                             alt="Grocery Ecommerce Template"
                             className="mb-3 img-fluid"
                             src="../assets/images/products/product-img-5.jpg"
                           />
-                        </a>
+                        </Link>
                         <div className="card-product-action">
-                          <a
+                          <Link
                             className="btn-action"
                             data-bs-target="#quickViewModal"
                             data-bs-toggle="modal"
-                            href="#!"
+                            to="#!"
                           >
                             <i
                               className="bi bi-eye"
@@ -502,42 +503,42 @@ export const Shop = () => {
                               data-bs-toggle="tooltip"
                               title="Quick View"
                             />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="shop-wishlist.html"
+                            to="shop-wishlist.html"
                             title="Wishlist"
                           >
                             <i className="bi bi-heart" />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="#!"
+                            to="#!"
                             title="Compare"
                           >
                             <i className="bi bi-arrow-left-right" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="text-small mb-1">
-                        <a
+                        <Link
                           className="text-decoration-none text-muted"
-                          href="#!"
+                          to="#!"
                         >
                           <small>Instant Food</small>
-                        </a>
+                        </Link>
                       </div>
                       <h2 className="fs-6">
-                        <a
+                        <Link
                           className="text-inherit text-decoration-none"
-                          href="shop-single.html"
+                          to="/singleshop"
                         >
                           Salted Instant Popcorn
-                        </a>
+                        </Link>
                       </h2>
                       <div className="text-warning">
                         <small>
@@ -557,7 +558,7 @@ export const Shop = () => {
                           </span>
                         </div>
                         <div>
-                          <a className="btn btn-primary btn-sm" href="#!">
+                          <Link className="btn btn-primary btn-sm" to="#!">
                             <svg
                               className="feather feather-plus"
                               fill="none"
@@ -574,7 +575,7 @@ export const Shop = () => {
                               <line x1="5" x2="19" y1="12" y2="12" />
                             </svg>
                             Add
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -587,19 +588,19 @@ export const Shop = () => {
                         <div className="position-absolute top-0">
                           <span className="badge bg-danger">Sale</span>
                         </div>
-                        <a href="shop-single.html">
+                        <Link to="/singleshop">
                           <img
                             alt="Grocery Ecommerce Template"
                             className="mb-3 img-fluid"
                             src="../assets/images/products/product-img-6.jpg"
                           />
-                        </a>
+                        </Link>
                         <div className="card-product-action">
-                          <a
+                          <Link
                             className="btn-action"
                             data-bs-target="#quickViewModal"
                             data-bs-toggle="modal"
-                            href="#!"
+                            to="#!"
                           >
                             <i
                               className="bi bi-eye"
@@ -607,42 +608,42 @@ export const Shop = () => {
                               data-bs-toggle="tooltip"
                               title="Quick View"
                             />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="shop-wishlist.html"
+                            to="shop-wishlist.html"
                             title="Wishlist"
                           >
                             <i className="bi bi-heart" />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="#!"
+                            to="#!"
                             title="Compare"
                           >
                             <i className="bi bi-arrow-left-right" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="text-small mb-1">
-                        <a
+                        <Link
                           className="text-decoration-none text-muted"
-                          href="#!"
+                          to="#!"
                         >
                           <small>Dairy, Bread & Eggs</small>
-                        </a>
+                        </Link>
                       </div>
                       <h2 className="fs-6">
-                        <a
+                        <Link
                           className="text-inherit text-decoration-none"
-                          href="shop-single.html"
+                          to="/singleshop"
                         >
                           Blueberry Greek Yogurt
-                        </a>
+                        </Link>
                       </h2>
                       <div>
                         <small className="text-warning">
@@ -662,7 +663,7 @@ export const Shop = () => {
                           </span>
                         </div>
                         <div>
-                          <a className="btn btn-primary btn-sm" href="#!">
+                          <Link className="btn btn-primary btn-sm" to="#!">
                             <svg
                               className="feather feather-plus"
                               fill="none"
@@ -679,7 +680,7 @@ export const Shop = () => {
                               <line x1="5" x2="19" y1="12" y2="12" />
                             </svg>
                             Add
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -689,19 +690,19 @@ export const Shop = () => {
                   <div className="card card-product">
                     <div className="card-body">
                       <div className="text-center position-relative">
-                        <a href="shop-single.html">
+                        <Link to="/singleshop">
                           <img
                             alt="Grocery Ecommerce Template"
                             className="mb-3 img-fluid"
                             src="../assets/images/products/product-img-7.jpg"
                           />
-                        </a>
+                        </Link>
                         <div className="card-product-action">
-                          <a
+                          <Link
                             className="btn-action"
                             data-bs-target="#quickViewModal"
                             data-bs-toggle="modal"
-                            href="#!"
+                            to="#!"
                           >
                             <i
                               className="bi bi-eye"
@@ -709,42 +710,42 @@ export const Shop = () => {
                               data-bs-toggle="tooltip"
                               title="Quick View"
                             />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="shop-wishlist.html"
+                            to="shop-wishlist.html"
                             title="Wishlist"
                           >
                             <i className="bi bi-heart" />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="#!"
+                            to="#!"
                             title="Compare"
                           >
                             <i className="bi bi-arrow-left-right" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="text-small mb-1">
-                        <a
+                        <Link
                           className="text-decoration-none text-muted"
-                          href="#!"
+                          to="#!"
                         >
                           <small>Dairy, Bread & Eggs</small>
-                        </a>
+                        </Link>
                       </div>
                       <h2 className="fs-6">
-                        <a
+                        <Link
                           className="text-inherit text-decoration-none"
-                          href="shop-single.html"
+                          to="/singleshop"
                         >
                           Britannia Cheese Slices
-                        </a>
+                        </Link>
                       </h2>
                       <div className="text-warning">
                         <small>
@@ -761,7 +762,7 @@ export const Shop = () => {
                           <span className="text-dark">$24</span>
                         </div>
                         <div>
-                          <a className="btn btn-primary btn-sm" href="#!">
+                          <Link className="btn btn-primary btn-sm" to="#!">
                             <svg
                               className="feather feather-plus"
                               fill="none"
@@ -778,7 +779,7 @@ export const Shop = () => {
                               <line x1="5" x2="19" y1="12" y2="12" />
                             </svg>
                             Add
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -788,19 +789,19 @@ export const Shop = () => {
                   <div className="card card-product">
                     <div className="card-body">
                       <div className="text-center position-relative">
-                        <a href="shop-single.html">
+                        <Link to="/singleshop">
                           <img
                             alt="Grocery Ecommerce Template"
                             className="mb-3 img-fluid"
                             src="../assets/images/products/product-img-8.jpg"
                           />
-                        </a>
+                        </Link>
                         <div className="card-product-action">
-                          <a
+                          <Link
                             className="btn-action"
                             data-bs-target="#quickViewModal"
                             data-bs-toggle="modal"
-                            href="#!"
+                            to="#!"
                           >
                             <i
                               className="bi bi-eye"
@@ -808,42 +809,42 @@ export const Shop = () => {
                               data-bs-toggle="tooltip"
                               title="Quick View"
                             />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="shop-wishlist.html"
+                            to="shop-wishlist.html"
                             title="Wishlist"
                           >
                             <i className="bi bi-heart" />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="#!"
+                            to="#!"
                             title="Compare"
                           >
                             <i className="bi bi-arrow-left-right" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="text-small mb-1">
-                        <a
+                        <Link
                           className="text-decoration-none text-muted"
-                          href="#!"
+                          to="#!"
                         >
                           <small>Instant Food</small>
-                        </a>
+                        </Link>
                       </div>
                       <h2 className="fs-6">
-                        <a
+                        <Link
                           className="text-inherit text-decoration-none"
-                          href="shop-single.html"
+                          to="/singleshop"
                         >
                           Kellogg's Original Cereals
-                        </a>
+                        </Link>
                       </h2>
                       <div className="text-warning">
                         <small>
@@ -863,7 +864,7 @@ export const Shop = () => {
                           </span>
                         </div>
                         <div>
-                          <a className="btn btn-primary btn-sm" href="#!">
+                          <Link className="btn btn-primary btn-sm" to="#!">
                             <svg
                               className="feather feather-plus"
                               fill="none"
@@ -880,7 +881,7 @@ export const Shop = () => {
                               <line x1="5" x2="19" y1="12" y2="12" />
                             </svg>
                             Add
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -890,19 +891,19 @@ export const Shop = () => {
                   <div className="card card-product">
                     <div className="card-body">
                       <div className="text-center position-relative">
-                        <a href="shop-single.html">
+                        <Link to="/singleshop">
                           <img
                             alt="Grocery Ecommerce Template"
                             className="mb-3 img-fluid"
                             src="../assets/images/products/product-img-9.jpg"
                           />
-                        </a>
+                        </Link>
                         <div className="card-product-action">
-                          <a
+                          <Link
                             className="btn-action"
                             data-bs-target="#quickViewModal"
                             data-bs-toggle="modal"
-                            href="#!"
+                            to="#!"
                           >
                             <i
                               className="bi bi-eye"
@@ -910,42 +911,42 @@ export const Shop = () => {
                               data-bs-toggle="tooltip"
                               title="Quick View"
                             />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="shop-wishlist.html"
+                            to="shop-wishlist.html"
                             title="Wishlist"
                           >
                             <i className="bi bi-heart" />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="#!"
+                            to="#!"
                             title="Compare"
                           >
                             <i className="bi bi-arrow-left-right" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="text-small mb-1">
-                        <a
+                        <Link
                           className="text-decoration-none text-muted"
-                          href="#!"
+                          to="#!"
                         >
                           <small>Snack & Munchies</small>
-                        </a>
+                        </Link>
                       </div>
                       <h2 className="fs-6">
-                        <a
+                        <Link
                           className="text-inherit text-decoration-none"
-                          href="shop-single.html"
+                          to="/singleshop"
                         >
                           Slurrp Millet Chocolate
-                        </a>
+                        </Link>
                       </h2>
                       <div className="text-warning">
                         <small>
@@ -965,7 +966,7 @@ export const Shop = () => {
                           </span>
                         </div>
                         <div>
-                          <a className="btn btn-primary btn-sm" href="#!">
+                          <Link className="btn btn-primary btn-sm" to="#!">
                             <svg
                               className="feather feather-plus"
                               fill="none"
@@ -982,7 +983,7 @@ export const Shop = () => {
                               <line x1="5" x2="19" y1="12" y2="12" />
                             </svg>
                             Add
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -992,19 +993,19 @@ export const Shop = () => {
                   <div className="card card-product">
                     <div className="card-body">
                       <div className="text-center position-relative">
-                        <a href="shop-single.html">
+                        <Link to="/singleshop">
                           <img
                             alt="Grocery Ecommerce Template"
                             className="mb-3 img-fluid"
                             src="../assets/images/products/product-img-10.jpg"
                           />
-                        </a>
+                        </Link>
                         <div className="card-product-action">
-                          <a
+                          <Link
                             className="btn-action"
                             data-bs-target="#quickViewModal"
                             data-bs-toggle="modal"
-                            href="#!"
+                            to="#!"
                           >
                             <i
                               className="bi bi-eye"
@@ -1012,42 +1013,42 @@ export const Shop = () => {
                               data-bs-toggle="tooltip"
                               title="Quick View"
                             />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="shop-wishlist.html"
+                            to="shop-wishlist.html"
                             title="Wishlist"
                           >
                             <i className="bi bi-heart" />
-                          </a>
-                          <a
+                          </Link>
+                          <Link
                             className="btn-action"
                             data-bs-html="true"
                             data-bs-toggle="tooltip"
-                            href="#!"
+                            to="#!"
                             title="Compare"
                           >
                             <i className="bi bi-arrow-left-right" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="text-small mb-1">
-                        <a
+                        <Link
                           className="text-decoration-none text-muted"
-                          href="#!"
+                          to="#!"
                         >
                           <small>Dairy, Bread & Eggs</small>
-                        </a>
+                        </Link>
                       </div>
                       <h2 className="fs-6">
-                        <a
+                        <Link
                           className="text-inherit text-decoration-none"
-                          href="shop-single.html"
+                          to="/singleshop"
                         >
                           Amul Butter - 500 g
-                        </a>
+                        </Link>
                       </h2>
                       <div className="text-warning">
                         <small>
@@ -1067,7 +1068,7 @@ export const Shop = () => {
                           </span>
                         </div>
                         <div>
-                          <a className="btn btn-primary btn-sm" href="#!">
+                          <Link className="btn btn-primary btn-sm" to="#!">
                             <svg
                               className="feather feather-plus"
                               fill="none"
@@ -1084,7 +1085,7 @@ export const Shop = () => {
                               <line x1="5" x2="19" y1="12" y2="12" />
                             </svg>
                             Add
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -1096,42 +1097,42 @@ export const Shop = () => {
                   <nav>
                     <ul className="pagination">
                       <li className="page-item disabled">
-                        <a
+                        <Link
                           aria-label="Previous"
                           className="page-link mx-1"
-                          href="#"
+                          to="#"
                         >
                           <i className="bi bi-chevron-left" />
-                        </a>
+                        </Link>
                       </li>
                       <li className="page-item">
-                        <a className="page-link mx-1 active" href="#">
+                        <Link className="page-link mx-1 active" to="#">
                           1
-                        </a>
+                        </Link>
                       </li>
                       <li className="page-item">
-                        <a className="page-link mx-1" href="#">
+                        <Link className="page-link mx-1" to="#">
                           2
-                        </a>
+                        </Link>
                       </li>
                       <li className="page-item">
-                        <a className="page-link mx-1" href="#">
+                        <Link className="page-link mx-1" to="#">
                           ...
-                        </a>
+                        </Link>
                       </li>
                       <li className="page-item">
-                        <a className="page-link mx-1" href="#">
+                        <Link className="page-link mx-1" to="#">
                           12
-                        </a>
+                        </Link>
                       </li>
                       <li className="page-item">
-                        <a
+                        <Link
                           aria-label="Next"
                           className="page-link mx-1"
-                          href="#"
+                          to="#"
                         >
                           <i className="bi bi-chevron-right" />
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </nav>

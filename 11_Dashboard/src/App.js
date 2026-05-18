@@ -9,8 +9,19 @@ import { Purchases } from "./components/Purchases";
 import { Favorites } from "./components/Favorites";
 import { Settings } from "./components/Settings";
 import { Offcanvas } from "./components/Offcanvas";
+import { useEffect } from "react";
+import {  getUsers } from "./server/users/api";
+import { getProducts } from "./server/products/products";
 
 function App() {
+  const update = () => {
+    getUsers()
+    getProducts()
+
+  };
+  useEffect(() => {
+   update();
+  }, []);
   return (
     <div className="App">
       {/* <Navbar /> */}

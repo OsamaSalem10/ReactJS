@@ -132,9 +132,9 @@ export const Offcanvas = () => {
           <div>
             <div className="alert alert-danger p-2" role="alert">
               You’ve got FREE delivery. Start
-              <a className="alert-link" to="#!">
+              <Link className="alert-link" to="#!">
                 checkout now!
-              </a>
+              </Link>
             </div>
             <ul className="list-group list-group-flush">
               <li className="list-group-item py-3 ps-0 border-top">
@@ -147,17 +147,17 @@ export const Offcanvas = () => {
                         src="../assets/images/products/product-img-1.jpg"
                       />
                       <div className="ms-3">
-                        <a
+                        <Link
                           className="text-inherit"
                           to="../pages/shop-single.html"
                         >
                           <h6 className="mb-0">Haldiram's Sev Bhujia</h6>
-                        </a>
+                        </Link>
                         <span>
                           <small className="text-muted">.98 / lb</small>
                         </span>
                         <div className="mt-2 small lh-1">
-                          <a
+                          <Link
                             className="text-decoration-none text-inherit"
                             to="#!"
                           >
@@ -181,7 +181,7 @@ export const Offcanvas = () => {
                               </svg>
                             </span>
                             <span className="text-muted">Remove</span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -225,17 +225,17 @@ export const Offcanvas = () => {
                         src="../assets/images/products/product-img-2.jpg"
                       />
                       <div className="ms-3">
-                        <a
+                        <Link
                           className="text-inherit"
                           to="../pages/shop-single.html"
                         >
                           <h6 className="mb-0">NutriChoice Digestive</h6>
-                        </a>
+                        </Link>
                         <span>
                           <small className="text-muted">250g</small>
                         </span>
                         <div className="mt-2 small lh-1">
-                          <a
+                          <Link
                             className="text-decoration-none text-inherit"
                             to="#!"
                           >
@@ -259,7 +259,7 @@ export const Offcanvas = () => {
                               </svg>
                             </span>
                             <span className="text-muted">Remove</span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -306,17 +306,17 @@ export const Offcanvas = () => {
                         src="../assets/images/products/product-img-3.jpg"
                       />
                       <div className="ms-3">
-                        <a
+                        <Link
                           className="text-inherit"
                           to="../pages/shop-single.html"
                         >
                           <h6 className="mb-0">Cadbury 5 Star Chocolate</h6>
-                        </a>
+                        </Link>
                         <span>
                           <small className="text-muted">1 kg</small>
                         </span>
                         <div className="mt-2 small lh-1">
-                          <a
+                          <Link
                             className="text-decoration-none text-inherit"
                             to="#!"
                           >
@@ -340,7 +340,7 @@ export const Offcanvas = () => {
                               </svg>
                             </span>
                             <span className="text-muted">Remove</span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -387,17 +387,17 @@ export const Offcanvas = () => {
                         src="../assets/images/products/product-img-4.jpg"
                       />
                       <div className="ms-3">
-                        <a
+                        <Link
                           className="text-inherit"
                           to="../pages/shop-single.html"
                         >
                           <h6 className="mb-0">Onion Flavour Potato</h6>
-                        </a>
+                        </Link>
                         <span>
                           <small className="text-muted">250g</small>
                         </span>
                         <div className="mt-2 small lh-1">
-                          <a
+                          <Link
                             className="text-decoration-none text-inherit"
                             to="#!"
                           >
@@ -421,7 +421,7 @@ export const Offcanvas = () => {
                               </svg>
                             </span>
                             <span className="text-muted">Remove</span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -468,17 +468,17 @@ export const Offcanvas = () => {
                         src="../assets/images/products/product-img-5.jpg"
                       />
                       <div className="ms-3">
-                        <a
+                        <Link
                           className="text-inherit"
                           to="../pages/shop-single.html"
                         >
                           <h6 className="mb-0">Salted Instant Popcorn</h6>
-                        </a>
+                        </Link>
                         <span>
                           <small className="text-muted">100g</small>
                         </span>
                         <div className="mt-2 small lh-1">
-                          <a
+                          <Link
                             className="text-decoration-none text-inherit"
                             to="#!"
                           >
@@ -502,7 +502,7 @@ export const Offcanvas = () => {
                               </svg>
                             </span>
                             <span className="text-muted">Remove</span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -541,12 +541,12 @@ export const Offcanvas = () => {
               </li>
             </ul>
             <div className="d-flex justify-content-between mt-4">
-              <a className="btn btn-primary" to="#!">
+              <Link className="btn btn-primary" to="#!">
                 Continue Shopping
-              </a>
-              <a className="btn btn-dark" to="#!">
+              </Link>
+              <Link className="btn btn-dark" to="#!">
                 Update Cart
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -612,9 +612,9 @@ export const Offcanvas = () => {
                 {/* RIGHT - Product Info */}
                 <div className="col-lg-6">
                   <div className="ps-lg-8 mt-6 mt-lg-0">
-                    <a className="mb-4 d-block" href="#!">
+                    <Link className="mb-4 d-block" href="#!">
                       Bakery Biscuits
-                    </a>
+                    </Link>
                     <h2 className="mb-1 h1">Napolitanke Ljesnjak</h2>
 
                     {/* Rating */}
@@ -626,9 +626,9 @@ export const Offcanvas = () => {
                         <i className="bi bi-star-fill" />
                         <i className="bi bi-star-half" />
                       </small>
-                      <a className="ms-2" href="#">
+                      <Link className="ms-2" href="#">
                         (30 reviews)
-                      </a>
+                      </Link>
                     </div>
 
                     {/* Price */}
@@ -746,245 +746,134 @@ export const Offcanvas = () => {
                   </div>
                 </div>
               </div>
-              {/*    <div className="row">
-                <div className="col-lg-6">
-                  <div className="product productModal" id="productModal">
-                    <div
-                      className="zoom"
-                      onmousemove="zoom(event)"
-                      style={{
-                        backgroundImage:
-                          "url(./assets/images/products/product-single-img-1.jpg)",
-                      }}
-                    >
-                      <img
-                        alt=""
-                        src="./assets/images/products/product-single-img-1.jpg"
-                      />
-                    </div>
-                    <div>
-                      <div
-                        className="zoom"
-                        onmousemove="zoom(event)"
-                        style={{
-                          backgroundImage:
-                            "url(./assets/images/products/product-single-img-2.jpg)",
-                        }}
-                      >
-                        <img
-                          alt=""
-                          src="./assets/images/products/product-single-img-2.jpg"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div
-                        className="zoom"
-                        onmousemove="zoom(event)"
-                        style={{
-                          backgroundImage:
-                            "url(./assets/images/products/product-single-img-3.jpg)",
-                        }}
-                      >
-                        <img
-                          alt=""
-                          src="./assets/images/products/product-single-img-3.jpg"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div
-                        className="zoom"
-                        onmousemove="zoom(event)"
-                        style={{
-                          backgroundImage:
-                            "url(./assets/images/products/product-single-img-4.jpg)",
-                        }}
-                      >
-                        <img
-                          alt=""
-                          src="./assets/images/products/product-single-img-4.jpg"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="product-tools">
-                    <div
-                      className="thumbnails row g-3"
-                      id="productModalThumbnails"
-                    >
-                      <div className="col-3">
-                        <div className="thumbnails-img">
-                          <img
-                            alt=""
-                            src="./assets/images/products/product-single-img-1.jpg"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-3">
-                        <div className="thumbnails-img">
-                          <img
-                            alt=""
-                            src="./assets/images/products/product-single-img-2.jpg"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-3">
-                        <div className="thumbnails-img">
-                          <img
-                            alt=""
-                            src="./assets/images/products/product-single-img-3.jpg"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-3">
-                        <div className="thumbnails-img">
-                          <img
-                            alt=""
-                            src="./assets/images/products/product-single-img-4.jpg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="ps-lg-8 mt-6 mt-lg-0">
-                    <a className="mb-4 d-block" to="#!">
-                      Bakery Biscuits
-                    </a>
-                    <h2 className="mb-1 h1">Napolitanke Ljesnjak</h2>
-                    <div className="mb-4">
-                      <small className="text-warning">
-                        <i className="bi bi-star-fill" />
-                        <i className="bi bi-star-fill" />
-                        <i className="bi bi-star-fill" />
-                        <i className="bi bi-star-fill" />
-                        <i className="bi bi-star-half" />
-                      </small>
-                      <a className="ms-2" to="#">
-                        (30 reviews)
-                      </a>
-                    </div>
-                    <div className="fs-4">
-                      <span className="fw-bold text-dark">$32</span>
-                      <span className="text-decoration-line-through text-muted">
-                        $35
-                      </span>
-                      <span>
-                        <small className="fs-6 ms-2 text-danger">26% Off</small>
-                      </span>
-                    </div>
-                    <hr className="my-6" />
-                    <div className="mb-4">
-                      <button
-                        className="btn btn-outline-secondary"
-                        type="button"
-                      >
-                        250g
-                      </button>
-                      <button
-                        className="btn btn-outline-secondary"
-                        type="button"
-                      >
-                        500g
-                      </button>
-                      <button
-                        className="btn btn-outline-secondary"
-                        type="button"
-                      >
-                        1kg
-                      </button>
-                    </div>
-                    <div>
-                      <div className="input-group input-spinner  ">
-                        <input
-                          className="button-minus  btn  btn-sm "
-                          data-field="quantity"
-                          defaultValue="-"
-                          type="button"
-                        />
-                        <input
-                          className="quantity-field form-control-sm form-input   "
-                          defaultValue="1"
-                          max="10"
-                          name="quantity"
-                          step="1"
-                          type="number"
-                        />
-                        <input
-                          className="button-plus btn btn-sm "
-                          data-field="quantity"
-                          defaultValue="+"
-                          type="button"
-                        />
-                      </div>
-                    </div>
-                    <div className="mt-3 row justify-content-start g-2 align-items-center">
-                      <div className="col-lg-4 col-md-5 col-6 d-grid">
-                        <button className="btn btn-primary" type="button">
-                          <i className="bi bi-cart me-2" />
-                          Add to cart
-                        </button>
-                      </div>
-                      <div className="col-md-4 col-5">
-                        <a
-                          aria-label="Compare"
-                          className="btn btn-light"
-                          data-bs-html="true"
-                          data-bs-toggle="tooltip"
-                          to="#"
-                        >
-                          <i className="bi bi-arrow-left-right" />
-                        </a>
-                        <a
-                          aria-label="Wishlist"
-                          className="btn btn-light ms-2"
-                          data-bs-html="true"
-                          data-bs-toggle="tooltip"
-                          to="#!"
-                        >
-                          <i className="bi bi-heart" />
-                        </a>
-                      </div>
-                    </div>
-                    <hr className="my-6" />
-                    <div>
-                      <table className="table table-borderless">
-                        <tbody>
-                          <tr>
-                            <td>Product Code:</td>
-                            <td>FBB00255</td>
-                          </tr>
-                          <tr>
-                            <td>Availability:</td>
-                            <td>In Stock</td>
-                          </tr>
-                          <tr>
-                            <td>Type:</td>
-                            <td>Fruits</td>
-                          </tr>
-                          <tr>
-                            <td>Shipping:</td>
-                            <td>
-                              <small>
-                                01 day shipping.
-                                <span className="text-muted">
-                                  ( Free pickup today)
-                                </span>
-                              </small>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
+            
             </div>
           </div>
         </div>
       </div>
+      {/* add address */}
+      <div
+  aria-hidden="true"
+  aria-labelledby="addAddressModalLabel"
+  className="modal fade"
+  id="addAddressModal"
+  tabIndex="-1">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-body p-6">
+        <div className="d-flex justify-content-between mb-5">
+          <div>
+            <h5 className="h6 mb-1" id="addAddressModalLabel">
+              New Shipping Address
+            </h5>
+            <p className="small mb-0">
+              Add new shipping address for your order delivery.
+            </p>
+          </div>
+          <div>
+            <button
+              aria-label="Close"
+              className="btn-close"
+              data-bs-dismiss="modal"
+              type="button"
+            />
+          </div>
+        </div>
+        <div className="row g-3">
+          <div className="col-12">
+            <input
+              aria-label="First name"
+              className="form-control"
+              placeholder="First name"
+              required
+              type="text"
+            />
+          </div>
+          <div className="col-12">
+            <input
+              aria-label="Last name"
+              className="form-control"
+              placeholder="Last name"
+              required
+              type="text"
+            />
+          </div>
+          <div className="col-12">
+            <input
+              className="form-control"
+              placeholder="Address Line 1"
+              type="text"
+            />
+          </div>
+          <div className="col-12">
+            <input
+              className="form-control"
+              placeholder="Address Line 2"
+              type="text"
+            />
+          </div>
+          <div className="col-12">
+            <input className="form-control" placeholder="City" type="text" />
+          </div>
+          <div className="col-12">
+            <select className="form-select">
+              <option selected>India</option>
+              <option value="1">UK</option>
+              <option value="2">USA</option>
+              <option value="3">UAE</option>
+            </select>
+          </div>
+          <div className="col-12">
+            <select className="form-select">
+              <option selected>Gujarat</option>
+              <option value="1">Northern Ireland</option>
+              <option value="2">Alaska</option>
+              <option value="3">Abu Dhabi</option>
+            </select>
+          </div>
+          <div className="col-12">
+            <input
+              className="form-control"
+              placeholder="Zip Code"
+              type="text"
+            />
+          </div>
+          <div className="col-12">
+            <input
+              className="form-control"
+              placeholder="Business Name"
+              type="text"
+            />
+          </div>
+          <div className="col-12">
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                defaultValue=""
+                id="flexCheckDefault"
+                type="checkbox"
+              />
+              <label className="form-check-label" htmlFor="flexCheckDefault">
+                Set as Default
+              </label>
+            </div>
+          </div>
+          <div className="col-12 text-end">
+            <button
+              className="btn btn-outline-primary"
+              data-bs-dismiss="modal"
+              type="button">
+              Cancel
+            </button>
+            <button className="btn btn-primary" type="button">
+              Save Address
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     </>
   );
 };
