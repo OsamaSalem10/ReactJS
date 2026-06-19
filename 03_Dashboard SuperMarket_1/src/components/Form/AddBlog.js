@@ -98,7 +98,7 @@ export const AddBlog = () => {
                         className="form-select"
                         id="validationCustom04"
                         required>
-                        <option disabled selected value="">
+                        <option disabled  value="">
                           Select Category
                         </option>
                         <option value="Recipes">Recipes</option>

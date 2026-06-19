@@ -30,6 +30,7 @@ import { AccountListings } from "./components/User/AccountListings";
 import { AccountProfile } from "./components/User/AccountProfile";
 import { GetUsers } from "./server/api";
 function App() {
+  
   useEffect(() => {
     // Check if user is authenticated
     GetUsers().then(users => {

@@ -92,7 +92,7 @@ export const Login = () => {
                     </div>
                     <div>
                       Forgot password?
-                      <a href="../pages/forgot-password.html">Reset It</a>
+                      <Link to="/forgot-password">Reset It</Link>
                     </div>
                   </div>
                   <div className="col-12 d-grid">

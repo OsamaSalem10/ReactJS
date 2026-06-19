@@ -320,7 +320,7 @@ export const Navbar = () => {
                   </div>
                   <ul className="list-unstyled px-2 py-3">
                     <li>
-                      <Link className="dropdown-item" to="#!">
+                      <Link className="dropdown-item" to="/account-orders">
                         Home
                       </Link>
                     </li>

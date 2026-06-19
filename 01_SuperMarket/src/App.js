@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Home } from "./components/Home";
 import { Navbar } from "./components/Navbar";
@@ -12,12 +13,33 @@ import { Wishlist } from "./components/Wishlist";
 import { SingleShop } from "./components/SingleShop";
 import { Blog } from "./components/Blog";
 import { ContactUS } from "./components/ContactUS";
-import { Index , BlogGrid , BlogList , Categories , Customers ,  OrderList ,  OrderSingle , Products , Reviews,    VendorGrid , VendorList } from "./components/Dashboard/Index";
+import {
+  Index,
+  BlogGrid,
+  BlogList,
+  Categories,
+  Customers,
+  OrderList,
+  OrderSingle,
+  Products,
+  Reviews,
+  VendorGrid,
+  VendorList,
+} from "./components/Dashboard/Index";
 import { AddProduct } from "./components/Dashboard/Form/AddProduct";
 import { AddCategory } from "./components/Dashboard/Form/AddCategory";
 import { AddCustomers } from "./components/Dashboard/Form/AddCustomers";
 import { EditCustomers } from "./components/Dashboard/Form/EditCustomers";
 import { AddBlog } from "./components/Dashboard/Form/AddBlog";
+import {
+  Account,
+  AccountSettings,
+  AccountAddress,
+  AccountNotification,
+  AccountPaymentMethod,
+} from "./components/Account/Account";
+import { ToastContainer, toast } from "react-toastify";
+import { _getAllUsers, _getProducts, _getOrders } from "./server/get";
 function App() {
   const location = useLocation();
   const hidePaths = [
@@ -37,13 +59,29 @@ function App() {
     "/add-product",
     "/order-single",
     "/single-shop",
-    "/blog",
     "/add-category",
   ];
   const hideNavbar = hidePaths.includes(location.pathname);
+const [users, setUsers] = useState([]);
+const [products, setProducts] = useState([]);
+const [orders, setOrders] = useState([]);
 
+  useEffect(() => {
+    update();
+  }, []);
+
+    const update = async () => {
+    const _users = await _getAllUsers();
+    const _products = await _getProducts();
+    const _orders = await _getOrders();
+
+    setUsers(_users);
+    setProducts(_products);
+    setOrders(_orders);
+  };
   return (
     <div className="App">
+      <ToastContainer />
       {!hideNavbar && <Navbar />}
       <Offcanvas />
       <Routes>
@@ -52,15 +90,16 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/singleshop" element={<SingleShop />} />
+        <Route path="/single-shop" element={<SingleShop />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<ContactUS />} />
         <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/shopcart" element={<ShopCart />} />
-        <Route path="/shopcheckout" element={<ShopCheckout />} />
+        <Route path="/shop-cart" element={<ShopCart />} />
+        <Route path="/shop-checkout" element={<ShopCheckout />} />
+
         {/* Dashboard */}
 
-        <Route path="/dashboard" element={<Index />} />
+        <Route path="/dashboard" element={<Index  users={users}  update={update}/>} />
         <Route path="/products" element={<Products />} />
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="/categories" element={<Categories />} />
@@ -70,12 +109,22 @@ function App() {
         <Route path="/vendors-grid" element={<VendorGrid />} />
         <Route path="/vendors-list" element={<VendorList />} />
         <Route path="/customers" element={<Customers />} />
-        <Route path="/add-customer" element={<AddCustomers />} />
-        <Route path="/edit-customer" element={<EditCustomers />} />
+        <Route path="/add-customer" element={<AddCustomers update={update}/>} />
+        <Route path="/edit-customer/:id" element={<EditCustomers />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/blog-list" element={<BlogList />} />
         <Route path="/blog-grid" element={<BlogGrid />} />
         <Route path="/add-blog" element={<AddBlog />} />
+
+        {/* Account */}
+        <Route path="/account-orders" element={<Account />} />
+        <Route path="/account-settings" element={<AccountSettings />} />
+        <Route path="/account-address" element={<AccountAddress />} />
+        <Route path="/account-notification" element={<AccountNotification />} />
+        <Route
+          path="/account-payment-method"
+          element={<AccountPaymentMethod />}
+        />
       </Routes>
       {!hideNavbar && <Footer />}
     </div>

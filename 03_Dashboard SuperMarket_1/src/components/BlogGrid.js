@@ -54,7 +54,7 @@ export const BlogGrid = () => {
               Post by Date
             </label>
             <select className="form-select" id="postbyDate">
-              <option selected>Latest</option>
+              <option >Latest</option>
               <option value="Popular">Popular</option>
               <option value="Oldest">Oldest</option>
             </select>

@@ -102,7 +102,7 @@ export const Index = () => {
               </div>
               <div>
                 <select className="form-select">
-                  <option selected>2019</option>
+                  <option >2019</option>
                   <option value="2023">2020</option>
                   <option value="2024">2021</option>
                   <option value="2025">2022</option>

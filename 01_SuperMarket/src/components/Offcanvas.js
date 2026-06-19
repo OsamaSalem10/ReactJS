@@ -612,7 +612,7 @@ export const Offcanvas = () => {
                 {/* RIGHT - Product Info */}
                 <div className="col-lg-6">
                   <div className="ps-lg-8 mt-6 mt-lg-0">
-                    <Link className="mb-4 d-block" href="#!">
+                    <Link className="mb-4 d-block" to="#!">
                       Bakery Biscuits
                     </Link>
                     <h2 className="mb-1 h1">Napolitanke Ljesnjak</h2>
@@ -626,7 +626,7 @@ export const Offcanvas = () => {
                         <i className="bi bi-star-fill" />
                         <i className="bi bi-star-half" />
                       </small>
-                      <Link className="ms-2" href="#">
+                      <Link className="ms-2" to="#">
                         (30 reviews)
                       </Link>
                     </div>
@@ -746,129 +746,386 @@ export const Offcanvas = () => {
                   </div>
                 </div>
               </div>
-            
             </div>
           </div>
         </div>
       </div>
       {/* add address */}
       <div
-  aria-hidden="true"
-  aria-labelledby="addAddressModalLabel"
-  className="modal fade"
-  id="addAddressModal"
-  tabIndex="-1">
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-body p-6">
-        <div className="d-flex justify-content-between mb-5">
-          <div>
-            <h5 className="h6 mb-1" id="addAddressModalLabel">
-              New Shipping Address
-            </h5>
-            <p className="small mb-0">
-              Add new shipping address for your order delivery.
-            </p>
-          </div>
-          <div>
-            <button
-              aria-label="Close"
-              className="btn-close"
-              data-bs-dismiss="modal"
-              type="button"
-            />
-          </div>
-        </div>
-        <div className="row g-3">
-          <div className="col-12">
-            <input
-              aria-label="First name"
-              className="form-control"
-              placeholder="First name"
-              required
-              type="text"
-            />
-          </div>
-          <div className="col-12">
-            <input
-              aria-label="Last name"
-              className="form-control"
-              placeholder="Last name"
-              required
-              type="text"
-            />
-          </div>
-          <div className="col-12">
-            <input
-              className="form-control"
-              placeholder="Address Line 1"
-              type="text"
-            />
-          </div>
-          <div className="col-12">
-            <input
-              className="form-control"
-              placeholder="Address Line 2"
-              type="text"
-            />
-          </div>
-          <div className="col-12">
-            <input className="form-control" placeholder="City" type="text" />
-          </div>
-          <div className="col-12">
-            <select className="form-select">
-              <option selected>India</option>
-              <option value="1">UK</option>
-              <option value="2">USA</option>
-              <option value="3">UAE</option>
-            </select>
-          </div>
-          <div className="col-12">
-            <select className="form-select">
-              <option selected>Gujarat</option>
-              <option value="1">Northern Ireland</option>
-              <option value="2">Alaska</option>
-              <option value="3">Abu Dhabi</option>
-            </select>
-          </div>
-          <div className="col-12">
-            <input
-              className="form-control"
-              placeholder="Zip Code"
-              type="text"
-            />
-          </div>
-          <div className="col-12">
-            <input
-              className="form-control"
-              placeholder="Business Name"
-              type="text"
-            />
-          </div>
-          <div className="col-12">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                defaultValue=""
-                id="flexCheckDefault"
-                type="checkbox"
-              />
-              <label className="form-check-label" htmlFor="flexCheckDefault">
-                Set as Default
-              </label>
+        aria-hidden="true"
+        aria-labelledby="addAddressModalLabel"
+        className="modal fade"
+        id="addAddressModal"
+        tabIndex="-1"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-body p-6">
+              <div className="d-flex justify-content-between mb-5">
+                <div>
+                  <h5 className="h6 mb-1" id="addAddressModalLabel">
+                    New Shipping Address
+                  </h5>
+                  <p className="small mb-0">
+                    Add new shipping address for your order delivery.
+                  </p>
+                </div>
+                <div>
+                  <button
+                    aria-label="Close"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    type="button"
+                  />
+                </div>
+              </div>
+              <div className="row g-3">
+                <div className="col-12">
+                  <input
+                    aria-label="First name"
+                    className="form-control"
+                    placeholder="First name"
+                    required
+                    type="text"
+                  />
+                </div>
+                <div className="col-12">
+                  <input
+                    aria-label="Last name"
+                    className="form-control"
+                    placeholder="Last name"
+                    required
+                    type="text"
+                  />
+                </div>
+                <div className="col-12">
+                  <input
+                    className="form-control"
+                    placeholder="Address Line 1"
+                    type="text"
+                  />
+                </div>
+                <div className="col-12">
+                  <input
+                    className="form-control"
+                    placeholder="Address Line 2"
+                    type="text"
+                  />
+                </div>
+                <div className="col-12">
+                  <input
+                    className="form-control"
+                    placeholder="City"
+                    type="text"
+                  />
+                </div>
+                <div className="col-12">
+                  <select className="form-select">
+                    <option selected>India</option>
+                    <option value="1">UK</option>
+                    <option value="2">USA</option>
+                    <option value="3">UAE</option>
+                  </select>
+                </div>
+                <div className="col-12">
+                  <select className="form-select">
+                    <option selected>Gujarat</option>
+                    <option value="1">Northern Ireland</option>
+                    <option value="2">Alaska</option>
+                    <option value="3">Abu Dhabi</option>
+                  </select>
+                </div>
+                <div className="col-12">
+                  <input
+                    className="form-control"
+                    placeholder="Zip Code"
+                    type="text"
+                  />
+                </div>
+                <div className="col-12">
+                  <input
+                    className="form-control"
+                    placeholder="Business Name"
+                    type="text"
+                  />
+                </div>
+                <div className="col-12">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      defaultValue=""
+                      id="flexCheckDefault"
+                      type="checkbox"
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor="flexCheckDefault"
+                    >
+                      Set as Default
+                    </label>
+                  </div>
+                </div>
+                <div className="col-12 text-end">
+                  <button
+                    className="btn btn-outline-primary"
+                    data-bs-dismiss="modal"
+                    type="button"
+                  >
+                    Cancel
+                  </button>
+                  <button className="btn btn-primary" type="button">
+                    Save Address
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="col-12 text-end">
-            <button
-              className="btn btn-outline-primary"
-              data-bs-dismiss="modal"
-              type="button">
-              Cancel
-            </button>
-            <button className="btn btn-primary" type="button">
-              Save Address
-            </button>
+        </div>
+      </div>
+
+      {/* <!-- Account Navbar --> */}
+      <div
+        aria-labelledby="offcanvasAccountLabel"
+        className="offcanvas offcanvas-start"
+        id="offcanvasAccount"
+        tabIndex="-1"
+      >
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title" id="offcanvasAccountLabel">
+            Offcanvas
+          </h5>
+          <button
+            aria-label="Close"
+            className="btn-close"
+            data-bs-dismiss="offcanvas"
+            type="button"
+          />
+        </div>
+        <div className="offcanvas-body">
+          <ul className="nav flex-column nav-pills nav-pills-dark">
+            <li className="nav-item">
+              <Link
+                aria-current="page"
+                className="nav-link"
+                to="/account-orders"
+              >
+                <i className="feather-icon icon-shopping-bag me-2" />
+                Your Orders
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/account-settings">
+                <i className="feather-icon icon-settings me-2" />
+                Settings
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/account-address">
+                <i className="feather-icon icon-map-pin me-2" />
+                Address
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" to="/account-payment-method">
+                <i className="feather-icon icon-credit-card me-2" />
+                Payment Method
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/account-notification">
+                <i className="feather-icon icon-bell me-2" />
+                Notification
+              </Link>
+            </li>
+          </ul>
+          <hr className="my-6" />
+          <div>
+            <ul className="nav flex-column nav-pills nav-pills-dark">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  <i className="feather-icon icon-log-out me-2" />
+                  Log out
+                </Link>
+              </li>
+            </ul>
           </div>
+        </div>
+      </div>
+      {/* Account Payment Method */}
+      <div
+  aria-hidden="true"
+  aria-labelledby="paymentModalLabel"
+  className="modal fade"
+  id="paymentModal"
+  role="dialog"
+  tabIndex="-1">
+  <div className="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div className="modal-content">
+      <div className="modal-header align-items-center d-flex">
+        <h5 className="modal-title" id="paymentModalLabel">
+          Add New Payment Method
+        </h5>
+        <button
+          aria-label="Close"
+          className="btn-close"
+          data-bs-dismiss="modal"
+          type="button"
+        />
+      </div>
+      <div className="modal-body">
+        <div>
+          <form className="row mb-4 needs-validation" noValidate>
+            <div className="mb-3 col-12 col-md-12 mb-4">
+              <h5 className="mb-3">Credit / Debit card</h5>
+              <div className="d-inline-flex">
+                <div className="form-check me-2">
+                  <input
+                    className="form-check-input"
+                    id="paymentRadioOne"
+                    name="paymentRadioOne"
+                    required
+                    type="radio"
+                  />
+                  <label className="form-check-label" htmlFor="paymentRadioOne">
+                    <img
+                      alt=""
+                      src="../assets/images/payment/american-express.svg"
+                    />
+                  </label>
+                </div>
+                <div className="form-check me-2">
+                  <input
+                    className="form-check-input"
+                    id="paymentRadioTwo"
+                    name="paymentRadioOne"
+                    type="radio"
+                  />
+                  <label className="form-check-label" htmlFor="paymentRadioTwo">
+                    <img alt="" src="../assets/images/payment/mastercard.svg" />
+                  </label>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    id="paymentRadioFour"
+                    name="paymentRadioOne"
+                    type="radio"
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="paymentRadioFour">
+                    <img alt="" src="../assets/images/payment/visa.svg" />
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="mb-3 col-12 col-md-4">
+              <label className="form-label" htmlFor="nameoncard">
+                Name on card
+              </label>
+              <input
+                className="form-control"
+                id="nameoncard"
+                name="nameoncard"
+                placeholder="Name"
+                required
+                type="text"
+              />
+              <div className="invalid-feedback">Please enter name.</div>
+            </div>
+            <div className="mb-3 col-12 col-md-4">
+              <label className="form-label" htmlFor="validationCustomMonth">
+                Month
+              </label>
+              <select
+                className="form-select"
+                id="validationCustomMonth"
+                required>
+                <option value="">Month</option>
+                <option value="Jan">Jan</option>
+                <option value="Feb">Feb</option>
+                <option value="Mar">Mar</option>
+                <option value="Apr">Apr</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="Aug">Aug</option>
+                <option value="Sep">Sep</option>
+                <option value="Oct">Oct</option>
+                <option value="Nov">Nov</option>
+                <option value="Dec">Dec</option>
+              </select>
+              <div className="invalid-feedback">Please select month.</div>
+            </div>
+            <div className="mb-3 col-12 col-md-4">
+              <label className="form-label" htmlFor="validationCustomYear">
+                Year
+              </label>
+              <select
+                className="form-select"
+                id="validationCustomYear"
+                required>
+                <option value="">Year</option>
+                <option value="June">2022</option>
+                <option value="July">2023</option>
+                <option value="August">2024</option>
+                <option value="Sep">2025</option>
+                <option value="Oct">2026</option>
+              </select>
+              <div className="invalid-feedback">Please select year.</div>
+            </div>
+            <div className="mb-3 col-md-8 col-12">
+              <label className="form-label" htmlFor="card-mask">
+                Card Number
+              </label>
+              <input
+                className="form-control"
+                id="card-mask"
+                placeholder="xxxx-xxxx-xxxx-xxxx"
+                required
+                type="text"
+              />
+              <div className="invalid-feedback">Please enter card number.</div>
+            </div>
+            <div className="mb-3 col-md-4 col-12">
+              <div className="mb-3">
+                <label className="form-label" htmlFor="digit-mask">
+                  CVV Code
+                  <i
+                    className="fe fe-help-circle ms-1"
+                    data-bs-toggle="tooltip"
+                    data-placement="top"
+                    title="A 3 - digit number, typically printed on the back of a card."
+                  />
+                </label>
+                <input
+                  className="form-control"
+                  id="digit-mask"
+                  maxLength="3"
+                  name="cvv"
+                  placeholder="xxx"
+                  required
+                  type="password"
+                />
+                <div className="invalid-feedback">Please enter cvv.</div>
+              </div>
+            </div>
+            <div className="col-md-6 col-12">
+              <button className="btn btn-primary" type="submit">
+                Add New Card
+              </button>
+              <button
+                className="btn btn-outline-gray-400 text-muted"
+                data-bs-dismiss="modal"
+                type="submit">
+                Close
+              </button>
+            </div>
+          </form>
+          <span>
+            <strong>Note:</strong>
+            that you can later remove your card at the account setting page.
+          </span>
         </div>
       </div>
     </div>
