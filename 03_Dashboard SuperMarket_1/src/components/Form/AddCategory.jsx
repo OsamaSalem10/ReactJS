@@ -1,9 +1,10 @@
-import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
-import { createCategory } from "../../server/post"
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { createCategory } from "../../server/post";
 import { toast } from "react-toastify";
 export const AddCategory = ({ update }) => {
   const [name, setName] = useState("");
+  const [status, setStatus] = useState("");
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
   return (
@@ -22,7 +23,7 @@ export const AddCategory = ({ update }) => {
                       </Link>
                     </li>
                     <li className="breadcrumb-item">
-                      <Link className="text-inherit" to="#">
+                      <Link className="text-inherit" to="/categories">
                         Categories
                       </Link>
                     </li>
@@ -51,10 +52,11 @@ export const AddCategory = ({ update }) => {
                       alt=""
                       className="image icon-shape icon-xxxl bg-light rounded-4"
                       src="../assets/images/icons/bakery.svg"
-
                     />
                     <div className="file-upload position-absolute end-0 top-0 mt-n2 me-n1">
-                      <input className="file-input" type="file"
+                      <input
+                        className="file-input"
+                        type="file"
                         onChange={(e) => {
                           const file = e.target.files[0];
                           setImage(file);
@@ -67,7 +69,8 @@ export const AddCategory = ({ update }) => {
                           height="12"
                           viewBox="0 0 16 16"
                           width="12"
-                          xmlns="http://www.w3.org/2000/svg">
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
                           <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
                         </svg>
                       </span>
@@ -86,17 +89,28 @@ export const AddCategory = ({ update }) => {
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
-
+                  <div className="mb-3 col-lg-6">
+                    <label className="form-label">Status</label>
+                    <select
+                      value={status}
+                      className="form-select"
+                      onChange={(e) => setStatus(e.target.value)}
+                    >
+                      <option value="Active">Active</option>
+                      <option value="Inactive">Inactive</option>
+                    </select>
+                  </div>
 
                   <div className="col-lg-12">
-                    <button className="btn btn-primary"
+                    <button
+                      className="btn btn-primary"
                       type="submit"
                       onClick={async (e) => {
                         e.preventDefault();
                         // Create New Customer logic here
                         const formData = new FormData();
                         formData.append("name", name);
-
+                        formData.append("status", status);
                         if (image) {
                           formData.append("image", image);
                         }
@@ -109,12 +123,13 @@ export const AddCategory = ({ update }) => {
                           update();
                         } catch (error) {
                           toast.error(
-                            error.response?.data?.message || "Something went wrong"
+                            error.response?.data?.message ||
+                              "Something went wrong",
                           );
                         }
                       }}
                     >
-                      Create Product
+                      Create Category
                     </button>
                     <Link className="btn btn-secondary ms-2" to="#">
                       Save
@@ -127,5 +142,5 @@ export const AddCategory = ({ update }) => {
         </div>
       </div>
     </main>
-  )
-}   
+  );
+};

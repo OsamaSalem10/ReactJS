@@ -26,6 +26,16 @@ export const NavbarVertical = () => {
             <span className="nav-label">Store Managements</span>
           </li>
           <li className="nav-item">
+            <Link className="nav-link " to="/customers">
+              <div className="d-flex align-items-center">
+                <span className="nav-link-icon">
+                  <i className="bi bi-people" />
+                </span>
+                <span className="nav-link-text">Customers</span>
+              </div>
+           </Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link " to="/products">
               <div className="d-flex align-items-center">
                 <span className="nav-link-icon">
@@ -42,6 +52,26 @@ export const NavbarVertical = () => {
                   <i className="bi bi-list-task" />
                 </span>
                 <span className="nav-link-text">Categories</span>
+              </div>
+           </Link>
+          </li>
+           <li className="nav-item">
+            <Link className="nav-link " to="/carts">
+              <div className="d-flex align-items-center">
+                <span className="nav-link-icon">
+                  <i className="bi bi-cart-plus" />
+                </span>
+                <span className="nav-link-text">Carts</span>
+              </div>
+           </Link>
+          </li>
+           <li className="nav-item">
+            <Link className="nav-link " to="/orders">
+              <div className="d-flex align-items-center">
+                <span className="nav-link-icon">
+                  <i className="bi bi-bag" />
+                </span>
+                <span className="nav-link-text">Orders</span>
               </div>
            </Link>
           </li>
@@ -90,51 +120,7 @@ export const NavbarVertical = () => {
               </div>
            </Link>
           </li>
-          <li className="nav-item">
-            <Link
-              aria-controls="navCustomer"
-              aria-expanded="false"
-              className="nav-link  collapsed "
-              data-bs-target="#navCustomer"
-              data-bs-toggle="collapse"
-              to="">
-              <div className="d-flex align-items-center">
-                <span className="nav-link-icon">
-                  <i className="bi bi-people" />
-                </span>
-                <span className="nav-link-text">Customers</span>
-                <span className="badge bg-light-success text-dark-success ms-2">
-                  New
-                </span>
-              </div>
-           </Link>
-            <div
-              className="collapse "
-              data-bs-parent="#sideNavbar"
-              id="navCustomer">
-              <ul className="nav flex-column">
-                <li className="nav-item">
-                  <Link className="nav-link " to="/customers">
-                    Customers
-                 </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link "
-                    to="/add-customer">
-                    Create Customers
-                 </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link "
-                    to="/edit-customer">
-                    Edit Customers
-                 </Link>
-                </li>
-              </ul>
-            </div>
-          </li>
+         
           <li className="nav-item">
             <Link className="nav-link " to="/reviews">
               <div className="d-flex align-items-center">

@@ -1,7 +1,7 @@
-import { Link  ,useNavigate} from "react-router-dom"
-import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { toast } from "react-toastify";
-import { createUser } from "../../server/post";
+import { _createUser } from "../../server/post";
 export const AddCustomers = ({ update }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,10 +25,7 @@ export const AddCustomers = ({ update }) => {
                       Dashboard
                     </Link>
                   </li>
-                  <li
-                    aria-current="page"
-                    className="breadcrumb-item active"
-                  >
+                  <li aria-current="page" className="breadcrumb-item active">
                     Create
                   </li>
                 </ol>
@@ -200,38 +197,37 @@ export const AddCustomers = ({ update }) => {
                             type="submit"
                             onClick={async (e) => {
                               e.preventDefault();
-                              // Create New Customer logic here
+
                               const formData = new FormData();
+
                               formData.append("name", name);
                               formData.append("email", email);
                               formData.append("phone", phone);
                               formData.append("password", password);
                               formData.append("location", localUsers);
                               formData.append("description", description);
+
                               if (image) {
                                 formData.append("image", image);
                               }
 
                               try {
-                                await createUser(formData);
+                                await _createUser(formData);
 
-                                toast.success("Customer created successfully");
+                                toast.success("Customer created successfully.");
                                 navigate("/customers");
                                 update();
-                              } catch (error) {
+                              } catch (err) {
                                 toast.error(
-                                  error.response?.data?.message || "Something went wrong"
+                                  err.response?.data?.message ||
+                                    "Something went wrong.",
                                 );
                               }
                             }}
                           >
-
                             Create Customer
                           </button>
-                          <button
-                            className="btn btn-secondary"
-                            type="submit"
-                          >
+                          <button className="btn btn-secondary" type="submit">
                             Cancel
                           </button>
                         </div>
@@ -245,5 +241,5 @@ export const AddCustomers = ({ update }) => {
         </div>
       </div>
     </main>
-  )
-}
+  );
+};

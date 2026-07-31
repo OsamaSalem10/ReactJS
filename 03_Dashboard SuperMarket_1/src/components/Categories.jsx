@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { _deleteCategory } from "../server/delete";
-export const Categories = ({ categories, updata }) => {
+import { useState } from "react";
+export const Categories = ({main, setMain, update}) => {
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
   return (
     <main className="main-content-wrapper">
@@ -44,14 +46,50 @@ export const Categories = ({ categories, updata }) => {
                         className="form-control"
                         placeholder="Search Category"
                         type="search"
+                        onChange={(e) => setSearch(e.target.value)}
+                      onKeyUp={() => {
+                          if (search === "") {
+                            update();
+                          } else {
+                       
+                            setMain((prev) => ({
+                              ...prev,
+                              categories: prev.categories.filter(
+                                (category) =>
+                                  category.name
+                                    .toLowerCase()
+                                    .includes(search.toLowerCase()) 
+                              ),
+                            }));
+                          }
+                        }}
                       />
                     </form>
                   </div>
                   <div className="col-xl-2 col-md-4 col-12">
-                    <select className="form-select">
-                      <option >Status</option>
-                      <option value="Published">Published</option>
-                      <option value="Unpublished">Unpublished</option>
+                    <select
+                      className="form-select"
+                      onChange={(e) => {
+                        const selectedStatus = e.target.value;
+                        if (
+                          selectedStatus === "" ||
+                          selectedStatus === "Status"
+                        ) {
+                          update();
+                        } else {
+                          setMain((prev) => ({
+                              ...prev,
+                              categories: prev.categories.filter(
+                                (category) =>
+                                 category.status === selectedStatus
+                              ),
+                            }));
+                        }
+                      }}
+                    >
+                      <option>Status</option>
+                      <option value="Active">Active</option>
+                      <option value="Inactive">Inactive</option>
                     </select>
                   </div>
                 </div>
@@ -63,14 +101,15 @@ export const Categories = ({ categories, updata }) => {
                       <tr>
                         <th>Image</th>
                         <th>Name</th>
+                        <th>Status</th>
                         <th>Edit</th>
                         <th>Delete</th>
                         <th />
                       </tr>
                     </thead>
                     <tbody>
-                      {categories && categories.length > 0 ? (
-                        categories.map((category) => (
+                      {main && main.categories && main.categories.length > 0 ? (
+                        main.categories.map((category) => (
                           <tr key={category.id}>
                             <td>
                               <Link to="#!">
@@ -81,10 +120,20 @@ export const Categories = ({ categories, updata }) => {
                                 />
                               </Link>
                             </td>
-                           
+
+                            <td>{category.name}</td>
                             <td>
-                                {category.name}
                             
+                                {category.status === "Active" ? (
+                                  <span className="badge bg-light-primary text-dark-success">
+                                    {category.status}
+                                  </span>
+                                ) : (
+                                  <span className="badge bg-light-danger text-dark-danger">
+                                    {category.status}
+                                  </span>
+                                )}
+                              
                             </td>
                             <td>
                               <button
@@ -117,7 +166,7 @@ export const Categories = ({ categories, updata }) => {
                                         "User deleted successfully",
                                       );
 
-                                      updata();
+                                      update();
                                     } catch (error) {
                                       toast.error(
                                         error.response?.data?.message ||
@@ -131,7 +180,6 @@ export const Categories = ({ categories, updata }) => {
                                 Delete
                               </button>
                             </td>
-                          
                           </tr>
                         ))
                       ) : (

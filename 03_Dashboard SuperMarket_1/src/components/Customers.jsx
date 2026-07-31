@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { _deleteUser } from "../server/delete"
+import { _deleteUser } from "../server/delete";
 import { toast } from "react-toastify";
-export const Customers = ({ users , updata}) => {
+import { useState } from "react";
+export const Customers = ({ main, setMain, update }) => {
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
   return (
     <main className="main-content-wrapper">
@@ -48,9 +50,24 @@ export const Customers = ({ users , updata}) => {
                       <input
                         aria-label="Search"
                         className="form-control"
-                        id="searchCustomers"
                         placeholder="Search Customers"
                         type="search"
+                        onChange={(e) => setSearch(e.target.value)}
+                        onKeyUp={() => {
+                          if (search === "") {
+                            update();
+                          } else {
+                            console.log("users", main.users);
+                            setMain((prev) => ({
+                              ...prev,
+                              users: prev.users.filter((user) =>
+                                user.name
+                                  .toLowerCase()
+                                  .includes(search.toLowerCase()),
+                              ),
+                            }));
+                          }
+                        }}
                       />
                     </form>
                   </div>
@@ -68,84 +85,109 @@ export const Customers = ({ users , updata}) => {
                         <th>Description</th>
                         <th>Edit</th>
                         <th>Delete</th>
+                        <th>Carts</th>
                         <th />
                       </tr>
                     </thead>
                     <tbody>
-                      {users.map((user) => {
-                        return (
-                          <tr key={user.id}>
-                            <td>
-                              <div className="d-flex align-items-center">
-                                <img
-                                  className="avatar avatar-xs rounded-circle"
-                                  src={user.image}
-                                  alt={user.name}
-                                />
-                                <div className="ms-2">
-                                  <Link
-                                    aria-controls="offcanvasRight"
-                                    className="text-inherit"
-                                    data-bs-target="#offcanvasRight"
-                                    data-bs-toggle="offcanvas"
-                                    to="#!"
-                                  >
-                                    {user.name}
-                                  </Link>
+                      {main && main.users && main.users.length > 0 ? (
+                        main.users.map((user) => {
+                          return (
+                            <tr key={user.id}>
+                              <td>
+                                <div className="d-flex align-items-center">
+                                  <img
+                                    className="avatar avatar-xs rounded-circle"
+                                    src={user.image}
+                                    alt={user.name}
+                                  />
+                                  <div className="ms-2">
+                                    <Link
+                                      aria-controls="offcanvasRight"
+                                      className="text-inherit"
+                                      data-bs-target="#offcanvasRight"
+                                      data-bs-toggle="offcanvas"
+                                      to="#!"
+                                    >
+                                      {user.name}
+                                    </Link>
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
-                            <td>{user.email}</td>
-                            <td>{user.phone}</td>
-                            <td>{user.location}</td>
-                            <td>
-                              {user.description
-                                ? user.description.slice(0, 10)
-                                : "No Description"}
-                            </td>
-                            <td>
-                              <button
-                                className="btn btn-success btn-sm"
-                                onClick={() => navigate(`/edit-customer`, { state: { user } })}
-                              >
-                                <i className="bi bi-pencil-square me-1" />
-                                Edit
-                              </button>
-                            </td>
-                            <td>
-                              <button
-                                className="btn btn-danger btn-sm"
-                                onClick={async (e) => {
-                                    e.preventDefault();
-                                  const confirmDelete = window.confirm(
-                                    "Are you sure you want to delete this user?"
-                                  );
-                                  if (!confirmDelete) {
-                                    return
-                                  } else {
-                                    try {
-                                      await _deleteUser(user.id)
-
-                                      toast.success("User deleted successfully");
-
-                                      updata();
-                                    } catch (error) {
-                                      toast.error(
-                                        error.response?.data?.message || "Delete failed"
-                                      );
-                                    }
+                              </td>
+                              <td>{user.email}</td>
+                              <td>{user.phone}</td>
+                              <td>{user.location}</td>
+                              <td>
+                                {user.description
+                                  ? user.description.slice(0, 10)
+                                  : "No Description"}
+                              </td>
+                              <td>
+                                <button
+                                  className="btn btn-success btn-sm"
+                                  onClick={() =>
+                                    navigate(`/edit-customer`, {
+                                      state: { user },
+                                    })
                                   }
-                                }
-                                }
-                              >
-                                <i className="bi bi-trash3 me-1" />
-                                Delete
-                              </button>
-                            </td>
+                                >
+                                  <i className="bi bi-pencil-square me-1" />
+                                  Edit
+                                </button>
+                              </td>
+                              <td>
+                                <button
+                                  className="btn btn-danger btn-sm"
+                                  onClick={async (e) => {
+                                    e.preventDefault();
+                                    const confirmDelete = window.confirm(
+                                      "Are you sure you want to delete this user?",
+                                    );
+                                    if (!confirmDelete) {
+                                      return;
+                                    } else {
+                                      try {
+                                        await _deleteUser(user.id);
 
-                          </tr>
-                        );
-                      })}
+                                        toast.success(
+                                          "User deleted successfully",
+                                        );
+
+                                        update();
+                                      } catch (error) {
+                                        toast.error(
+                                          error.response?.data?.message ||
+                                            "Delete failed",
+                                        );
+                                      }
+                                    }
+                                  }}
+                                >
+                                  <i className="bi bi-trash3 me-1" />
+                                  Delete
+                                </button>
+                              </td>
+                              <td>
+                                <button className="btn btn-info btn-sm text-canter"
+                                  onClick={() =>
+                                    navigate(`/carts`, {
+                                      state: { user },
+                                    })
+                                  }
+                                >
+                                  <i className="bi bi-cart me-1" />cart
+                                </button>
+                              </td>
+                            </tr>
+                          );
+                        })
+                      ) : (
+                        <tr>
+                          <td colSpan="5" className="text-center">
+                            No Customer found
+                          </td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                 </div>

@@ -7,10 +7,13 @@ export const EditCategory = ({ update }) => {
   const location = useLocation();
   const category = location.state?.category;
   const [name, setName] = useState(category ? category.name : "");
+  const [status, setStatus] = useState(category ? category.status : "");
   const [image, setImage] = useState(category ? category.image : null);
+  console.log(category)
   useEffect(() => {
     if (!category) return;
     setName(category.name);
+    setStatus(category.status);
     setImage(category.image);
   }, [category]);
 
@@ -21,7 +24,8 @@ export const EditCategory = ({ update }) => {
           <div className="col-md-12">
             <div className="d-md-flex justify-content-between align-items-center">
               <div>
-                <h2>Add New Category</h2>
+                <h2>
+                  Edit Category</h2>
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb mb-0">
                     <li className="breadcrumb-item">
@@ -100,7 +104,17 @@ export const EditCategory = ({ update }) => {
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
-
+ <div className="mb-3 col-lg-6">
+                    <label className="form-label">Status</label>
+                    <select
+                    value={status}
+                      className="form-select"
+                      onChange={(e) => setStatus(e.target.value)}
+                    >
+                      <option value="Active">Active</option>
+                      <option value="Inactive">Inactive</option>
+                    </select>
+                  </div>
                   <div className="col-lg-12">
                     <button
                       className="btn btn-primary"
@@ -110,7 +124,7 @@ export const EditCategory = ({ update }) => {
                         // Create New Customer logic here
                         const formData = new FormData();
                         formData.append("name", name);
-
+                        formData.append("status", status);
                         if (image) {
                           formData.append("image", image);
                         }
@@ -118,7 +132,7 @@ export const EditCategory = ({ update }) => {
                         try {
                           await _editCategory(category.id , formData);
 
-                          toast.success("Customer created successfully");
+                          toast.success("Category updated successfully");
                           navigate("/categories");
                           update();
                         } catch (error) {
