@@ -3,7 +3,13 @@ import { useState } from "react";
 import { Navbar } from "./components/Navbar";
 import { DashboardDefault, DashboardAnalytics, DashboardSaas, DashboardSocial , DashboardCrypto} from "./components/DashboardDefault";
 import { Products , Details, Orders, Customers, Invoice} from "./components/Ecommerce";
+import { ProjectsOverview  , ProjectsDetails} from "./components/Projects";
+import { Chat } from "./components/Chat";
+import { FileManager } from "./components/FileManager";
 import { NavbarVertical } from "./components/NavbarVertical"
+import { EmailInbox  , EmailDetails} from "./components/Email";
+import { TasksList , TasksKanban} from "./components/Tasks";
+import { PagesProfile  , PagesBlank , PagesSettings} from "./components/Profile";
 function App() {
   const [collapsed, setCollapsed] = useState(false);
 
@@ -24,20 +30,18 @@ function App() {
           <Route path="/customers" element={<Customers />} />
           <Route path="/invoice" element={<Invoice />} />
    
-          <Route path="/projects-overview" element={<DashboardDefault />} />
-          <Route path="/projects-details" element={<DashboardDefault />} />
-          <Route path="/chat" element={<DashboardDefault />} />
-          <Route path="/file-manager" element={<DashboardDefault />} />
-          <Route path="/calendar" element={<DashboardDefault />} />
-          <Route path="/email-inbox" element={<DashboardDefault />} />
-          <Route path="/email-details" element={<DashboardDefault />} />
-          <Route path="/tasks-list" element={<DashboardDefault />} />
-          <Route path="/tasks-kanban" element={<DashboardDefault />} />
-          <Route path="/pages-profile" element={<DashboardDefault />} />
-          <Route path="/pages-settings" element={<DashboardDefault />} />
-          <Route path="/pages-blank" element={<DashboardDefault />} />
-          <Route path="/tasks-kanban" element={<DashboardDefault />} />
-
+          <Route path="/projects-overview" element={<ProjectsOverview />} />
+          <Route path="/projects-details" element={<ProjectsDetails />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/file-manager" element={<FileManager />} />
+          <Route path="/email-inbox" element={<EmailInbox />} />
+          <Route path="/email-details" element={<EmailDetails />} />
+          <Route path="/tasks-list" element={<TasksList />} />
+          <Route path="/tasks-kanban" element={<TasksKanban />} />
+          <Route path="/pages-profile" element={<PagesProfile />} />
+          <Route path="/pages-settings" element={<PagesSettings />} />
+          <Route path="/pages-blank" element={<PagesBlank />} />
+        
 
         </Routes>
       </main>
