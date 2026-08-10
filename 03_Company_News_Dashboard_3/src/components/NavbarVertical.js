@@ -23,9 +23,21 @@ export const NavbarVertical = ({ collapsed }) => {
                     <span className="me-3">AppStack</span>
                 </Link>
                 <li className="sidebar-item">
-                    <Link className="sidebar-link" to="/users">
+                    <Link className="sidebar-link" to="/">
                         <i className="bi-people align-middle" />
                         <span className="align-middle">Users</span>
+                    </Link>
+                </li>
+                <li className="sidebar-item">
+                    <Link className="sidebar-link" to="/categories">
+                        <i className="bi-folder align-middle" />
+                        <span className="align-middle">Categories</span>
+                    </Link>
+                </li>
+                <li className="sidebar-item">
+                    <Link className="sidebar-link" to="/companies">
+                        <i className="bi-building align-middle" />
+                        <span className="align-middle">Companies</span>
                     </Link>
                 </li>
               
