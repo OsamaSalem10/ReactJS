@@ -39,49 +39,49 @@ export const NavbarVertical = () =>{
       </span>
       <span className="nav-text">Profile</span>
     </Link>
-    <Link className="nav-link" to="charts.html">
+    <Link className="nav-link" to="charts">
       <span className="nav-icon">
         <i aria-hidden="true" className="bi bi-bar-chart-line" />
       </span>
       <span className="nav-text">Charts</span>
     </Link>
-    <Link className="nav-link" to="tables.html">
+    <Link className="nav-link" to="tables">
       <span className="nav-icon">
         <i aria-hidden="true" className="bi bi-table" />
       </span>
       <span className="nav-text">Tables</span>
     </Link>
-    <Link className="nav-link" to="forms.html">
+    <Link className="nav-link" to="forms">
       <span className="nav-icon">
         <i aria-hidden="true" className="bi bi-ui-checks-grid" />
       </span>
       <span className="nav-text">Forms</span>
     </Link>
-    <Link className="nav-link" to="components.html">
+    <Link className="nav-link" to="components">
       <span className="nav-icon">
         <i aria-hidden="true" className="bi bi-grid-3x3-gap" />
       </span>
       <span className="nav-text">Components</span>
     </Link>
-    <Link className="nav-link" to="alerts.html">
+    <Link className="nav-link" to="alerts">
       <span className="nav-icon">
         <i aria-hidden="true" className="bi bi-exclamation-triangle" />
       </span>
       <span className="nav-text">Alerts</span>
     </Link>
-    <Link className="nav-link" to="modals.html">
+    <Link className="nav-link" to="modals">
       <span className="nav-icon">
         <i aria-hidden="true" className="bi bi-window-stack" />
       </span>
       <span className="nav-text">Modals</span>
     </Link>
-    <Link className="nav-link" to="settings.html">
+    <Link className="nav-link" to="settings">
       <span className="nav-icon">
         <i aria-hidden="true" className="bi bi-gear" />
       </span>
       <span className="nav-text">Settings</span>
     </Link>
-    <Link className="nav-link" to="blank.html">
+    <Link className="nav-link" to="blank">
       <span className="nav-icon">
         <i aria-hidden="true" className="bi bi-file-earmark" />
       </span>
