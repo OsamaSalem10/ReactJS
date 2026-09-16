@@ -1,28 +1,8 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { _getCarts } from "../server/get";
+import { Link, useNavigate } from "react-router-dom";
 import { _deleteCart } from "../server/delete";
 import { toast } from "react-toastify";
 export const Carts = ({ main, setMain, update }) => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const user = location.state?.user;
-  const [userCart, setUserCart] = useState([]);
-  const updateCart = async () => {
-    if (!user?.id) return;
-
-    try {
-      const cart = await _getCarts(user.id);
-      setUserCart(cart);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    updateCart();
-  }, [user]);
-
   return (
     <main className="main-content-wrapper">
       <div className="container">
@@ -46,14 +26,13 @@ export const Carts = ({ main, setMain, update }) => {
               </div>
               <div>
                 <button
-                  className="btn btn-primary"
-                  onClick={() =>
-                    navigate(`/add-cart`, {
-                      state: { user },
-                    })
-                  }
+                  className="btn btn-light"
+                  onClick={() => {
+                    localStorage.removeItem("user");
+                    navigate("/customers");
+                  }}
                 >
-                  Add Cart
+                  Back Customers
                 </button>
               </div>
             </div>
@@ -74,14 +53,6 @@ export const Carts = ({ main, setMain, update }) => {
                       />
                     </form>
                   </div>
-                  <div className="col-lg-2 col-md-4 col-12">
-                    <select className="form-select">
-                      <option selected>Status</option>
-                      <option value="Success">Success</option>
-                      <option value="Pending">Pending</option>
-                      <option value="Cancel">Cancel</option>
-                    </select>
-                  </div>
                 </div>
               </div>
               <div className="card-body p-0">
@@ -89,29 +60,36 @@ export const Carts = ({ main, setMain, update }) => {
                   <table className="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
                     <thead className="bg-light">
                       <tr>
-                        <th>Name Customer</th>
-                        <th>Image</th>
+                        <th>ID user</th>
+                        <th>Name user</th>
+                        <th>Image product</th>
                         <th>Name Product</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Discount</th>
                         <th>Edit</th>
                         <th>Delete</th>
-                        <th>Order</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {userCart && userCart.length > 0 ? (
-                        userCart.map((cart) => (
-                          <tr key={cart.cart_id}>
+                      {main.carts?.length > 0 ? (
+                        main.carts.map((cart) => (
+                          <tr key={cart.cart_id ?? cart.id}>
                             <td>
                               <Link className="text-reset" to="#">
-                                {
-                                  main.users?.find((e) => e.id === cart.user_id)
-                                    ?.name
-                                }
+                                {main.users?.find(
+                                  (user) => user.id === cart.user_id,
+                                )?.id ?? "Unknown Product"}
                               </Link>
                             </td>
+                            <td>
+                              <Link className="text-reset" to="#">
+                                {main.users?.find(
+                                  (user) => user.id === cart.user_id,
+                                )?.name ?? "Unknown Product"}
+                              </Link>
+                            </td>
+
                             <td>
                               <Link to="#!">
                                 <img
@@ -119,7 +97,8 @@ export const Carts = ({ main, setMain, update }) => {
                                   className="icon-shape icon-md"
                                   src={
                                     main.products?.find(
-                                      (e) => e.id === cart.product_id,
+                                      (product) =>
+                                        product.id === cart.product_id,
                                     )?.image ??
                                     "../assets/images/icons/bakery.svg"
                                   }
@@ -128,20 +107,33 @@ export const Carts = ({ main, setMain, update }) => {
                             </td>
 
                             <td>
-                              {main &&
-                                main.products?.find(
-                                  (e) => e.id === cart.product_id,
-                                )?.name}
+                              {main.products?.find(
+                                (product) => product.id === cart.product_id,
+                              )?.name ?? "Unknown Product"}
                             </td>
-                            <td>$ {cart.price}</td>
-                            <td>$ {cart.quantity}</td>
-                            <td> {cart.discount}</td>
+
+                            <td>
+                              ${" "}
+                              {main.products?.find(
+                                (product) => product.id === cart.product_id,
+                              )?.price ?? "Unknown Product"}
+                            </td>
+
+                            <td>{cart.quantity}</td>
+                            <td>
+                              ${" "}
+                              {main.products?.find(
+                                (product) => product.id === cart.product_id,
+                              )?.discount ?? "Unknown Product"}
+                            </td>
+                    
+
                             <td>
                               <button
                                 className="btn btn-success btn-sm"
                                 onClick={() =>
-                                  navigate(`/edit-customer`, {
-                                    state: { user },
+                                  navigate("/edit-cart", {
+                                    state: { cart },
                                   })
                                 }
                               >
@@ -149,31 +141,28 @@ export const Carts = ({ main, setMain, update }) => {
                                 Edit
                               </button>
                             </td>
+
                             <td>
                               <button
                                 className="btn btn-danger btn-sm"
-                                onClick={async (e) => {
-                                  e.preventDefault();
+                                onClick={async () => {
                                   const confirmDelete = window.confirm(
-                                    "Are you sure you want to delete this Cart ?",
+                                    "Are you sure you want to delete this Cart?",
                                   );
-                                  if (!confirmDelete) {
-                                    return;
-                                  } else {
-                                    try {
-                                      await _deleteCart(cart.cart_id);
 
-                                      toast.success(
-                                        "cart deleted successfully",
-                                      );
+                                  if (!confirmDelete) return;
 
-                                      update();
-                                    } catch (error) {
-                                      toast.error(
-                                        error.response?.data?.message ||
-                                          "Delete failed",
-                                      );
-                                    }
+                                  try {
+                                    await _deleteCart(cart.cart_id);
+
+                                    toast.success("Cart deleted successfully");
+
+                                    await update();
+                                  } catch (error) {
+                                    toast.error(
+                                      error.response?.data?.message ||
+                                        "Delete failed",
+                                    );
                                   }
                                 }}
                               >
@@ -181,18 +170,7 @@ export const Carts = ({ main, setMain, update }) => {
                                 Delete
                               </button>
                             </td>
-                            <td>
-                              <button
-                                className="btn btn-success btn-sm"
-                                onClick={() =>
-                                  navigate("/order-list", {
-                                    state: { cart },
-                                  })
-                                }
-                              >
-                                List Order
-                              </button>
-                            </td>
+
                             <td>
                               <div className="dropdown">
                                 <Link
@@ -203,18 +181,45 @@ export const Carts = ({ main, setMain, update }) => {
                                 >
                                   <i className="feather-icon icon-more-vertical fs-5" />
                                 </Link>
+
                                 <ul className="dropdown-menu">
                                   <li>
-                                    <Link className="dropdown-item" to="#">
-                                      <i className="bi bi-trash me-3" />
-                                      Delete
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link className="dropdown-item" to="#">
+                                    <button
+                                      type="button"
+                                      className="dropdown-item"
+                                      onClick={() =>
+                                        navigate("/edit-cart", {
+                                          state: { cart },
+                                        })
+                                      }
+                                    >
                                       <i className="bi bi-pencil-square me-3" />
                                       Edit
-                                    </Link>
+                                    </button>
+                                  </li>
+
+                                  <li>
+                                    <button
+                                      type="button"
+                                      className="dropdown-item text-danger"
+                                      onClick={async () => {
+                                        try {
+                                          await _deleteCart(cart.cart_id);
+                                          toast.success(
+                                            "Cart deleted successfully",
+                                          );
+                                          await update();
+                                        } catch (error) {
+                                          toast.error(
+                                            error.response?.data?.message ||
+                                              "Delete failed",
+                                          );
+                                        }
+                                      }}
+                                    >
+                                      <i className="bi bi-trash me-3" />
+                                      Delete
+                                    </button>
                                   </li>
                                 </ul>
                               </div>
@@ -223,7 +228,7 @@ export const Carts = ({ main, setMain, update }) => {
                         ))
                       ) : (
                         <tr>
-                          <td colSpan="5" className="text-center">
+                          <td colSpan="9" className="text-center">
                             No Carts found
                           </td>
                         </tr>
@@ -231,38 +236,6 @@ export const Carts = ({ main, setMain, update }) => {
                     </tbody>
                   </table>
                 </div>
-              </div>
-              <div className="border-top d-md-flex justify-content-between align-items-center p-6">
-                <span>Showing 1 to 8 of 12 entries</span>
-                <nav className="mt-2 mt-md-0">
-                  <ul className="pagination mb-0">
-                    <li className="page-item disabled">
-                      <Link className="page-link" to="#!">
-                        Previous
-                      </Link>
-                    </li>
-                    <li className="page-item">
-                      <Link className="page-link active" to="#!">
-                        1
-                      </Link>
-                    </li>
-                    <li className="page-item">
-                      <Link className="page-link" to="#!">
-                        2
-                      </Link>
-                    </li>
-                    <li className="page-item">
-                      <Link className="page-link" to="#!">
-                        3
-                      </Link>
-                    </li>
-                    <li className="page-item">
-                      <Link className="page-link" to="#!">
-                        Next
-                      </Link>
-                    </li>
-                  </ul>
-                </nav>
               </div>
             </div>
           </div>

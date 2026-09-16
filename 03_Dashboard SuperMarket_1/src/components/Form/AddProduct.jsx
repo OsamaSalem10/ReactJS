@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { createProduct } from "../../server/post";
-export const AddProduct = ({main, setMain, update}) => {
+export const AddProduct = ({ main, setMain, update }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
@@ -103,11 +103,12 @@ export const AddProduct = ({main, setMain, update}) => {
                     >
                       <option value="">Select Category</option>
 
-                      {main&& main.categories?.map((category) => (
-                        <option key={category.id} value={category.id}>
-                          {category.name}
-                        </option>
-                      ))}
+                      {main &&
+                        main.categories?.map((category) => (
+                          <option key={category.id} value={category.id}>
+                            {category.name}
+                          </option>
+                        ))}
                     </select>
                   </div>
                   <div className="mb-3 col-lg-6">
@@ -152,7 +153,7 @@ export const AddProduct = ({main, setMain, update}) => {
                       onChange={(e) => setDiscount(e.target.value)}
                     />
                   </div>
-                 
+
                   <div className="col-lg-12">
                     <button
                       className="btn btn-primary"
@@ -165,7 +166,7 @@ export const AddProduct = ({main, setMain, update}) => {
                         formData.append("category_id", category);
                         formData.append("discount", discount);
                         formData.append("status", status);
-                      
+
                         formData.append("name", name);
                         formData.append("price", price);
 
@@ -180,10 +181,15 @@ export const AddProduct = ({main, setMain, update}) => {
                           navigate("/products");
                           update();
                         } catch (error) {
-                          console.log(error);
+                          console.log(
+                            "Error creating customer:",
+                            error.response?.data?.errors,
+                          );
+
                           toast.error(
-                            error.response?.data?.message ||
-                              "Something went wrong",
+                            error.response?.data?.errors?.[0]?.msg ||
+                              error.response?.data?.message ||
+                              "Something went wrong.",
                           );
                         }
                       }}

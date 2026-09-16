@@ -1,15 +1,16 @@
-import { Link, useNavigate , useLocation} from "react-router-dom";
-import { useState  , useEffect} from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { _editCategory } from "../../server/edit";
 import { toast } from "react-toastify";
-export const EditCategory = ({ update }) => {
+export const EditCategory = ({ main, update }) => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
-  const category = location.state?.category;
+  const category = main?.categories?.find((u) => Number(u.id) === Number(id));
+
   const [name, setName] = useState(category ? category.name : "");
   const [status, setStatus] = useState(category ? category.status : "");
   const [image, setImage] = useState(category ? category.image : null);
-  console.log(category)
+  console.log(category);
   useEffect(() => {
     if (!category) return;
     setName(category.name);
@@ -24,8 +25,7 @@ export const EditCategory = ({ update }) => {
           <div className="col-md-12">
             <div className="d-md-flex justify-content-between align-items-center">
               <div>
-                <h2>
-                  Edit Category</h2>
+                <h2>Edit Category</h2>
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb mb-0">
                     <li className="breadcrumb-item">
@@ -63,7 +63,7 @@ export const EditCategory = ({ update }) => {
                       alt=""
                       className="image icon-shape icon-xxxl bg-light rounded-4"
                       src={
-                        category.image
+                        category && category.image
                           ? `${category.image}`
                           : "../assets/images/docs/placeholder-img.jpg"
                       }
@@ -104,10 +104,10 @@ export const EditCategory = ({ update }) => {
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
- <div className="mb-3 col-lg-6">
+                  <div className="mb-3 col-lg-6">
                     <label className="form-label">Status</label>
                     <select
-                    value={status}
+                      value={status}
                       className="form-select"
                       onChange={(e) => setStatus(e.target.value)}
                     >
@@ -125,20 +125,30 @@ export const EditCategory = ({ update }) => {
                         const formData = new FormData();
                         formData.append("name", name);
                         formData.append("status", status);
-                        if (image) {
-                          formData.append("image", image);
-                        }
+              if (image) {
+                                formData.append("image", image);
+                              }else{
+                                formData.append("image", category.image);
+                              }
+
+
 
                         try {
-                          await _editCategory(category.id , formData);
+                          await _editCategory(category.id, formData);
 
                           toast.success("Category updated successfully");
                           navigate("/categories");
                           update();
                         } catch (error) {
+                          console.log(
+                            "Error updating category:",
+                            error.response?.data?.errors,
+                          );
+
                           toast.error(
-                            error.response?.data?.message ||
-                              "Something went wrong",
+                            error.response?.data?.errors?.[0]?.msg ||
+                              error.response?.data?.message ||
+                              "Something went wrong.",
                           );
                         }
                       }}

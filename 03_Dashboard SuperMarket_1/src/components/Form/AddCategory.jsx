@@ -89,13 +89,14 @@ export const AddCategory = ({ update }) => {
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
-                  <div className="mb-3 col-lg-6">
+                      <div className="mb-3 col-lg-6">
                     <label className="form-label">Status</label>
                     <select
-                      value={status}
                       className="form-select"
+                      value={status}
                       onChange={(e) => setStatus(e.target.value)}
                     >
+                      <option value="">Select Status</option>
                       <option value="Active">Active</option>
                       <option value="Inactive">Inactive</option>
                     </select>
@@ -122,11 +123,17 @@ export const AddCategory = ({ update }) => {
                           navigate("/categories");
                           update();
                         } catch (error) {
-                          toast.error(
-                            error.response?.data?.message ||
-                              "Something went wrong",
-                          );
-                        }
+                                console.log(
+                                  "Error creating customer:",
+                                  error.response?.data?.errors,
+                                );
+
+                                toast.error(
+                                  error.response?.data?.errors?.[0]?.msg ||
+                                    error.response?.data?.message ||
+                                    "Something went wrong.",
+                                );
+                              }
                       }}
                     >
                       Create Category

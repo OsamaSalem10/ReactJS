@@ -1,10 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { _deleteCategory } from "../server/delete";
 import { useState } from "react";
 export const Categories = ({main, setMain, update}) => {
   const [search, setSearch] = useState("");
-  const navigate = useNavigate();
   return (
     <main className="main-content-wrapper">
       <div className="container">
@@ -136,17 +135,13 @@ export const Categories = ({main, setMain, update}) => {
                               
                             </td>
                             <td>
-                              <button
+                              <Link
                                 className="btn btn-success btn-sm"
-                                onClick={() =>
-                                  navigate(`/edit-category`, {
-                                    state: { category },
-                                  })
-                                }
+                                to={`/edit-category/${category.id}`}
                               >
                                 <i className="bi bi-pencil-square me-1" />
                                 Edit
-                              </button>
+                              </Link>
                             </td>
                             <td>
                               <button

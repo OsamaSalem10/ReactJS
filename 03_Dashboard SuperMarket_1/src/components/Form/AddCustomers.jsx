@@ -217,9 +217,15 @@ export const AddCustomers = ({ update }) => {
                                 toast.success("Customer created successfully.");
                                 navigate("/customers");
                                 update();
-                              } catch (err) {
+                              } catch (error) {
+                                console.log(
+                                  "Error creating customer:",
+                                  error.response?.data?.errors,
+                                );
+
                                 toast.error(
-                                  err.response?.data?.message ||
+                                  error.response?.data?.errors?.[0]?.msg ||
+                                    error.response?.data?.message ||
                                     "Something went wrong.",
                                 );
                               }
@@ -227,9 +233,9 @@ export const AddCustomers = ({ update }) => {
                           >
                             Create Customer
                           </button>
-                          <button className="btn btn-secondary" type="submit">
+                          <Link className="btn btn-secondary" to="/customers">
                             Cancel
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>

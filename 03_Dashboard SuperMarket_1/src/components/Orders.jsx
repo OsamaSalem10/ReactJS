@@ -60,12 +60,13 @@ export const Orders = ({ main , setMain, update}) => {
                   <table className="table table-centered table-hover text-nowrap table-borderless mb-0 table-with-checkbox">
                     <thead className="bg-light">
                       <tr>
-                        <th>Order ID</th>
-                        <th>Image</th>
-                        <th>Customer</th>
+                        <th>ID Order</th>
+                        <th>Name User</th>
                         <th>Total</th>
-                        <th>Status</th>
-                        <th>Payment</th>
+                        <th>Payment Method</th>
+                        <th>payment Status</th>
+                        <th>order Status</th>
+                        <th>Shipping Address</th>
                         <th>Date & Time</th>
                         <th>List Order</th>
                       </tr>
@@ -79,35 +80,28 @@ export const Orders = ({ main , setMain, update}) => {
                                 {order.id}
                               </Link>
                             </td>
-                            <td>
-                              <Link to="#!">
-                                <img
-                                  alt=""
-                                  className="icon-shape icon-md"
-                                  src={
-                                    main.users?.find((e) => e.id === order.user_id)
-                                      ?.image ??
-                                    "../assets/images/icons/bakery.svg"
-                                  }
-                                />
-                              </Link>
-                            </td>
+                           
 
                             <td>
                               {main &&
                                 main.users?.find((e) => e.id === order.user_id)
                                   ?.name}
                             </td>
-                            <td>${order.total}</td>
+                            <td>$ {order.total}</td>
                             <td>
                               {" "}
                               <span className="badge bg-light-primary text-dark-primary">
-                                {order.status}
+                                {order.payment_method}
                               </span>
                             </td>
                             <td>
                               <span className="badge bg-light-primary text-dark-primary">
                                 {order.payment_status}
+                              </span>
+                            </td>
+                            <td>
+                              <span className="badge bg-light-primary text-dark-primary">
+                                {order.order_status}
                               </span>
                             </td>
                             <td>

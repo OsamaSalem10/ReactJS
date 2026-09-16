@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { _editProduct } from "../../server/edit";
-export const EditProduct = ({main, setMain, update}) => {
+export const EditProduct = ({ main, update }) => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
-  const product = location.state?.product;
+  const product = main?.products?.find((u) => Number(u.id) === Number(id));
   const [name, setName] = useState(product ? product.name : "");
-  const [description, setDescription] = useState(product ? product.description : "");
+  const [description, setDescription] = useState(
+    product ? product.description : "",
+  );
   const [price, setPrice] = useState(product ? product.price : 0);
   const [category, setCategory] = useState(product ? product.category_id : "");
   const [discount, setDiscount] = useState(product ? product.discount : 0);
   const [status, setStatus] = useState(product ? product.status : "");
-  
+
   const [image, setImage] = useState(product ? product.image : null);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export const EditProduct = ({main, setMain, update}) => {
     setStatus(product.status);
     setImage(product.image);
   }, [product]);
-  
+
   return (
     <main className="main-content-wrapper">
       <div className="container">
@@ -70,9 +72,8 @@ export const EditProduct = ({main, setMain, update}) => {
                     <img
                       alt=""
                       className="image icon-shape icon-xxxl bg-light rounded-4"
-
-                       src={
-                        product.image
+                      src={
+                        product && product.image
                           ? `${product.image}`
                           : "../assets/images/icons/bakery.svg"
                       }
@@ -115,23 +116,24 @@ export const EditProduct = ({main, setMain, update}) => {
                   </div>
                   <div className="mb-3 col-lg-6">
                     <label className="form-label">Category</label>
-                      <select
+                    <select
                       className="form-select"
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
                     >
                       <option value="">Select Category</option>
 
-                      {main && main.categories?.map((category) => (
-                        <option key={category.id} value={category.id}>
-                          {category.name}
-                        </option>
-                      ))}
+                      {main &&
+                        main.categories?.map((category) => (
+                          <option key={category.id} value={category.id}>
+                            {category.name}
+                          </option>
+                        ))}
                     </select>
                   </div>
                   <div className="mb-3 col-lg-6">
                     <label className="form-label">Status</label>
-                      <select
+                    <select
                       className="form-select"
                       value={status}
                       onChange={(e) => setStatus(e.target.value)}
@@ -171,7 +173,7 @@ export const EditProduct = ({main, setMain, update}) => {
                       onChange={(e) => setDiscount(e.target.value)}
                     />
                   </div>
-                  
+
                   <div className="col-lg-12">
                     <button
                       className="btn btn-primary"
@@ -180,12 +182,12 @@ export const EditProduct = ({main, setMain, update}) => {
                         e.preventDefault();
 
                         const formData = new FormData();
-                        formData.append("id" , product.id)
+                        formData.append("id", product.id);
                         formData.append("description", description);
                         formData.append("category_id", category);
                         formData.append("discount", discount);
                         formData.append("status", status);
-                    
+
                         formData.append("name", name);
                         formData.append("price", price);
 
@@ -194,7 +196,7 @@ export const EditProduct = ({main, setMain, update}) => {
                         }
 
                         try {
-                          await _editProduct(product.id , formData);
+                          await _editProduct(product.id, formData);
 
                           toast.success("Update successfully");
                           navigate("/products");

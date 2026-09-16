@@ -1,10 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { _deleteProduct } from "../server/delete";
 import { useState } from "react";
 export const Products = ({ main, setMain, update }) => {
   const [search, setSearch] = useState("");
-  const navigate = useNavigate();
 
   return (
     <main className="main-content-wrapper">
@@ -52,7 +51,6 @@ export const Products = ({ main, setMain, update }) => {
                           if (search === "") {
                             update();
                           } else {
-                       
                             setMain((prev) => ({
                               ...prev,
                               products: prev.products.filter(
@@ -82,23 +80,24 @@ export const Products = ({ main, setMain, update }) => {
                         ) {
                           update();
                         } else {
-                             setMain((prev) => ({
-                              ...prev,
-                              products: prev.products.filter(
-                                (product) =>
-                                 product.category_id === parseInt(selectedCategoryId)
-                              ),
-                            }));
-                          
+                          setMain((prev) => ({
+                            ...prev,
+                            products: prev.products.filter(
+                              (product) =>
+                                product.category_id ===
+                                parseInt(selectedCategoryId),
+                            ),
+                          }));
                         }
                       }}
                     >
                       <option>Category</option>
-                      {main && main.categories.map((category) => (
-                        <option key={category.id} value={category.id}>
-                          {category.name}
-                        </option>
-                      ))}
+                      {main &&
+                        main.categories.map((category) => (
+                          <option key={category.id} value={category.id}>
+                            {category.name}
+                          </option>
+                        ))}
                     </select>
                   </div>
                 </div>
@@ -120,7 +119,7 @@ export const Products = ({ main, setMain, update }) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {main &&  main.products && main.products.length > 0 ? (
+                      {main && main.products && main.products.length > 0 ? (
                         main.products.map((product) => (
                           <tr key={product.id}>
                             <td>
@@ -143,7 +142,8 @@ export const Products = ({ main, setMain, update }) => {
                             </td>
                             <td>
                               {" "}
-                              {main && main.categories &&
+                              {main &&
+                                main.categories &&
                                 main.categories.find(
                                   (e) => e.id === product.category_id,
                                 )?.name}
@@ -156,7 +156,7 @@ export const Products = ({ main, setMain, update }) => {
 
                             <td>${product.price}</td>
                             <td>${product.discount}</td>
-                          
+
                             <td>
                               {product.status === "Active" ? (
                                 <span className="badge bg-light-primary text-dark-success">
@@ -169,17 +169,13 @@ export const Products = ({ main, setMain, update }) => {
                               )}
                             </td>
                             <td>
-                              <button
+                              <Link
                                 className="btn btn-success btn-sm"
-                                onClick={() =>
-                                  navigate(`/edit-product`, {
-                                    state: { product },
-                                  })
-                                }
+                                to={`/edit-product/${product.id}`}
                               >
                                 <i className="bi bi-pencil-square me-1" />
                                 Edit
-                              </button>
+                              </Link>
                             </td>
                             <td>
                               <button
@@ -217,9 +213,7 @@ export const Products = ({ main, setMain, update }) => {
                         ))
                       ) : (
                         <tr>
-                          <td  className="text-center">
-                            No Products found
-                          </td>
+                          <td className="text-center">No Products found</td>
                         </tr>
                       )}
                     </tbody>

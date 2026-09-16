@@ -40,4 +40,12 @@ export const _deleteCart = async (id) => {
         throw error;
     }
 }
+export const _deleteWishlist = async (id) => {
+    try {
+        const res = await api.delete(`/wishlist/${id}`)
+        return res.data
+    } catch (error) {
+        throw error;
+    }
+}
 

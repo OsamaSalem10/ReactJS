@@ -1,29 +1,20 @@
-import { Link, useNavigate ,useLocation} from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useNavigate} from "react-router-dom";
+import {  useState } from "react";
 import { _createCart } from "../../server/post";
 import { toast } from "react-toastify";
 import {_getCarts} from "../../server/get"
-export const AddCart = ({ main, setMain, update }) => {
-   const location = useLocation();
+export const AddCart = ({setUser ,  main, setMain, update }) => {
   const navigate = useNavigate();
-   const user = location.state?.user;
+
+const storedUser = localStorage.getItem("user");
+
+const user = storedUser
+    ? JSON.parse(storedUser)
+    : null;
   const [product_id, setProduct_id] = useState(0);
   const [quantity, setQuantity] = useState(0);
-    const [userCart, setUserCart] = useState([]);
-   const updateCart = async () => {
-      if (!user?.id) return;
-  
-      try {
-        const cart = await _getCarts(user.id);
-        setUserCart(cart);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-  
-    useEffect(() => {
-      updateCart();
-    }, [user]);
+
+
 
   return (
     <main className="main-content-wrapper">

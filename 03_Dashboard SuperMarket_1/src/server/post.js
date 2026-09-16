@@ -5,8 +5,10 @@ import api from "./axios"
 export const _createUser = async (data, navigate) => {
   try {
     const res = await api.post(`/users`, data);
+    console.log("User created successfully:", res);
     return res.data;
   } catch (error) {
+  
     throw error;
   }
 };

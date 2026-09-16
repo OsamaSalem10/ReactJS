@@ -1,10 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { _deleteUser } from "../server/delete";
 import { toast } from "react-toastify";
 import { useState } from "react";
 export const Customers = ({ main, setMain, update }) => {
   const [search, setSearch] = useState("");
-  const navigate = useNavigate();
   return (
     <main className="main-content-wrapper">
       <div className="container">
@@ -123,17 +122,16 @@ export const Customers = ({ main, setMain, update }) => {
                                   : "No Description"}
                               </td>
                               <td>
-                                <button
+                                <Link
+                                  to={`/edit-customer/${user.id}`}
+                                 
                                   className="btn btn-success btn-sm"
-                                  onClick={() =>
-                                    navigate(`/edit-customer`, {
-                                      state: { user },
-                                    })
-                                  }
+                                
+                                  
                                 >
                                   <i className="bi bi-pencil-square me-1" />
                                   Edit
-                                </button>
+                                </Link>
                               </td>
                               <td>
                                 <button
@@ -168,15 +166,41 @@ export const Customers = ({ main, setMain, update }) => {
                                 </button>
                               </td>
                               <td>
-                                <button className="btn btn-info btn-sm text-canter"
-                                  onClick={() =>
-                                    navigate(`/carts`, {
-                                      state: { user },
-                                    })
-                                  }
-                                >
-                                  <i className="bi bi-cart me-1" />cart
-                                </button>
+                                <div className="position-relative d-inline-block">
+                                  {main.carts?.filter(
+                                    (cart) =>
+                                      Number(cart.user_id) === Number(user.id),
+                                  ).length > 0 && (
+                                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                      {
+                                        main.carts.filter(
+                                          (cart) =>
+                                            Number(cart.user_id) ===
+                                            Number(user.id),
+                                        ).length
+                                      }
+                                      <span className="visually-hidden">
+                                        cart items
+                                      </span>
+                                    </span>
+                                  )}
+
+                                  <Link
+                                    to={`/carts-user/${user.id}`}
+                                    className={`btn btn-info btn-sm text-center ${
+                                      main.carts?.some(
+                                        (cart) =>
+                                          Number(cart.user_id) ===
+                                          Number(user.id),
+                                      )
+                                        ? ""
+                                        : "disabled"
+                                    }`}
+                                  >
+                                    <i className="bi bi-cart me-1"></i>
+                                    Cart
+                                  </Link>
+                                </div>
                               </td>
                             </tr>
                           );

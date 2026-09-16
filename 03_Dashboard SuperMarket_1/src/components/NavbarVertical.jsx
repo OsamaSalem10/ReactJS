@@ -75,6 +75,16 @@ export const NavbarVertical = () => {
               </div>
            </Link>
           </li>
+           <li className="nav-item">
+            <Link className="nav-link " to="/wishlist">
+              <div className="d-flex align-items-center">
+                <span className="nav-link-icon">
+                  <i className="bi bi-heart" />
+                </span>
+                <span className="nav-link-text">Wishlist</span>
+              </div>
+           </Link>
+          </li>
           <li className="nav-item">
             <Link
               aria-controls="navCategoriesOrders"

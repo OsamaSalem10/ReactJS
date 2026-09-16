@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { _editUser } from "../../server/edit.js";
-export const EditCustomers = ({update}) => {
-  const location = useLocation();
+export const EditCustomers = ({ main, update }) => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const user = location.state?.user;
-
+  const user = main?.users?.find((u) => Number(u.id) === Number(id));
   const [name, setName] = useState(user ? user.name : "");
   const [email, setEmail] = useState(user ? user.email : "");
   const [phone, setPhone] = useState(user ? user.phone : "");
@@ -72,7 +71,7 @@ export const EditCustomers = ({update}) => {
                       alt=""
                       className="image avatar avatar-lg rounded-3"
                       src={
-                        user.image
+                        user && user.image
                           ? `${user.image}`
                           : "../assets/images/docs/placeholder-img.jpg"
                       }
@@ -211,24 +210,30 @@ export const EditCustomers = ({update}) => {
                               formData.append("name", name);
                               formData.append("email", email);
                               formData.append("phone", phone);
-
                               formData.append("location", localUsers);
                               formData.append("description", description);
 
                               if (image) {
                                 formData.append("image", image);
+                              }else{
+                                formData.append("image", user.image);
                               }
 
                               try {
                                 await _editUser(user.id, formData);
 
-                                toast.success("Customer created successfully.");
-
+                                toast.success("Customer updated successfully.");
                                 navigate("/customers");
                                 update();
-                              } catch (err) {
+                              } catch (error) {
+                                console.log(
+                                  "Error updating customer:",
+                                  error.response?.data?.errors,
+                                );
+
                                 toast.error(
-                                  err.response?.data?.message ||
+                                  error.response?.data?.errors?.[0]?.msg ||
+                                    error.response?.data?.message ||
                                     "Something went wrong.",
                                 );
                               }
@@ -236,7 +241,7 @@ export const EditCustomers = ({update}) => {
                           >
                             Update Customer
                           </button>
-                          <Link className="btn btn-secondary" to="">
+                          <Link className="btn btn-secondary" to="/customers">
                             Cancel
                           </Link>
                         </div>
@@ -269,9 +274,7 @@ export const EditCustomers = ({update}) => {
             </div>
           </div>
         </div>
-      
       </div>
- 
     </main>
   );
 };
