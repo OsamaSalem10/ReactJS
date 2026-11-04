@@ -1,37 +1,76 @@
 import api from "./axios"
-export const _editUser = async (id, data) => {
-  try {
-    const res = await api.put(`users/${id}`, data);
-    return res.data;
-  } catch (error) {
-    throw error;
-  }
-};
-export const _editCategory = async (id, data) => {
-  try {
-    const res = await api.put(`/categories/${id}`, data);
-    return res.data;
-  } catch (error) {
-    throw error;
-  }
-};
-export const _editProduct = async (id, data) => {
+
+class EditService {
+  async editUser(id, formData, update, navigate) {
     try {
-    const res = await api.put(`/products/${id}`, data);
-    console.log(res)
-    return res.data;
-  } catch (error) {
-    console.error("Error editing product:", error);
-    throw error;
+      const { data } = await api.put(`/users/${id}`, formData);
+      update(data);
+      navigate("/customers");
+    } catch (error) {
+      console.error("Error editing user:", error);
+
+      throw error;
+    }
   }
-};
-export const _editCart = async (id, data) => {
+  async editCategory(id, formData, update, navigate) {
     try {
-    const res = await api.put(`/cart/${id}`, data);
-    console.log(res)
-    return res.data;
-  } catch (error) {
-    console.error("Error editing product:", error);
-    throw error;
+      const { data } = await api.put(`/categories/${id}`, formData);
+      update(data);
+      navigate("/categories");
+    } catch (error) {
+      console.error("Error editing category:", error);
+      throw error;
+    }
   }
-};
+  async editProduct(id, formData, update, navigate) {
+    try {
+      const { data } = await api.put(`/products/${id}`, formData);
+      update(data);
+      navigate("/products");
+    } catch (error) {
+      console.error("Error editing product:", error);
+      throw error;
+    }
+  }
+  async editOrder(id, formData, update, navigate) {
+    try {
+      const { data } = await api.put(`/orders/${id}`, formData);
+      update(data);
+      navigate("/orders");
+    } catch (error) {
+      console.error("Error editing order:", error);
+      throw error;
+    }
+  }
+  async editWishlist(id, formData, update, navigate) {
+    try {
+      const { data } = await api.put(`/wishlists/${id}`, formData);
+      update(data);
+      navigate("/wishlist");
+    } catch (error) {
+      console.error("Error editing wishlist:", error);
+      throw error;
+    }
+  }
+  async editCart(id, formData, update, navigate) {
+    try {
+      const { data } = await api.put(`/carts/${id}`, formData);
+      update(data);
+      navigate("/carts");
+    } catch (error) {
+      console.error("Error editing cart:", error);
+      throw error;
+    }
+  }
+  async editOrderItem(id, formData, update, navigate) {
+    try {
+      const { data } = await api.put(`/order-items/${id}`, formData);
+      update(data);
+      navigate("/order-items");
+    } catch (error) {
+      console.error("Error editing order item:", error);
+      throw error;
+    }
+  }
+}
+export default EditService;

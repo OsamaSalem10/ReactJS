@@ -1,65 +1,148 @@
 import api from "./axios"
+import { toast } from "react-toastify";
 
+class PostService {
+  async createUser(formData, update, navigate) {
+    try {
+      const { data } = await api.post("/users", formData);
 
+      toast.success("User created successfully!");
 
-export const _createUser = async (data, navigate) => {
-  try {
-    const res = await api.post(`/users`, data);
-    console.log("User created successfully:", res);
-    return res.data;
-  } catch (error) {
+      await update();
+
+      navigate("/customers");
+
+      return data;
+    } catch (error) {
+      toast.error(
+        error.response?.data?.errors?.[0]?.msg ||
+        error.response?.data?.message ||
+        "Something went wrong."
+      );
+
+      throw error;
+    }
+  }
+  async createCategory(formData, update, navigate) {
+    try {
+      const { data } = await api.post("/categories", formData);
+
+      toast.success("Category created successfully!");
+
+      await update();
+
+      navigate("/categories");
+
+      return data;
+    } catch (error) {
+      toast.error(
+        error.response?.data?.errors?.[0]?.msg ||
+        error.response?.data?.message ||
+        "Something went wrong."
+      );
+
+      throw error;
+    }
+  }
+
+  async createProduct(formData, update, navigate) {
+    try {
+      const { data } = await api.post("/products", formData);
+
+      toast.success("Product created successfully!");
+
+      await update();
+
+      navigate("/products");
+
+      return data;
+    } catch (error) {
+      toast.error(
+        error.response?.data?.errors?.[0]?.msg ||
+        error.response?.data?.message ||
+        "Something went wrong."
+      );
+
+      throw error;
+    }
+  }
+  async createWishlist(formData, update, navigate) {
+    try {
+      const { data } = await api.post("/wishlist", formData);
+
+      toast.success("Wishlist created successfully!");
+
+      await update();
+
+      navigate("/wishlist");
+
+      return data;
+    } catch (error) {
+      toast.error(
+        error.response?.data?.errors?.[0]?.msg ||
+        error.response?.data?.message ||
+        "Something went wrong."
+      );
+
+      throw error;
+    }
+  }
+  async createCart(formData, update, navigate) {
+    try {
+      const { data } = await api.post("/carts", formData);
+
+      toast.success("Cart created successfully!");
+
+      await update();
+
+      navigate("/carts");
+
+      return data;
+    } catch (error) {
+      toast.error(
+        error.response?.data?.errors?.[0]?.msg ||
+        error.response?.data?.message ||
+        "Something went wrong."
+      );
+
+      throw error;
+    }
+  }
+    async createOrder(formData, update, navigate) {
+      try {
+        const { data } = await api.post("/orders", formData);
+        await update();
+        navigate("/orders");
+        toast.success("Order created successfully!");
+        return data;
+      } catch (error) {
+        toast.error(
+          error.response?.data?.errors?.[0]?.msg ||
+          error.response?.data?.message ||
+          "Something went wrong."
+        );
+
+        throw error;
+      }
+    }
+    async createOrderItem(formData, update, navigate) {
+      try {
+        const { data } = await api.post("/order-items", formData);
+        await update();
+        navigate("/order-items");
+        toast.success("Order item created successfully!");
+        return data;
+      } catch (error) {
+        toast.error(
+          error.response?.data?.errors?.[0]?.msg ||
+          error.response?.data?.message ||
+          "Something went wrong."
+        );
+      }
+    }
   
-    throw error;
-  }
-};
-export const createCategory = async (data) => {
-  try {
-    const res = await api.post(`/categories`, data);
-    return res.data;
-  } catch (error) {
-    throw error;
-  }
+}
+export default PostService;
 
-};
 
-export const createProduct = async (productData) => {
-  try {
-    const response = await api.post(`/products`, productData);
 
-    return response.data;
-  } catch (error) {
-  
-
-    throw error;
-  }
-};
-export const _createCart = async (data) => {
-  try {
-    const response = await api.post(`/cart`, data);
-console.log(response)
-    return response.data;
-  } catch (error) {
-    console.error("Error creating cart:", error);
-    throw error;
-  }
-};
-export const createOrder = async (orderData) => {
-  try {
-    const response = await api.post(`/orders`, orderData);
-
-    return response.data;
-  } catch (error) {
-    console.error("Error creating order:", error);
-    throw error;
-  }
-};
-
-export const createOrderList = async (orderListData) => {
-  try {
-    const response = await api.post(`/order-items`, orderListData);
-    console.log("Order list created successfully:", response); return response.data;
-  } catch (error) {
-    console.error("Error creating order list:", error);
-    throw error;
-  }
-};

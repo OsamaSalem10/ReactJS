@@ -24,6 +24,7 @@ export const _deleteProduct = async (id) => {
         throw error;
     }
 }
+
 export const _deleteOrder = async (id) => {
     try {
         const res = await api.delete(`/orders/${id}`)
@@ -34,7 +35,7 @@ export const _deleteOrder = async (id) => {
 }
 export const _deleteCart = async (id) => {
     try {
-        const res = await api.delete(`/cart/${id}`)
+        const res = await api.delete(`/carts/${id}`)
         return res.data
     } catch (error) {
         throw error;

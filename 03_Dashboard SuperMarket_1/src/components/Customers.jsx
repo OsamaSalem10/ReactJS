@@ -56,7 +56,7 @@ export const Customers = ({ main, setMain, update }) => {
                           if (search === "") {
                             update();
                           } else {
-                            console.log("users", main.users);
+                            
                             setMain((prev) => ({
                               ...prev,
                               users: prev.users.filter((user) =>
@@ -81,10 +81,10 @@ export const Customers = ({ main, setMain, update }) => {
                         <th>Email</th>
                         <th>Phone</th>
                         <th>location</th>
-                        <th>Description</th>
                         <th>Edit</th>
                         <th>Delete</th>
                         <th>Carts</th>
+                        <th>Wishlist</th>
                         <th />
                       </tr>
                     </thead>
@@ -116,11 +116,7 @@ export const Customers = ({ main, setMain, update }) => {
                               <td>{user.email}</td>
                               <td>{user.phone}</td>
                               <td>{user.location}</td>
-                              <td>
-                                {user.description
-                                  ? user.description.slice(0, 10)
-                                  : "No Description"}
-                              </td>
+                             
                               <td>
                                 <Link
                                   to={`/edit-customer/${user.id}`}
@@ -199,6 +195,43 @@ export const Customers = ({ main, setMain, update }) => {
                                   >
                                     <i className="bi bi-cart me-1"></i>
                                     Cart
+                                  </Link>
+                                </div>
+                              </td>
+                              <td>
+                                <div className="position-relative d-inline-block">
+                                  {main.wishlist?.filter(
+                                    (wishlist) =>
+                                      Number(wishlist.user_id) === Number(user.id),
+                                  ).length > 0 && (
+                                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                      {
+                                        main.wishlist.filter(
+                                          (wishlist) =>
+                                            Number(wishlist.user_id) ===
+                                            Number(user.id),
+                                        ).length
+                                      }
+                                      <span className="visually-hidden">
+                                        wishlist items
+                                      </span>
+                                    </span>
+                                  )}
+
+                                  <Link
+                                    to={`/wishlist-user/${user.id}`}
+                                    className={`btn btn-info btn-sm text-center ${
+                                      main.wishlist?.some(
+                                        (wishlist) =>
+                                          Number(wishlist.user_id) ===
+                                          Number(user.id),
+                                      )
+                                        ? ""
+                                        : "disabled"
+                                    }`}
+                                  >
+                                    <i className="bi bi-heart me-1"></i>
+                                    Wishlist
                                   </Link>
                                 </div>
                               </td>

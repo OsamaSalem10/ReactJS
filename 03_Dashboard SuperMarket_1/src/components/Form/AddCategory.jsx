@@ -1,12 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { createCategory } from "../../server/post";
-import { toast } from "react-toastify";
+import PostService from "../../server/post";
 export const AddCategory = ({ update }) => {
   const [name, setName] = useState("");
   const [status, setStatus] = useState("");
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("status", status);
+    if (image) {
+      formData.append("image", image);
+    }
+
+    try {
+      const postService = new PostService();
+      await postService.createCategory(formData, update, navigate);
+    } catch (error) {
+      console.error("Error creating category:", error);
+    }
+  };
   return (
     <main className="main-content-wrapper">
       <div className="container">
@@ -89,7 +105,7 @@ export const AddCategory = ({ update }) => {
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
-                      <div className="mb-3 col-lg-6">
+                  <div className="mb-3 col-lg-6">
                     <label className="form-label">Status</label>
                     <select
                       className="form-select"
@@ -106,35 +122,7 @@ export const AddCategory = ({ update }) => {
                     <button
                       className="btn btn-primary"
                       type="submit"
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        // Create New Customer logic here
-                        const formData = new FormData();
-                        formData.append("name", name);
-                        formData.append("status", status);
-                        if (image) {
-                          formData.append("image", image);
-                        }
-
-                        try {
-                          await createCategory(formData);
-
-                          toast.success("Customer created successfully");
-                          navigate("/categories");
-                          update();
-                        } catch (error) {
-                                console.log(
-                                  "Error creating customer:",
-                                  error.response?.data?.errors,
-                                );
-
-                                toast.error(
-                                  error.response?.data?.errors?.[0]?.msg ||
-                                    error.response?.data?.message ||
-                                    "Something went wrong.",
-                                );
-                              }
-                      }}
+                      onClick={handleSubmit}
                     >
                       Create Category
                     </button>

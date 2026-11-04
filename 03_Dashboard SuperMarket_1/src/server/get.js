@@ -1,110 +1,166 @@
+import { toast } from "react-toastify";
 import api from "./axios";
 
+class ApiServiceGet {
+  /* ================= USERS ================= */
 
-/* =========================================================
-   USERS
-========================================================= */
-
-export const _getAllUsers = async () => {
-
-    const { data } =
-        await api.get("/users");
-    return data.result;
-};
-
-
-/* =========================================================
-   CATEGORIES
-========================================================= */
-
-export const _getAllCategories = async () => {
-
-    const { data } =
-        await api.get("/categories");
-
-    return data.result;
-};
-
-
-/* =========================================================
-   PRODUCTS
-========================================================= */
-
-export const _getProducts = async () => {
-
-    const { data } =
-        await api.get("/products");
-
-    return data.result;
-};
-
-
-/* =========================================================
-   ORDERS
-========================================================= */
-
-export const _getOrders = async () => {
-
-    const { data } =
-        await api.get("/orders");
-
-    return data.result;
-};
-
-
-
-
-/* =========================================================
-   ORDER ITEMS
-========================================================= */
-
-export const _getOrderItems = async (id) => {
-
-    const { data } =
-        await api.get(
-            `/order-items`
+  static async getAllUsers() {
+    try {
+      const { data } = await api.get("/users");
+      return data.result;
+    } catch (error) {
+        if (!error.response) {
+        toast.error("تعذر الاتصال بالسيرفر، حاول مرة أخرى");
+      }else {
+        toast.error(
+          error.response?.data?.errors?.[0]?.msg ||
+          error.response?.data?.message ||
+          "حدث خطأ ما."
         );
+      }
+      throw error;
+    }
+  }
 
-    return data.result;
-};
+  /* ================= CATEGORIES ================= */
 
-
-/* =========================================================
-   CART
-========================================================= */
-
-export const _getCarts = async (id) => {
-
-    const { data } =
-        await api.get(
-            `/carts`
+  static async getAllCategories() {
+    try {
+      const { data } = await api.get("/categories");
+      return data.result;
+    } catch (error) {
+      if (!error.response) {
+        toast.error("تعذر الاتصال بالسيرفر، حاول مرة أخرى");
+      } else {
+        toast.error(
+          error.response?.data?.errors?.[0]?.msg ||
+          error.response?.data?.message ||
+          "حدث خطأ ما."
         );
+      }
+      throw error;
+    }
+  }
 
-    return data.result;
-};
-/* =========================================================
-   Wishlist
-========================================================= */
+  /* ================= PRODUCTS ================= */
 
-export const _getWishlist = async (id) => {
-
-    const { data } =
-        await api.get(
-            `/wishlist`
+  static async getProducts() {
+    try {
+      const { data } = await api.get("/products");
+      return data.result;
+    } catch (error) {
+      if (!error.response) {
+        toast.error("تعذر الاتصال بالسيرفر، حاول مرة أخرى");
+      } else {
+        toast.error(
+          error.response?.data?.errors?.[0]?.msg ||
+          error.response?.data?.message ||
+          "حدث خطأ ما."
         );
+      }
+      throw error;
+    }
+  }
 
-    return data.result;
-};
-/* =========================================================
-   Comments
-========================================================= */
+  /* ================= ORDERS ================= */
 
-export const _getComments = async (id) => {
-
-    const { data } =
-        await api.get(
-            `/comments`
+  static async getOrders() {
+    try {
+      const { data } = await api.get("/orders");
+      return data.result;
+    } catch (error) {
+      if (!error.response) {
+        toast.error("تعذر الاتصال بالسيرفر، حاول مرة أخرى");
+      } else {
+        toast.error(
+          error.response?.data?.errors?.[0]?.msg ||
+          error.response?.data?.message ||
+          "حدث خطأ ما."
         );
+      }
+      throw error;
+    }
+  }
 
-    return data.result;
-};
+  /* ================= ORDER ITEMS ================= */
+
+  static async getOrderItems() {
+    try {
+      const { data } = await api.get("/order-items");
+      return data.result;
+    } catch (error) {
+      if (!error.response) {
+        toast.error("تعذر الاتصال بالسيرفر، حاول مرة أخرى");
+      } else {
+        toast.error(
+          error.response?.data?.errors?.[0]?.msg ||
+          error.response?.data?.message ||
+          "حدث خطأ ما."
+        );
+      }
+      throw error;
+    }
+  }
+
+  /* ================= CARTS ================= */
+
+  static async getCarts() {
+    try {
+      const { data } = await api.get("/carts");
+      return data.result;
+    } catch (error) {
+      if (!error.response) {
+        toast.error("تعذر الاتصال بالسيرفر، حاول مرة أخرى");
+      } else {
+        toast.error(
+          error.response?.data?.errors?.[0]?.msg ||
+          error.response?.data?.message ||
+          "حدث خطأ ما."
+        );
+      }
+      throw error;
+    }
+  }
+
+  /* ================= WISHLISTS ================= */
+
+  static async getWishlist() {
+    try {
+      const { data } = await api.get("/wishlists");
+      return data.result;
+    } catch (error) {
+      if (!error.response) {
+        toast.error("تعذر الاتصال بالسيرفر، حاول مرة أخرى");
+      } else {
+        toast.error(
+          error.response?.data?.errors?.[0]?.msg ||
+          error.response?.data?.message ||
+          "حدث خطأ ما."
+        );
+      }
+      throw error;
+    }
+  }
+
+  /* ================= COMMENTS ================= */
+
+  static async getComments() {
+    try {
+      const { data } = await api.get("/comments");
+      return data.result;
+    } catch (error) {
+      if (!error.response) {
+        toast.error("تعذر الاتصال بالسيرفر، حاول مرة أخرى");
+      } else {
+        toast.error(
+          error.response?.data?.errors?.[0]?.msg ||
+          error.response?.data?.message ||
+          "حدث خطأ ما."
+        );
+      }
+     throw error;
+    }
+  }
+}
+
+export default ApiServiceGet;

@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { _editCategory } from "../../server/edit";
-import { toast } from "react-toastify";
+import EditService from "../../server/edit";
+
 export const EditCategory = ({ main, update }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -17,7 +17,28 @@ export const EditCategory = ({ main, update }) => {
     setStatus(category.status);
     setImage(category.image);
   }, [category]);
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("status", status);
+    if (image) {
+      formData.append("image", image);
+    } else {
+      formData.append("image", category.image);
+    }
+    const EditServiceCategory = new EditService();
+    try {
+      await EditServiceCategory.editCategory(
+        category.id,
+        formData,
+        update,
+        navigate,
+      );
+    } catch (error) {
+      console.error("Error editing category:", error);
+    }
+  };
   return (
     <main className="main-content-wrapper">
       <div className="container">
@@ -119,39 +140,7 @@ export const EditCategory = ({ main, update }) => {
                     <button
                       className="btn btn-primary"
                       type="submit"
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        // Create New Customer logic here
-                        const formData = new FormData();
-                        formData.append("name", name);
-                        formData.append("status", status);
-              if (image) {
-                                formData.append("image", image);
-                              }else{
-                                formData.append("image", category.image);
-                              }
-
-
-
-                        try {
-                          await _editCategory(category.id, formData);
-
-                          toast.success("Category updated successfully");
-                          navigate("/categories");
-                          update();
-                        } catch (error) {
-                          console.log(
-                            "Error updating category:",
-                            error.response?.data?.errors,
-                          );
-
-                          toast.error(
-                            error.response?.data?.errors?.[0]?.msg ||
-                              error.response?.data?.message ||
-                              "Something went wrong.",
-                          );
-                        }
-                      }}
+                      onClick={handleSubmit}
                     >
                       Edit Category
                     </button>

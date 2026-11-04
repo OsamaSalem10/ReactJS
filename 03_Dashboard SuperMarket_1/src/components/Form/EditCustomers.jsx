@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import EditService from "../../server/edit";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { _editUser } from "../../server/edit.js";
+
 export const EditCustomers = ({ main, update }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -12,6 +13,36 @@ export const EditCustomers = ({ main, update }) => {
   const [localUsers, setLocation] = useState(user ? user.location : "");
   const [description, setDescription] = useState(user ? user.description : "");
   const [image, setImage] = useState(user ? user.image : null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("location", localUsers);
+    formData.append("description", description);
+
+    if (image) {
+      formData.append("image", image);
+    } else {
+      formData.append("image", user.image);
+    }
+
+    try {
+      const EditServiceUser = new EditService();
+      await EditServiceUser.editUser(user.id, formData, update, navigate);
+
+    } catch (error) {
+      console.log("Error updating customer:", error.response?.data?.errors);
+
+      toast.error(
+        error.response?.data?.errors?.[0]?.msg ||
+          error.response?.data?.message ||
+          "Something went wrong.",
+      );
+    }
+  };
   useEffect(() => {
     if (!user) return;
     setName(user.name);
@@ -21,7 +52,7 @@ export const EditCustomers = ({ main, update }) => {
     setPhone(user.phone);
     setImage(user.image);
   }, [user]);
-
+  
   return (
     <main className="main-content-wrapper">
       <div className="container">
@@ -202,42 +233,7 @@ export const EditCustomers = ({ main, update }) => {
                           <button
                             className="btn btn-primary"
                             type="submit"
-                            onClick={async (e) => {
-                              e.preventDefault();
-
-                              const formData = new FormData();
-
-                              formData.append("name", name);
-                              formData.append("email", email);
-                              formData.append("phone", phone);
-                              formData.append("location", localUsers);
-                              formData.append("description", description);
-
-                              if (image) {
-                                formData.append("image", image);
-                              }else{
-                                formData.append("image", user.image);
-                              }
-
-                              try {
-                                await _editUser(user.id, formData);
-
-                                toast.success("Customer updated successfully.");
-                                navigate("/customers");
-                                update();
-                              } catch (error) {
-                                console.log(
-                                  "Error updating customer:",
-                                  error.response?.data?.errors,
-                                );
-
-                                toast.error(
-                                  error.response?.data?.errors?.[0]?.msg ||
-                                    error.response?.data?.message ||
-                                    "Something went wrong.",
-                                );
-                              }
-                            }}
+                            onClick={handleSubmit}
                           >
                             Update Customer
                           </button>

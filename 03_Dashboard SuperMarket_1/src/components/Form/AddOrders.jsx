@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { createOrder } from "../../server/post";
+import PostService from "../../server/post";
 import { toast } from "react-toastify";
 export const AddOrders = ({ main, setMain, update }) => {
   const [user_id, setUserId] = useState(0);
@@ -8,7 +8,7 @@ export const AddOrders = ({ main, setMain, update }) => {
   const [status, setStatus] = useState("");
   const [payment_status, setPaymentStatus] = useState("");
   const navigate = useNavigate();
-  console.log(total, status, payment_status, user_id);
+ 
   return (
     <main className="main-content-wrapper">
       <div className="container">

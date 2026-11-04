@@ -1,11 +1,11 @@
-import { Link, useNavigate  ,useParams} from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { _deleteCart } from "../../server/delete";
 import { toast } from "react-toastify";
 export const UserCarts = ({ main, setMain, update }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const user = main.carts?.filter((cart) => cart.user_id === parseInt(id));
- 
+
   return (
     <main className="main-content-wrapper">
       <div className="container">
@@ -28,15 +28,9 @@ export const UserCarts = ({ main, setMain, update }) => {
                 </nav>
               </div>
               <div>
-                <button
-                  className="btn btn-light"
-                  onClick={() => {
-                    localStorage.removeItem("user");
-                    navigate("/customers");
-                  }}
-                >
+                <Link className="btn btn-light" to={`/customers`}>
                   Back Customers
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -57,12 +51,7 @@ export const UserCarts = ({ main, setMain, update }) => {
                     </form>
                   </div>
                   <div className="col-lg-2 col-md-4 col-12">
-                    <button
-                      className="btn btn-primary"
-                    
-                    >
-                      Add Cart
-                    </button>
+                    <Link className="btn btn-primary" to={`/add-cart/${id}`}>Add Cart</Link>
                   </div>
                 </div>
               </div>

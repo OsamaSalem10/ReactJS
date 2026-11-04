@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { _deleteCart } from "../server/delete";
 import { toast } from "react-toastify";
-export const Carts = ({ main, setMain, update }) => {
+export const Carts = ({ main,  update }) => {
   const navigate = useNavigate();
   return (
     <main className="main-content-wrapper">
@@ -129,17 +129,13 @@ export const Carts = ({ main, setMain, update }) => {
                     
 
                             <td>
-                              <button
+                              <Link
                                 className="btn btn-success btn-sm"
-                                onClick={() =>
-                                  navigate("/edit-cart", {
-                                    state: { cart },
-                                  })
-                                }
+                                to={`/edit-carts/${cart.id}`}
                               >
                                 <i className="bi bi-pencil-square me-1" />
                                 Edit
-                              </button>
+                              </Link>
                             </td>
 
                             <td>
@@ -153,7 +149,7 @@ export const Carts = ({ main, setMain, update }) => {
                                   if (!confirmDelete) return;
 
                                   try {
-                                    await _deleteCart(cart.cart_id);
+                                    await _deleteCart(cart.id);
 
                                     toast.success("Cart deleted successfully");
 

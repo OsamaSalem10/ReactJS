@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import { _editProduct } from "../../server/edit";
+import EditService from "../../server/edit";
 export const EditProduct = ({ main, update }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -16,7 +15,32 @@ export const EditProduct = ({ main, update }) => {
   const [status, setStatus] = useState(product ? product.status : "");
 
   const [image, setImage] = useState(product ? product.image : null);
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("description", description);
+    formData.append("category_id", category);
+    formData.append("discount", discount);
+    formData.append("status", status);
+    if (image) {
+      formData.append("image", image);
+    } else {
+      formData.append("image", product.image);
+    }
+    const EditServiceProduct = new EditService();
+    try {
+      await EditServiceProduct.editProduct(
+        product.id,
+        formData,
+        update,
+        navigate,
+      );
+    } catch (error) {
+      console.error("Error editing product:", error);
+    }
+  };
   useEffect(() => {
     if (!product) return;
     setName(product.name);
@@ -178,39 +202,9 @@ export const EditProduct = ({ main, update }) => {
                     <button
                       className="btn btn-primary"
                       type="submit"
-                      onClick={async (e) => {
-                        e.preventDefault();
-
-                        const formData = new FormData();
-                        formData.append("id", product.id);
-                        formData.append("description", description);
-                        formData.append("category_id", category);
-                        formData.append("discount", discount);
-                        formData.append("status", status);
-
-                        formData.append("name", name);
-                        formData.append("price", price);
-
-                        if (image) {
-                          formData.append("image", image);
-                        }
-
-                        try {
-                          await _editProduct(product.id, formData);
-
-                          toast.success("Update successfully");
-                          navigate("/products");
-                          update();
-                        } catch (error) {
-                          console.log(error);
-                          toast.error(
-                            error.response?.data?.message ||
-                              "Something went wrong",
-                          );
-                        }
-                      }}
+                      onClick={handleSubmit}
                     >
-                      Create Products
+                      Edit Products
                     </button>
                     <Link className="btn btn-secondary ms-2" to="#">
                       Save

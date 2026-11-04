@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { createProduct } from "../../server/post";
-export const AddProduct = ({ main, setMain, update }) => {
+import PostService from "../../server/post";
+export const AddProduct = ({ main, update }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
@@ -11,7 +10,30 @@ export const AddProduct = ({ main, setMain, update }) => {
   const [status, setStatus] = useState("");
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    const formData = new FormData();
+    formData.append("description", description);
+    formData.append("category_id", category);
+    formData.append("discount", discount);
+    formData.append("status", status);
+
+    formData.append("name", name);
+    formData.append("price", price);
+
+    if (image) {
+      formData.append("image", image);
+    }
+
+
+    try {
+      const postService = new PostService();
+      await postService.createProduct(formData, update, navigate);
+    } catch (error) {
+      console.error("Error creating product:", error);
+    }
+  };
   return (
     <main className="main-content-wrapper">
       <div className="container">
@@ -158,41 +180,7 @@ export const AddProduct = ({ main, setMain, update }) => {
                     <button
                       className="btn btn-primary"
                       type="submit"
-                      onClick={async (e) => {
-                        e.preventDefault();
-
-                        const formData = new FormData();
-                        formData.append("description", description);
-                        formData.append("category_id", category);
-                        formData.append("discount", discount);
-                        formData.append("status", status);
-
-                        formData.append("name", name);
-                        formData.append("price", price);
-
-                        if (image) {
-                          formData.append("image", image);
-                        }
-
-                        try {
-                          await createProduct(formData);
-
-                          toast.success("Customer created successfully");
-                          navigate("/products");
-                          update();
-                        } catch (error) {
-                          console.log(
-                            "Error creating customer:",
-                            error.response?.data?.errors,
-                          );
-
-                          toast.error(
-                            error.response?.data?.errors?.[0]?.msg ||
-                              error.response?.data?.message ||
-                              "Something went wrong.",
-                          );
-                        }
-                      }}
+                         onClick={handleSubmit}
                     >
                       Create Products
                     </button>

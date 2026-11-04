@@ -1,26 +1,35 @@
-import { Link, useNavigate ,useLocation} from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { _editCart } from "../../server/edit";
+import EditService from "../../server/edit";
 import { toast } from "react-toastify";
-import {_getCarts} from "../../server/get"
-export const EditCart = ({setUser ,  main, setMain, update }) => {
-  const location = useLocation();
-    const navigate = useNavigate();
-    const cart = location.state?.cart;
-console.log(cart)
-
-const storedUser = localStorage.getItem("user");
-const user = storedUser
-    ? JSON.parse(storedUser)
-    : null;
-  const [product_id, setProduct_id] = useState(cart ? cart.product_id :0);
-  const [quantity, setQuantity] = useState(cart ? cart.quantity :0);
-    useEffect(() => {
+export const EditCart = ({ main, update }) => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const cart = main.carts?.find((cart) => cart.id === parseInt(id));
+  const [product_id, setProduct_id] = useState(cart ? cart.product_id : 0);
+  const [quantity, setQuantity] = useState(cart ? cart.quantity : 0);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      user_id: cart.user_id,
+      product_id,
+      quantity,
+    };
+    const editCartService = new EditService();
+    try {
+      await editCartService.editCart(cart.id, data, update, navigate);
+      toast.success("Cart updated successfully!");
+    } catch (error) {
+      console.error("Error editing cart:", error);
+      toast.error("Failed to update cart. Please try again.");
+    }
+  }
+  
+  useEffect(() => {
     if (!cart) return;
-   setProduct_id(cart.product_id)
-   setQuantity(cart.quantity)
+    setProduct_id(cart.product_id);
+    setQuantity(cart.quantity);
   }, [cart]);
- 
 
   return (
     <main className="main-content-wrapper">
@@ -66,18 +75,15 @@ const user = storedUser
                     <label className="form-label">User</label>
                     <select
                       className="form-select"
-                      value={user.id}
-                   
+                      value={cart?.user_id}
                       disabled
                     >
-               
-                          <option >
-                             {main &&
-                                main.users?.find(
-                                  (e) => e.id === user?.id,
-                                )?.name}
-                          </option>
-                       
+                      <option>
+                        {main &&
+                          main.users?.find(
+                            (e) => e.id === parseInt(cart.user_id),
+                          )?.name}
+                      </option>
                     </select>
                   </div>
                   <div className="mb-3 col-lg-6">
@@ -113,26 +119,7 @@ const user = storedUser
                     <button
                       className="btn btn-primary"
                       type="submit"
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        const data = {
-                          user_id: user.id,
-                          product_id: product_id,
-                          quantity: quantity,
-                        };
-                        try {
-                          await _editCart(cart.cart_id ,data);
-                          toast.success("carts created successfully");
-                          navigate("/carts");
-                          update();
-                          _getCarts(user?.id)
-                        } catch (error) {
-                          toast.error(
-                            error.response?.data?.message ||
-                              "Something went wrong",
-                          );
-                        }
-                      }}
+                      onClick={handleSubmit}
                     >
                       Edit Cart
                     </button>

@@ -93,7 +93,7 @@ export const Products = ({ main, setMain, update }) => {
                     >
                       <option>Category</option>
                       {main &&
-                        main.categories.map((category) => (
+                        main.categories?.map((category) => (
                           <option key={category.id} value={category.id}>
                             {category.name}
                           </option>

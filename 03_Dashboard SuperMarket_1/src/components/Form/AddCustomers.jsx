@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { toast } from "react-toastify";
-import { _createUser } from "../../server/post";
+import PostService from "../../server/post";
 export const AddCustomers = ({ update }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,6 +10,30 @@ export const AddCustomers = ({ update }) => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("password", password);
+    formData.append("location", localUsers);
+    formData.append("description", description);
+
+    if (image) {
+      formData.append("image", image);
+    }
+
+    try {
+      const postService = new PostService();
+      await postService.createUser(formData, update, navigate);
+    } catch (error) {
+      console.error("Error creating user:", error);
+    }
+  };
   return (
     <main className="main-content-wrapper">
       <div className="container">
@@ -195,41 +218,7 @@ export const AddCustomers = ({ update }) => {
                           <button
                             className="btn btn-primary"
                             type="submit"
-                            onClick={async (e) => {
-                              e.preventDefault();
-
-                              const formData = new FormData();
-
-                              formData.append("name", name);
-                              formData.append("email", email);
-                              formData.append("phone", phone);
-                              formData.append("password", password);
-                              formData.append("location", localUsers);
-                              formData.append("description", description);
-
-                              if (image) {
-                                formData.append("image", image);
-                              }
-
-                              try {
-                                await _createUser(formData);
-
-                                toast.success("Customer created successfully.");
-                                navigate("/customers");
-                                update();
-                              } catch (error) {
-                                console.log(
-                                  "Error creating customer:",
-                                  error.response?.data?.errors,
-                                );
-
-                                toast.error(
-                                  error.response?.data?.errors?.[0]?.msg ||
-                                    error.response?.data?.message ||
-                                    "Something went wrong.",
-                                );
-                              }
-                            }}
+                            onClick={handleSubmit}
                           >
                             Create Customer
                           </button>

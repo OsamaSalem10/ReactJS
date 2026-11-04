@@ -1,20 +1,26 @@
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate ,useParams} from "react-router-dom";
 import {  useState } from "react";
-import { _createCart } from "../../server/post";
-import { toast } from "react-toastify";
-import {_getCarts} from "../../server/get"
-export const AddCart = ({setUser ,  main, setMain, update }) => {
+import PostService from "../../server/post";
+export const AddCart = ({  main,  update }) => {
   const navigate = useNavigate();
-
-const storedUser = localStorage.getItem("user");
-
-const user = storedUser
-    ? JSON.parse(storedUser)
-    : null;
+  const { id } = useParams();
+  const user = main.carts?.filter((cart) => cart.user_id === parseInt(id));
   const [product_id, setProduct_id] = useState(0);
   const [quantity, setQuantity] = useState(0);
 
-
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      user_id: id,
+      product_id: product_id,
+      quantity: quantity,
+    };
+    try {
+      await PostService.createCart(data, update, navigate);
+    } catch (error) {
+      console.error("Error creating cart:", error);
+    }
+  };
 
   return (
     <main className="main-content-wrapper">
@@ -68,7 +74,7 @@ const user = storedUser
                           <option >
                              {main &&
                                 main.users?.find(
-                                  (e) => e.id === user?.id,
+                                  (e) => e.id ===  parseInt(id),
                                 )?.name}
                           </option>
                        
@@ -107,26 +113,7 @@ const user = storedUser
                     <button
                       className="btn btn-primary"
                       type="submit"
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        const data = {
-                          user_id: user.id,
-                          product_id: product_id,
-                          quantity: quantity,
-                        };
-                        try {
-                          await _createCart(data);
-                          toast.success("carts created successfully");
-                          navigate("/carts");
-                          update();
-                          _getCarts(user?.id)
-                        } catch (error) {
-                          toast.error(
-                            error.response?.data?.message ||
-                              "Something went wrong",
-                          );
-                        }
-                      }}
+                     onClick={handleSubmit}
                     >
                       Create order
                     </button>

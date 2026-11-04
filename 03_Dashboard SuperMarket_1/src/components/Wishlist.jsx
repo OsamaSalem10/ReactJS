@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { _deleteWishlist } from "../server/delete";
 import { toast } from "react-toastify";
-export const Wishlist = ({ main, setMain, update }) => {
+export const Wishlist = ({ main,  update }) => {
   const navigate = useNavigate();
   return (
     <main className="main-content-wrapper">
@@ -65,7 +65,7 @@ export const Wishlist = ({ main, setMain, update }) => {
                         <th>Image</th>
                         <th>Name Product</th>
                         <th>Price</th>
-                        <th>Quantity</th>
+                        <th>Status</th>
                         <th>Discount</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -105,24 +105,28 @@ export const Wishlist = ({ main, setMain, update }) => {
                               )?.name ?? "Unknown Product"}
                             </td>
 
-                            <td>$ {like.price}</td>
+                            <td>$  {main.products?.find(
+                                (product) => product.id === like.product_id,
+                              )?.price ?? "Unknown Price"}</td>
 
-                            <td>{like.quantity}</td>
+                            <td> {main.products?.find(
+                                (product) => product.id === like.product_id,
+                              )?.status ?? "Unknown Product"}</td>
+                            <td> {main.products?.find(
+                                (product) => product.id === like.product_id,
+                              )?.discount ?? "Unknown Product"}</td>
 
-                            <td>$ {like.discount}</td>
 
                             <td>
-                              <button
+                              <Link
+                                to={`/edit-wishlist/${like.id}`}
+                            
                                 className="btn btn-success btn-sm"
-                                onClick={() =>
-                                  navigate("/edit-wishlist", {
-                                    state: { like },
-                                  })
-                                }
+                               
                               >
                                 <i className="bi bi-pencil-square me-1" />
                                 Edit
-                              </button>
+                              </Link>
                             </td>
 
                             <td>
