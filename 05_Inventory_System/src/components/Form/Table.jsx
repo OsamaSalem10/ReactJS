@@ -3,53 +3,35 @@ import { useNavigate } from "react-router-dom";
 import DeleteService from "../../server/delete";
 import { useState } from "react";
 
-export const Table = ({
-  main,
-  update,
-  setShowModal,
-  setEditId
-}) => {
+export const Table = ({ main, update, setShowModal, setEditId , setMain}) => {
   const [search, setSearch] = useState("");
 
   const navigate = useNavigate();
   const { id } = useParams();
-   const products = main?.products?.filter(
-    (product) => Number(product.category_id) === Number(id)
-  ) || [];
+const category = main?.categories?.find(
+  (cat) => String(cat._id) === String(id)
+);
+ const products = id
+    ? main?.products?.filter(
+        (product) =>
+            String(product.category_id?._id || product.category_id) === String(id)
+      ) || []
+    : main?.products || [];
   // ================= DELETE =================
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm(
-      "هل أنت متأكد من حذف هذا المنتج؟"
-    );
+    const confirmDelete = window.confirm("هل أنت متأكد من حذف هذا المنتج؟");
 
     if (!confirmDelete) return;
 
     try {
       const deleteServiceProduct = new DeleteService();
 
-      await deleteServiceProduct._deleteProduct(
-        id,
-        update,
-        navigate
-      );
+      await deleteServiceProduct._deleteProduct(id, update, navigate);
     } catch (error) {
-      console.log(
-        error.response?.data?.message || "فشل حذف المنتج"
-      );
+      console.log(error.response?.data?.message || "فشل حذف المنتج");
     }
   };
 
-  // ================= SEARCH =================
-  const filteredProducts = (main?.products || []).filter(
-    (product) => {
-      const term = search.trim().toLowerCase();
-
-      return (
-        product.name?.toLowerCase().includes(term) ||
-        product.category_name?.toLowerCase().includes(term)
-      );
-    }
-  );
 
   // ================= EDIT =================
   const handleEdit = (product) => {
@@ -60,7 +42,7 @@ export const Table = ({
   return (
     <div className="md:col-8 col-12">
       <div className="card p-5 p-md-5">
-<h3 className="card-title text-center p-3">جدول المنتجات</h3>
+        <h3 className="card-title text-center p-3"><h3>{category?.name || "جميع المنتجات"}</h3></h3>
         {/* SEARCH */}
         <div className="p-3">
           <div className="input-group mb-3">
@@ -72,8 +54,22 @@ export const Table = ({
               type="search"
               className="form-control"
               placeholder="ابحث عن منتج أو تصنيف..."
-              value={search}
               onChange={(e) => setSearch(e.target.value)}
+                        onKeyUp={() => {
+                          if (search === "") {
+                            update();
+                          } else {
+                            
+                            setMain((prev) => ({
+                              ...prev,
+                              products: prev.products.filter((product) =>
+                                product.name
+                                  .toLowerCase()
+                                  .includes(search.toLowerCase()),
+                              ),
+                            }));
+                          }
+                        }}
             />
           </div>
         </div>
@@ -81,12 +77,10 @@ export const Table = ({
         {/* TABLE */}
         <div className="table-responsive border rounded p-3">
           <table className="table table-hover align-middle">
-
             <thead>
               <tr>
                 <th>Unit</th>
                 <th>Name</th>
-                <th>Category</th>
                 <th>Received</th>
                 <th>Sale</th>
                 <th>Residual</th>
@@ -98,13 +92,11 @@ export const Table = ({
             <tbody>
               {products.length > 0 ? (
                 products.map((product) => (
-                  <tr key={product.id}>
-
+                  <tr key={product._id}>
                     <td>{product.unit}</td>
 
                     <td>{product.name}</td>
 
-                    <td>{product.category_name}</td>
 
                     <td>{product.Received}</td>
 
@@ -116,8 +108,8 @@ export const Table = ({
                           Number(product.Residual) < 0
                             ? "bg-danger"
                             : Number(product.Residual) === 0
-                            ? "bg-warning text-dark"
-                            : "bg-success"
+                              ? "bg-warning text-dark"
+                              : "bg-success"
                         }`}
                       >
                         {product.Residual}
@@ -141,13 +133,12 @@ export const Table = ({
                       <button
                         type="button"
                         className="btn btn-danger btn-sm"
-                        onClick={() => handleDelete(product.id)}
+                        onClick={() => handleDelete(product._id)}
                         title="حذف"
                       >
                         <i className="bi bi-trash"></i>
                       </button>
                     </td>
-
                   </tr>
                 ))
               ) : (
@@ -158,15 +149,13 @@ export const Table = ({
                 </tr>
               )}
             </tbody>
-
           </table>
         </div>
 
         {/* RESULTS COUNT */}
         <div className="text-muted mt-3">
-          عدد المنتجات: {filteredProducts.length}
+          عدد المنتجات: {main?.products?.length || 0}
         </div>
-
       </div>
     </div>
   );
